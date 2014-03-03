@@ -1,0 +1,8 @@
+var mWin = Ti.UI.createWindow({
+	height : Ti.UI.setHieght,
+	width : Ti.UI.setWidth
+});
+
+var mNavWin = Ti.UI.IOS.createNavigationWindow({
+	window : mWin
+});

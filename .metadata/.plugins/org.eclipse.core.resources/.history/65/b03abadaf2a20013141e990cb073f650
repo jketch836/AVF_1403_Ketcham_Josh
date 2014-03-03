@@ -1,0 +1,45 @@
+var mWin = Ti.UI.createWindow({
+	top: '20dp',
+	height : Ti.UI.setHieght,
+	width : Ti.UI.setWidth,
+	backgroundColor : '#fff'
+});
+
+// var mNavWin = Ti.UI.IOS.createNavigationWindow({
+	// window : mWin
+// });
+
+var sampleLabel = Ti.UI.createLabel({
+	top : '20%',
+	left : '20%',
+	text : "Simple Mobile App Demo",
+	font: {fontSize: 24, fontFamily: "Helvetica", fontWeight: "bold"},
+	color: "#000"
+});
+
+var image = Ti.UI.createImageView({
+	bottom : '85%',
+	right : '30%',
+	hieght : '60%',
+	width : '60dp',
+	image : 'IMG_0180.jpg'
+});
+
+var nameLabel = Ti.UI.createLabel({
+	bottom : '50dp',
+	right : '30dp',
+	text : "Josh Ketcham",
+	font: {fontSize: 20, fontFamily: "Helvetica", fontWeight: "bold"},
+	color: "#000"
+});
+
+var courseLabel = Ti.UI.createLabel({
+	bottom : '20dp',
+	right : '30dp',
+	text : "AVF 1402",
+	font: {fontSize: 18, fontFamily: "Helvetica", fontWeight: "bold"},
+	color: "#000"
+});
+
+mWin.add(sampleLabel, image, nameLabel, courseLabel);
+mWin.open();

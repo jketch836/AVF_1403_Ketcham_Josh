@@ -1,0 +1,3 @@
+var mWin = Ti.UI.createWindow({
+	
+})
