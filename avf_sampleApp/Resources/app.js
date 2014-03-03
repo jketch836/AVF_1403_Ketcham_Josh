@@ -1,7 +1,8 @@
 var mWin = Ti.UI.createWindow({
-	height : '100%',
-	width : '100%',
-	backgroundColor : '#fff'
+	//height : '100%',
+	//width : '100%',
+	backgroundColor : '#fff',
+	layout: 'vertical'
 });
 
 var sampleLabel = Ti.UI.createLabel({
@@ -36,5 +37,9 @@ var courseLabel = Ti.UI.createLabel({
 	color: "#000"
 });
 
+
 mWin.add(sampleLabel, image, nameLabel, courseLabel);
+// mWin.add();
+// mWin.add();
+// mWin.add();
 mWin.open();

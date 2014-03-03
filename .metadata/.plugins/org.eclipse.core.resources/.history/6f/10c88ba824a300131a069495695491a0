@@ -1,0 +1,18 @@
+	var win = Ti.UI.createWindow({
+	});
+
+var memTable = Titanium.UI.createTableView({
+	search : searchbar,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '12dp'
+	},
+	opacity : .8
+});
+exports.memTable = memTable;
+		
+		
+	apiListView.sections = [secList];
+	characterScroll.add(apiListView);
+	win.add(characterScroll);
+	win.open();

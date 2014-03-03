@@ -1,0 +1,45 @@
+var listview = require('ListView');
+
+var publicKEY = 'b2565e819b4efac81bd9df1e0486d050';
+var privateKEY = 'dc653b17a624b27dd862c2d7c2c0265723bef0a1';
+var ts = 100;
+var hash = Ti.Utils.md5HexDigest(ts+privateKEY+publicKEY);
+var marvelURL = 'http://gateway.marvel.com/v1/public/characters?ts=' + ts + '&apikey=' + publicKEY + '&hash=' + hash;
+
+	// console.log(marvelURL);
+
+var apiResponse = function() {
+
+	var json = JSON.parse(this.responseText);
+	var jsonData = json.data.results;
+	
+	for (var i=0; i < jsonData.length; i++){
+			title = jsonData[i].title;
+			issue = jsonData[i].issueNumber;
+			desc = jsonData[i].description;
+			isbn = jsonData[i].isbn;
+			// thumbnail = jsonData[i].thumbnail.path + '.jpg';
+	// var data = [];
+	// for (var i = 0; i < json.members.length; i++) {
+// 
+	// };
+};
+
+var apiError = function(e) {
+    Ti.API.debug("Status: " + this.status);
+    Ti.API.debug("Text: " + this.responseText);
+    Ti.API.debug("Error: " + e.error);
+    alert("There's a problem pulling remote data");
+};
+
+
+var xhr = Ti.Network.createHTTPClient({
+    onload: apiResponse,
+    onerror: apiError,
+    timeout:5000
+});
+
+
+//Main Code
+xhr.open('GET', marvelURL);
+xhr.send();

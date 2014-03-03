@@ -1,0 +1,23 @@
+var win = Ti.UI.createWindow({
+});
+
+var searchbar = Ti.UI.createSearchBar({
+	top : 0,
+	hintText : 'Search',
+	barColor : '#fff'
+});
+
+var comicTable = Titanium.UI.createTableView({
+	search : searchbar,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : 14
+	},
+	opacity : .8
+});
+exports.comicTable = comicTable;
+
+apiListView.sections = [secList];
+characterScroll.add(apiListView);
+win.add(characterScroll);
+win.open(); 
