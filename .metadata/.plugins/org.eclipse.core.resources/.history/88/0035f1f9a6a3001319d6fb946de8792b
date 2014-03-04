@@ -1,0 +1,120 @@
+//requiring app.js
+var api = require('marvel_api');
+
+//Window Start
+var win = Ti.UI.createWindow({
+	title : 'Marvel Comics',
+	backgroundColor : '#fff'
+});
+//Window End
+
+//Window Start
+var navWin = Ti.UI.iOS.createNavigationWindow({
+	window : win
+});
+//Window End
+
+//marvel logo picture start
+var logo = Ti.UI.createImageView({
+	top : '43dp',
+	height : '100%',
+	width : '100%',
+	image : 'marvel-logo-wallpaper.jpg'
+});
+//marvel logo picture end
+
+//Search Bar Start
+var searchbar = Ti.UI.createSearchBar({
+	top : 0,
+	hintText : 'Search',
+	barColor : '#fff'
+});
+//Search Bar End
+
+//Table Start
+var comicTable = Titanium.UI.createTableView({
+	search : searchbar,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : 14
+	},
+	opacity : .8
+});
+// console.log(comicTable);
+//export table to marvel_api
+// exports.comicTable = comicTable;
+//Table End
+
+comicTable.addEventListener('click', function(a) {
+	//calling vraibles from api start
+	var name, issue, desc, isbn, price;
+
+	title = a.rowData.title;
+	issue = a.rowData.issue;
+	desc = a.rowData.desc;
+	isbn = a.rowData.isbn;
+	// price = a.rowData.price;
+	thumbnail = a.rowData.thumbnail;
+	//calling vraibles from api end
+
+	//Window Start
+	var evtWin = Ti.UI.createWindow({
+		title : title,
+		backgroundColor : '#fff',
+		nav : navWin
+	});
+	//Window End
+
+	//marvel logo picture start
+	var evtLogo = Ti.UI.createImageView({
+		height : '100%',
+		width : '100%',
+		image : 'marvel-logo-wallpaper.jpg',
+		// image : thumbnail,
+		opacity : .2
+	});
+	//marvel logo picture end
+
+	//Labels Begin
+	var titleView = Ti.UI.createLabel({
+		top : '10%',
+		left : '10%',
+		text : 'Title: ' + title
+	});
+
+	var issueView = Ti.UI.createLabel({
+		top : '15%',
+		left : '10%',
+		text : 'Issue #: ' + issue
+	});
+
+	var isbnView = Ti.UI.createLabel({
+		top : '18%',
+		left : '10%',
+		text : 'ISBN #: ' + isbn
+	});
+
+	var descView = Ti.UI.createLabel({
+		top : '25%',
+		left : '10%',
+		right : '18%',
+		text : 'Description: ' + desc
+	});
+
+	var priceView = Ti.UI.createLabel({
+		top : '10%',
+		right : '20%',
+		text : 'Price: ' + price
+	});
+	//Labels End
+
+	//EventListener Main Code
+	evtWin.add(evtLogo, titleView, issueView, descView, isbnView, priceView);
+	navWin.openWindow(evtWin, {
+		animate : true
+	});
+});
+
+//Main Code
+win.add(logo, comicTable);
+navWin.open();
