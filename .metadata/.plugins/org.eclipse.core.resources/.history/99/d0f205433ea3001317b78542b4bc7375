@@ -1,0 +1,54 @@
+//Window Start
+var win = Ti.UI.createWindow({
+	title: 'Marvel Comics',
+	backgroundColor : '#fff'
+});
+//Window End
+
+//marvel logo picture start
+var logo = Ti.UI.createImageView({
+	top : '63dp',
+	height : '100%',
+	width : '100%',
+	image : 'marvel-logo-wallpaper.jpg'
+});
+//marvel logo picture end
+
+//Search Bar Start
+var searchbar = Ti.UI.createSearchBar({
+	top : 0,
+	hintText : 'Search',
+	barColor : '#fff'
+});
+//Search Bar End
+
+//Table Start
+var comicTable = Titanium.UI.createTableView({
+	top : '20dp',
+	search : searchbar,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : 14
+	},
+	opacity : .8
+});
+// console.log(comicTable);
+//export table to marvel_api
+exports.comicTable = comicTable;
+//Table End
+
+comicTable.addEventListener('click', function(a) {
+	//calling vriables from api
+	var name, issue, desc, isbn, price;
+
+	title = a.rowData.title;
+	issue = a.rowData.issue;
+	desc = a.rowData.desc;
+	isbn = a.rowData.isbn;
+	price = a.rowData.price;
+	
+});
+
+//Main Code
+win.add(logo, comicTable);
+win.open();

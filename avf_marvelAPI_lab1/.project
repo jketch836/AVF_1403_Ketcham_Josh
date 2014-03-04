@@ -3,6 +3,7 @@
 	<name>avf_marvelAPI_lab1</name>
 	<comment></comment>
 	<projects>
+		<project>avf_sampleApp</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

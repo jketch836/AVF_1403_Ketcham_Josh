@@ -1,5 +1,5 @@
 //requiring app.js
-var table = require('app');
+var apps = require('app');
 
 //variables to access marvel website api
 var publicKEY = 'b2565e819b4efac81bd9df1e0486d050';
@@ -16,41 +16,53 @@ var apiResponse = function() {
 	var array = [];
 
 	for (var i = 0; i < jsonData.length; i++) {
-		name = jsonData[i].title;
+		title = jsonData[i].title;
 		issue = jsonData[i].issueNumber;
 		desc = jsonData[i].description;
 		isbn = jsonData[i].isbn;
+		price = '$' + jsonData[i].prices.price;
 		// thumbnail = jsonData[i].thumbnail.path + '.jpg';
 
-		//creating row for comic table
-		var row = Ti.UI.createTableViewRow({
-			title : name,
+		Ti.API.info("title: " + title);
+		Ti.API.info("issue#: " + issue);
+		Ti.API.info("description: " + desc);
+		Ti.API.info("isbn#: " + isbn);
+		Ti.API.info("price: " + price);
+
+		//creating row for comicTable
+		var rows = Ti.UI.createTableViewRow({
+			height : '70dp',
+			title : title,
 			issue : issue,
 			desc : desc,
 			isbn : isbn,
-			// title : thumbnail + "         " + title
+			// title : thumbnail + "         " + title,
+			price : price
 		});
-
-		array.push(row);
-
+		//pushing api data to array and rows
+		array.push(rows);
 	};
-	//placing data in comic table at app.js
-	table.comicTable.setData(data);
+	//placing data in comicTable at app.js
+	apps.comicTable.setData(array);
 };
 //onload function end
 
+//onerror function start
 var apiError = function(e) {
 	Ti.API.debug("Status: " + this.status);
 	Ti.API.debug("Text: " + this.responseText);
 	Ti.API.debug("Error: " + e.error);
 	alert("There's a problem pulling remote data");
 };
+//onerror function end
 
+//HTTPclient start
 var xhr = Ti.Network.createHTTPClient({
 	onload : apiResponse,
 	onerror : apiError,
 	timeout : 5000
 });
+//HTTPclient end
 
 //Main Code
 xhr.open('GET', marvelURL);
