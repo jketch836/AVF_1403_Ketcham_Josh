@@ -52,7 +52,7 @@ comicTable.addEventListener('click', function(a) {
 	issue = a.rowData.issue;
 	desc = a.rowData.desc;
 	page = a.rowData.page;
-	// cost = a.rowData.cost;
+	cost = a.rowData.cost;
 	thumbnail1 = a.rowData.thumbnail1;
 
 	//calling vraibles from api end
@@ -114,15 +114,15 @@ comicTable.addEventListener('click', function(a) {
 		}
 	});
 
-	// var priceView = Ti.UI.createLabel({
-		// top : '27%',
-		// left : '33%',
-		// text : 'Price: $ ' + cost,
-		// font : {
-			// fontStyle : 'Helvetica',
-			// fontSize : 22
-		// }
-	// });
+	var priceView = Ti.UI.createLabel({
+		top : '27%',
+		left : '33%',
+		text : cost,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 22
+		}
+	});
 
 	var descView = Ti.UI.createLabel({
 		top : '33%',
@@ -148,7 +148,7 @@ comicTable.addEventListener('click', function(a) {
 	//Labels End
 
 	//EventListener Main Code
-	// evtWin.add(priceView);
+	evtWin.add(priceView);
 	evtWin.add(evtLogo, thumbView, titleView, issueView, descView, descInfoView, isbnView);
 	// evtWin.open();
 	navWin.openWindow(evtWin, {

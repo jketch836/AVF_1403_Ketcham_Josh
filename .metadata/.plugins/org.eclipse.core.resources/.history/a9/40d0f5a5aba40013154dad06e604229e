@@ -23,36 +23,56 @@ var apiResponse = function() {
 		desc = jsonData[i].description;
 		page = jsonData[i].pageCount;
 		format = jsonData[i].format;
-		// price = jsonData[i].prices.price;
-		thumbnail = jsonData[i].thumbnail.path + '/portrait_xlarge.jpg';
+		thumbnail1 = jsonData[i].thumbnail.path + '/portrait_xlarge.jpg';
+		thumbnail2 = jsonData[i].thumbnail.path + '/portrait_small.jpg';
 
-		console.log(name);
-		console.log(issue);
-		console.log(page);
-		console.log(format);
-		// console.log(price);
+		// console.log(name);
+		// console.log(issue);
+		// console.log(page);
+		// console.log(format);
 
-		Ti.API.info("title: " + name);
-		Ti.API.info("issue#: " + issue);
+		// Ti.API.info("title: " + name);
+		// Ti.API.info("issue#: " + issue);
 		// Ti.API.info("description: " + desc);
-		Ti.API.info("pages#: " + page);
-		Ti.API.info("format: " + format);
-		// Ti.API.info("price: " + price);
+		// Ti.API.info("pages#: " + page);
+		// Ti.API.info("format: " + format);
 		// Ti.API.info("thumbnail: " + thumbnail);
 
+		// digging down into jsonData.prices array
+		for (var a = 0; a < jsonData[i].prices.length; a++) {
+		cost = jsonData.prices[a].price;
+		
+		Ti.API.info("price: " + cost);
+		console.log(cost);
+		};
+		//comic picture start
+		var smallpic = Ti.UI.createImageView({
+			height : '100%',
+			width : '100%',
+			image : thumbnail2,
+			opacity : .1
+		});
+		//comic picture end
+		
 		//creating row for comicTable
 		var rows = Ti.UI.createTableViewRow({
-			height : '10%',
+			height : '7%',
 			title : name,
 			issue : issue,
 			desc : desc,
 			page : page,
 			format : format,
-			thumbnail : thumbnail,
-			// price : price
+			thumbnail1 : thumbnail1,
+			thumbnail2 : thumbnail2,
+			cost : cost,
+			font : {
+				fontStyle : 'Helvetica',
+				fontSize : 20
+			}
 		});
 		//pushing api data to array and rows
 		array.push(rows);
+
 	};
 	//placing data in comicTable at app.js
 	comicTable.setData(array);

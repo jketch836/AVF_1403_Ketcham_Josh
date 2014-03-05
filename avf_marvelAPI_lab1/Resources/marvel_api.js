@@ -38,13 +38,13 @@ var apiResponse = function() {
 		// Ti.API.info("format: " + format);
 		// Ti.API.info("thumbnail: " + thumbnail);
 
-		// // digging down into jsonData.prices array
-		// for (var a = 0; a < jsonData[i].prices.length; a++) {
-		// cost = jsonData.prices[a].price;
-// 		
-		// Ti.API.info("price: " + cost);
-		// console.log(cost);
+		// digging down into jsonData.prices array
+		for (var a = 0; a < jsonData[i].prices.length; a++) {
+			cost = '$' + jsonData[i].prices[a].price;
 
+			// Ti.API.info("price: " + cost);
+			// console.log(cost);
+		};
 		//comic picture start
 		var smallpic = Ti.UI.createImageView({
 			height : '100%',
@@ -53,7 +53,7 @@ var apiResponse = function() {
 			opacity : .1
 		});
 		//comic picture end
-		
+
 		//creating row for comicTable
 		var rows = Ti.UI.createTableViewRow({
 			height : '7%',
@@ -64,7 +64,7 @@ var apiResponse = function() {
 			format : format,
 			thumbnail1 : thumbnail1,
 			thumbnail2 : thumbnail2,
-			// cost : cost,
+			cost : cost,
 			font : {
 				fontStyle : 'Helvetica',
 				fontSize : 20
@@ -72,7 +72,7 @@ var apiResponse = function() {
 		});
 		//pushing api data to array and rows
 		array.push(rows);
-		// };
+
 	};
 	//placing data in comicTable at app.js
 	comicTable.setData(array);
