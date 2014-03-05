@@ -36,7 +36,7 @@ var comicTable = Titanium.UI.createTableView({
 	search : searchbar,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : 14
+		fontSize : 18
 	},
 	opacity : .9
 });
@@ -52,8 +52,8 @@ comicTable.addEventListener('click', function(a) {
 	issue = a.rowData.issue;
 	desc = a.rowData.desc;
 	page = a.rowData.page;
-	// price = a.rowData.price;
-	// thumbnail = a.rowData.thumbnail;
+	cost = a.rowData.cost;
+	thumbnail = a.rowData.thumbnail1;
 
 	//calling vraibles from api end
 
@@ -69,16 +69,24 @@ comicTable.addEventListener('click', function(a) {
 	var evtLogo = Ti.UI.createImageView({
 		height : '100%',
 		width : '100%',
-		image : 'marvel-logo-wallpaper.jpg',
-		// image : thumbnail,
+		// image : 'marvel-logo-wallpaper.jpg',
+		image : thumbnail,
 		opacity : .1
 	});
 	//marvel logo picture end
 
 	//Labels Begin
-	var titleView = Ti.UI.createLabel({
+	var thumbView = Ti.UI.createImageView({
+		height : '20%',
+		width : '20%',
 		top : '10%',
 		left : '10%',
+		image : thumbnail
+	});
+
+	var titleView = Ti.UI.createLabel({
+		top : '10%',
+		left : '33%',
 		text : 'Title: ' + name,
 		font : {
 			fontStyle : 'Helvetica',
@@ -87,8 +95,8 @@ comicTable.addEventListener('click', function(a) {
 	});
 
 	var issueView = Ti.UI.createLabel({
-		top : '15%',
-		left : '10%',
+		top : '16%',
+		left : '33%',
 		text : 'Issue #: ' + issue,
 		font : {
 			fontStyle : 'Helvetica',
@@ -97,20 +105,9 @@ comicTable.addEventListener('click', function(a) {
 	});
 
 	var isbnView = Ti.UI.createLabel({
-		top : '18%',
-		left : '10%',
-		text : '# of Pages: ' + page,
-		font : {
-			fontStyle : 'Helvetica',
-			fontSize : 22
-		},
-	});
-
-	var descView = Ti.UI.createLabel({
-		top : '25%',
-		left : '10%',
-		right : '15%',
-		text : 'Description: ' + desc,
+		top : '22%',
+		left : '33%',
+		text : 'Number of Pages: ' + page,
 		font : {
 			fontStyle : 'Helvetica',
 			fontSize : 22
@@ -118,9 +115,31 @@ comicTable.addEventListener('click', function(a) {
 	});
 
 	var priceView = Ti.UI.createLabel({
-		top : '10%',
+		top : '27%',
+		left : '33%',
+		text : 'Price: $ ' + cost,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 22
+		},
+	});
+
+	var descView = Ti.UI.createLabel({
+		top : '33%',
+		left : '10%',
 		right : '15%',
-		text : 'Price: ' + price,
+		text : 'Description:',
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 22
+		},
+	});
+
+	var descInfoView = Ti.UI.createLabel({
+		top : '36%',
+		left : '10%',
+		right : '15%',
+		text : desc,
 		font : {
 			fontStyle : 'Helvetica',
 			fontSize : 22
@@ -129,7 +148,7 @@ comicTable.addEventListener('click', function(a) {
 	//Labels End
 
 	//EventListener Main Code
-	evtWin.add(evtLogo, titleView, issueView, descView, isbnView, priceView);
+	evtWin.add(evtLogo, thumbView, titleView, issueView, descView, descInfoView, isbnView, priceView);
 	// evtWin.open();
 	navWin.openWindow(evtWin, {
 		animate : true

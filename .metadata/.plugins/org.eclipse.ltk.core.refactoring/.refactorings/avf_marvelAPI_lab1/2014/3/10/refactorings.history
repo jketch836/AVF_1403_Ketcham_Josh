@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;avf_marvelAPI_lab1/Resources/ListView.js&apos; to &apos;backup.js&apos;" description="Rename resource &apos;ListView.js&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Resources/ListView.js" name="backup.js" stamp="1393983087358" updateReferences="true"/>
+</session>
