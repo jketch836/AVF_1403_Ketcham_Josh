@@ -48,7 +48,7 @@ comicTable.addEventListener('click', function(a) {
 
 	var name, issue, desc, isbn, price;
 
-	name = a.rowData.name;
+	name = a.rowData.title;
 	issue = a.rowData.issue;
 	desc = a.rowData.desc;
 	page = a.rowData.page;

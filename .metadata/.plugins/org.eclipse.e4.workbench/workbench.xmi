@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_Cihm8aLkEeO3M5JmbpPdTg" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_CiiOAKLkEeO3M5JmbpPdTg" bindingContexts="_CiiOAqLkEeO3M5JmbpPdTg">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workbench>&#xA;&lt;mruList>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;backup.js&quot; tooltip=&quot;avf_marvelAPI_lab1/Resources/backup.js&quot;>&#xA;&lt;persistable path=&quot;/avf_marvelAPI_lab1/Resources/backup.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;marvel_api.js&quot; tooltip=&quot;avf_marvelAPI_lab1/Resources/marvel_api.js&quot;>&#xA;&lt;persistable path=&quot;/avf_marvelAPI_lab1/Resources/marvel_api.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;remoteAPI.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/06 Advanced Scalable Data Infrastructures (MDV2430)/week4/asdi.lab4/remoteAPI.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/06%20Advanced%20Scalable%20Data%20Infrastructures%20(MDV2430)/week4/asdi.lab4/remoteAPI.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;RemoteTableView.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/06 Advanced Scalable Data Infrastructures (MDV2430)/week4/asdi.lab4/RemoteTableView.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/06%20Advanced%20Scalable%20Data%20Infrastructures%20(MDV2430)/week4/asdi.lab4/RemoteTableView.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;remoteAPImem.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/06 Advanced Scalable Data Infrastructures (MDV2430)/week2/asdi.lab2/remoteAPImem.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/06%20Advanced%20Scalable%20Data%20Infrastructures%20(MDV2430)/week2/asdi.lab2/remoteAPImem.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;mainMenu.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/05 Mobile Interfaces and Usability (MDV1630)/Week 3/miu_jsonproject/Resources/mainMenu.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/05%20Mobile%20Interfaces%20and%20Usability%20(MDV1630)/Week%203/miu_jsonproject/Resources/mainMenu.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;CRUD.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/06 Advanced Scalable Data Infrastructures (MDV2430)/week3/asdi.lab3/CRUD.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/06%20Advanced%20Scalable%20Data%20Infrastructures%20(MDV2430)/week3/asdi.lab3/CRUD.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;favorites.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/06 Advanced Scalable Data Infrastructures (MDV2430)/week4/asdi.lab4/favorites.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/06%20Advanced%20Scalable%20Data%20Infrastructures%20(MDV2430)/week4/asdi.lab4/favorites.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;CrudFile.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/06 Advanced Scalable Data Infrastructures (MDV2430)/week4/asdi.lab4/CrudFile.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/06%20Advanced%20Scalable%20Data%20Infrastructures%20(MDV2430)/week4/asdi.lab4/CrudFile.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;app.js&quot; tooltip=&quot;avf_sampleApp/Resources/app.js&quot;>&#xA;&lt;persistable path=&quot;/avf_sampleApp/Resources/app.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;remoteAPI.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/GitHub_Repositories/ASDI_1402_Josh_Ketcham/asdi.lab4/Resources/remoteAPI.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/GitHub_Repositories/ASDI_1402_Josh_Ketcham/asdi.lab4/Resources/remoteAPI.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;RemoteTableView.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/GitHub_Repositories/ASDI_1402_Josh_Ketcham/asdi.lab4/Resources/RemoteTableView.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/GitHub_Repositories/ASDI_1402_Josh_Ketcham/asdi.lab4/Resources/RemoteTableView.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;backup.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/GitHub_Repositories/ASDI_1402_Josh_Ketcham/asdi.lab4/Resources/backup.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/GitHub_Repositories/ASDI_1402_Josh_Ketcham/asdi.lab4/Resources/backup.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;remoteAPImem.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/GitHub_Repositories/ASDI_1402_Josh_Ketcham/asdi.lab2/Resources/remoteAPImem.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/GitHub_Repositories/ASDI_1402_Josh_Ketcham/asdi.lab2/Resources/remoteAPImem.js&quot;/>&#xA;&lt;/file>&#xA;&lt;/mruList>&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workbench>&#xA;&lt;mruList>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;marvel_api.js&quot; tooltip=&quot;avf_marvelAPI_lab1/Resources/marvel_api.js&quot;>&#xA;&lt;persistable path=&quot;/avf_marvelAPI_lab1/Resources/marvel_api.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;app.js&quot; tooltip=&quot;avf_marvelAPI_lab1/Resources/app.js&quot;>&#xA;&lt;persistable path=&quot;/avf_marvelAPI_lab1/Resources/app.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;backup.js&quot; tooltip=&quot;avf_marvelAPI_lab1/Resources/backup.js&quot;>&#xA;&lt;persistable path=&quot;/avf_marvelAPI_lab1/Resources/backup.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;remoteAPI.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/06 Advanced Scalable Data Infrastructures (MDV2430)/week4/asdi.lab4/remoteAPI.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/06%20Advanced%20Scalable%20Data%20Infrastructures%20(MDV2430)/week4/asdi.lab4/remoteAPI.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;RemoteTableView.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/06 Advanced Scalable Data Infrastructures (MDV2430)/week4/asdi.lab4/RemoteTableView.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/06%20Advanced%20Scalable%20Data%20Infrastructures%20(MDV2430)/week4/asdi.lab4/RemoteTableView.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;remoteAPImem.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/06 Advanced Scalable Data Infrastructures (MDV2430)/week2/asdi.lab2/remoteAPImem.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/06%20Advanced%20Scalable%20Data%20Infrastructures%20(MDV2430)/week2/asdi.lab2/remoteAPImem.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;mainMenu.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/05 Mobile Interfaces and Usability (MDV1630)/Week 3/miu_jsonproject/Resources/mainMenu.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/05%20Mobile%20Interfaces%20and%20Usability%20(MDV1630)/Week%203/miu_jsonproject/Resources/mainMenu.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;CRUD.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/06 Advanced Scalable Data Infrastructures (MDV2430)/week3/asdi.lab3/CRUD.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/06%20Advanced%20Scalable%20Data%20Infrastructures%20(MDV2430)/week3/asdi.lab3/CRUD.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;favorites.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/06 Advanced Scalable Data Infrastructures (MDV2430)/week4/asdi.lab4/favorites.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/06%20Advanced%20Scalable%20Data%20Infrastructures%20(MDV2430)/week4/asdi.lab4/favorites.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;CrudFile.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/06 Advanced Scalable Data Infrastructures (MDV2430)/week4/asdi.lab4/CrudFile.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/06%20Advanced%20Scalable%20Data%20Infrastructures%20(MDV2430)/week4/asdi.lab4/CrudFile.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;app.js&quot; tooltip=&quot;avf_sampleApp/Resources/app.js&quot;>&#xA;&lt;persistable path=&quot;/avf_sampleApp/Resources/app.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;remoteAPI.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/GitHub_Repositories/ASDI_1402_Josh_Ketcham/asdi.lab4/Resources/remoteAPI.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/GitHub_Repositories/ASDI_1402_Josh_Ketcham/asdi.lab4/Resources/remoteAPI.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;RemoteTableView.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/GitHub_Repositories/ASDI_1402_Josh_Ketcham/asdi.lab4/Resources/RemoteTableView.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/GitHub_Repositories/ASDI_1402_Josh_Ketcham/asdi.lab4/Resources/RemoteTableView.js&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;com.aptana.editor.js&quot; name=&quot;backup.js&quot; tooltip=&quot;/Users/jketch/Documents/Full_Sail/GitHub_Repositories/ASDI_1402_Josh_Ketcham/asdi.lab4/Resources/backup.js&quot;>&#xA;&lt;persistable uri=&quot;file:/Users/jketch/Documents/Full_Sail/GitHub_Repositories/ASDI_1402_Josh_Ketcham/asdi.lab4/Resources/backup.js&quot;/>&#xA;&lt;/file>&#xA;&lt;/mruList>&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
   <children xsi:type="basic:TrimmedWindow" xmi:id="_CiiOAKLkEeO3M5JmbpPdTg" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.ui.workbench" selectedElement="_C96icqLkEeO3M5JmbpPdTg" label="%trimmedwindow.label.eclipseSDK" x="135" y="22" width="1024" height="768">
@@ -246,18 +246,18 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_C-hmcKLkEeO3M5JmbpPdTg" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zplF8KQFEeO81s7fc4hGRA" elementId="new.group"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zplF8aQFEeO81s7fc4hGRA" elementId="newWizardDropDown"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zplF8qQFEeO81s7fc4hGRA" elementId="new.ext" visible="false"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zplF86QFEeO81s7fc4hGRA" elementId="save.group" visible="false"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zplF9KQFEeO81s7fc4hGRA" elementId="save"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zplF9aQFEeO81s7fc4hGRA" elementId="saveAll"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zpltAKQFEeO81s7fc4hGRA" elementId="save.ext" visible="false"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_zpltAaQFEeO81s7fc4hGRA" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.gif" tooltip="Print" command="_Ci1wBaLkEeO3M5JmbpPdTg"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zpniMKQFEeO81s7fc4hGRA" elementId="print.ext" visible="false"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zpoJQKQFEeO81s7fc4hGRA" elementId="build.group"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zpoJQaQFEeO81s7fc4hGRA" elementId="build.ext" visible="false"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zpoJQqQFEeO81s7fc4hGRA" elementId="additions"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2RU8KQJEeOKaJPRGgkE-g" elementId="new.group"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2RU8aQJEeOKaJPRGgkE-g" elementId="newWizardDropDown"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2RU8qQJEeOKaJPRGgkE-g" elementId="new.ext" visible="false"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2R8AKQJEeOKaJPRGgkE-g" elementId="save.group" visible="false"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2R8AaQJEeOKaJPRGgkE-g" elementId="save"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2R8AqQJEeOKaJPRGgkE-g" elementId="saveAll"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2R8A6QJEeOKaJPRGgkE-g" elementId="save.ext" visible="false"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_N2R8BKQJEeOKaJPRGgkE-g" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.gif" tooltip="Print" command="_Ci1wBaLkEeO3M5JmbpPdTg"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2UYQKQJEeOKaJPRGgkE-g" elementId="print.ext" visible="false"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2UYQaQJEeOKaJPRGgkE-g" elementId="build.group"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2UYQqQJEeOKaJPRGgkE-g" elementId="build.ext" visible="false"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2UYQ6QJEeOKaJPRGgkE-g" elementId="additions"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_C-hmcaLkEeO3M5JmbpPdTg" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -265,30 +265,30 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_Y5yR8KLmEeOg49Kq9Oax4g" elementId="org.eclipse.debug.ui.breakpointActionSet">
         <tags>Draggable</tags>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq0cEKQFEeO81s7fc4hGRA" elementId="breakpointGroup"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq0cEaQFEeO81s7fc4hGRA" elementId="org.eclipse.debug.ui.actions.SkipAllBreakpoints"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4dGQKQJEeOKaJPRGgkE-g" elementId="breakpointGroup"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4dGQaQJEeOKaJPRGgkE-g" elementId="org.eclipse.debug.ui.actions.SkipAllBreakpoints"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_DCMlgKLkEeO3M5JmbpPdTg" elementId="org.eclipse.debug.ui.launchActionSet">
         <tags>Draggable</tags>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq0cEqQFEeO81s7fc4hGRA" elementId="debug"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq0cE6QFEeO81s7fc4hGRA" elementId="com.aptana.js.debug.ui.actions.openURL"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq1DIKQFEeO81s7fc4hGRA" elementId="com.aptana.js.debug.ui.actions.ToggleBreakpoint"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq1DIaQFEeO81s7fc4hGRA" elementId="org.eclipse.debug.internal.ui.actions.DebugDropDownAction"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq1DIqQFEeO81s7fc4hGRA" elementId="org.eclipse.debug.internal.ui.actions.RunDropDownAction"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq1DI6QFEeO81s7fc4hGRA" elementId="org.eclipse.ui.externaltools.ExternalToolMenuDelegateToolbar"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4dtUKQJEeOKaJPRGgkE-g" elementId="debug"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4dtUaQJEeOKaJPRGgkE-g" elementId="com.aptana.js.debug.ui.actions.openURL"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4dtUqQJEeOKaJPRGgkE-g" elementId="com.aptana.js.debug.ui.actions.ToggleBreakpoint"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4dtU6QJEeOKaJPRGgkE-g" elementId="org.eclipse.debug.internal.ui.actions.DebugDropDownAction"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4dtVKQJEeOKaJPRGgkE-g" elementId="org.eclipse.debug.internal.ui.actions.RunDropDownAction"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4dtVaQJEeOKaJPRGgkE-g" elementId="org.eclipse.ui.externaltools.ExternalToolMenuDelegateToolbar"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_DCPBwKLkEeO3M5JmbpPdTg" elementId="org.eclipse.search.searchActionSet">
         <tags>Draggable</tags>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq1DJKQFEeO81s7fc4hGRA" elementId="Search"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq1DJaQFEeO81s7fc4hGRA" elementId="org.eclipse.search.OpenSearchDialogPage"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4dtVqQJEeOKaJPRGgkE-g" elementId="Search"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4eUYKQJEeOKaJPRGgkE-g" elementId="org.eclipse.search.OpenSearchDialogPage"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_DB_KIKLkEeO3M5JmbpPdTg" elementId="org.eclipse.ui.edit.text.actionSet.presentation">
         <tags>Draggable</tags>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq1DJqQFEeO81s7fc4hGRA" elementId="Presentation"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq1DJ6QFEeO81s7fc4hGRA" elementId="com.aptana.editor.common.toggleMarkOccurrences"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq1qMKQFEeO81s7fc4hGRA" elementId="org.eclipse.ui.edit.text.toggleBlockSelectionMode"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq1qMaQFEeO81s7fc4hGRA" elementId="org.eclipse.ui.edit.text.toggleShowWhitespaceCharacters"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq1qMqQFEeO81s7fc4hGRA" elementId="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4eUYaQJEeOKaJPRGgkE-g" elementId="Presentation"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4eUYqQJEeOKaJPRGgkE-g" elementId="com.aptana.editor.common.toggleMarkOccurrences"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4eUY6QJEeOKaJPRGgkE-g" elementId="org.eclipse.ui.edit.text.toggleBlockSelectionMode"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4eUZKQJEeOKaJPRGgkE-g" elementId="org.eclipse.ui.edit.text.toggleShowWhitespaceCharacters"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4eUZaQJEeOKaJPRGgkE-g" elementId="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_C-hmc6LkEeO3M5JmbpPdTg" elementId="group.nav" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -296,15 +296,15 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_C-iNgKLkEeO3M5JmbpPdTg" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zpoJQ6QFEeO81s7fc4hGRA" elementId="history.group"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zpoJRKQFEeO81s7fc4hGRA" elementId="group.application" visible="false"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zpoJRaQFEeO81s7fc4hGRA" elementId="backardHistory"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zpoJRqQFEeO81s7fc4hGRA" elementId="forwardHistory"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zpoJR6QFEeO81s7fc4hGRA" elementId="pin.group"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_zpowUKQFEeO81s7fc4hGRA" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.gif" tooltip="Pin Editor" enabled="false" command="_CiyFrqLkEeO3M5JmbpPdTg"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq1qM6QFEeO81s7fc4hGRA" elementId="org.eclipse.ui.edit.text.gotoNextAnnotation"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq1qNKQFEeO81s7fc4hGRA" elementId="org.eclipse.ui.edit.text.gotoPreviousAnnotation"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zq1qNaQFEeO81s7fc4hGRA" elementId="org.eclipse.ui.edit.text.gotoLastEditPosition"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2UYRKQJEeOKaJPRGgkE-g" elementId="history.group"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2UYRaQJEeOKaJPRGgkE-g" elementId="group.application" visible="false"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2UYRqQJEeOKaJPRGgkE-g" elementId="backardHistory"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2U_UKQJEeOKaJPRGgkE-g" elementId="forwardHistory"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2U_UaQJEeOKaJPRGgkE-g" elementId="pin.group"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_N2U_UqQJEeOKaJPRGgkE-g" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.gif" tooltip="Pin Editor" enabled="false" command="_CiyFrqLkEeO3M5JmbpPdTg"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4eUZqQJEeOKaJPRGgkE-g" elementId="org.eclipse.ui.edit.text.gotoNextAnnotation"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4e7cKQJEeOKaJPRGgkE-g" elementId="org.eclipse.ui.edit.text.gotoPreviousAnnotation"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N4e7caQJEeOKaJPRGgkE-g" elementId="org.eclipse.ui.edit.text.gotoLastEditPosition"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_C-iNgaLkEeO3M5JmbpPdTg" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -316,8 +316,8 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_C-iNhaLkEeO3M5JmbpPdTg" elementId="org.eclipse.ui.workbench.help">
         <tags>Draggable</tags>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zpowUaQFEeO81s7fc4hGRA" elementId="group.help"/>
-        <children xsi:type="menu:OpaqueToolItem" xmi:id="_zpowUqQFEeO81s7fc4hGRA" elementId="group.application" visible="false"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2U_U6QJEeOKaJPRGgkE-g" elementId="group.help"/>
+        <children xsi:type="menu:OpaqueToolItem" xmi:id="_N2VmYKQJEeOKaJPRGgkE-g" elementId="group.application" visible="false"/>
       </children>
       <children xsi:type="menu:ToolControl" xmi:id="_C_VewKLkEeO3M5JmbpPdTg" elementId="PerspectiveSpacer" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
         <tags>stretch</tags>
@@ -623,7 +623,7 @@
       <tags>platform:cocoa</tags>
     </bindings>
     <bindings xmi:id="_CjURI6LkEeO3M5JmbpPdTg" keySequence="COMMAND+SHIFT+D" command="_Ci2-NqLkEeO3M5JmbpPdTg"/>
-    <bindings xmi:id="_zeHc0KQFEeO81s7fc4hGRA" keySequence="COMMAND+CTRL+F" command="_CjXUcaLkEeO3M5JmbpPdTg"/>
+    <bindings xmi:id="_NmEVwaQJEeOKaJPRGgkE-g" keySequence="COMMAND+CTRL+F" command="_CjXUcaLkEeO3M5JmbpPdTg"/>
   </bindingTables>
   <bindingTables xmi:id="_CjHc0qLkEeO3M5JmbpPdTg" elementId="com.aptana.editor.common.outline" bindingContext="_Ci5abKLkEeO3M5JmbpPdTg">
     <bindings xmi:id="_CjHc06LkEeO3M5JmbpPdTg" keySequence="ALT+COMMAND++" command="_CizT6KLkEeO3M5JmbpPdTg"/>
@@ -795,7 +795,7 @@
     <bindings xmi:id="_CjSb9aLkEeO3M5JmbpPdTg" keySequence="CTRL+D" command="_CizT7aLkEeO3M5JmbpPdTg"/>
   </bindingTables>
   <bindingTables xmi:id="_CjX7gKLkEeO3M5JmbpPdTg" contributorURI="platform:/fragment/org.eclipse.e4.ui.workbench.renderers.swt.cocoa" bindingContext="_CiiOBaLkEeO3M5JmbpPdTg">
-    <bindings xmi:id="_zeHc0aQFEeO81s7fc4hGRA" keySequence="M1+W" command="_CjXUdqLkEeO3M5JmbpPdTg"/>
+    <bindings xmi:id="_NmE80KQJEeOKaJPRGgkE-g" keySequence="M1+W" command="_CjXUdqLkEeO3M5JmbpPdTg"/>
   </bindingTables>
   <bindingTables xmi:id="_CqPYgaLkEeO3M5JmbpPdTg" bindingContext="_CqPYgKLkEeO3M5JmbpPdTg"/>
   <bindingTables xmi:id="_CqP_kaLkEeO3M5JmbpPdTg" bindingContext="_CqP_kKLkEeO3M5JmbpPdTg"/>
