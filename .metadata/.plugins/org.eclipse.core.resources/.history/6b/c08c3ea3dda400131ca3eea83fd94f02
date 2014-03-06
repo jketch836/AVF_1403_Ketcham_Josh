@@ -1,0 +1,112 @@
+//url variable
+var url = 'http://api.nytimes.com/svc/semantic/v2/geocodes/query.json?nearby=37.78583526611328,-122.40641784667969&api-key=ec2c67ba0d91240ac18bbf24043c8cb5:1:68792990';
+
+//onload function start
+var apiResponse = function() {
+	//converting marvel api json data
+	var json = JSON.parse(this.responseText);
+	var times = json.results;
+	var data = [];
+
+	//setting nytimes api json data to variables
+	for (var i = 0; i < times.length; i++) {
+		// copyright = json[i].copyright;
+		name = times[i].geocode.name;
+		county = times[i].geocode.admin_name2;
+		state = times[i].geocode.admin_name1;
+		st = times[i].geocode.admin_code1;
+		country = times[i].geocode.country_code;
+		latitude = times[i].geocode.latitude;
+		longitude = times[i].geocode.longitude;
+		dist = times[i].geocode.distance;
+
+		// console.log(name);
+		// console.log(county);
+		// console.log(state);
+		// console.log(country);
+		// console.log(latitude);
+		// console.log(longitude);
+
+		// //creating row for times listview
+		// var rows = Ti.UI.createTableViewRow({
+		// height : '7%',
+		// title : name + ',' + st,
+		// st : st,
+		// county : county,
+		// state : state,
+		// country : country,
+		// latitude : latitude,
+		// longitude : longitude,
+		// font : {
+		// fontStyle : 'Helvetica',
+		// fontSize : 16
+		// }
+		// });
+		//
+		// //pushing api data to array and rows
+		// data.push(rows);
+
+		var seclist = Ti.UI.createListSection({
+		});
+
+		data.push({
+			properties : {
+				name : name,
+				st : st,
+				county : county,
+				state : state,
+				country : country,
+				latitude : latitude,
+				longitude : longitude,
+			},
+			name : {
+				text : name
+			},
+			st : {
+				text : st
+			},
+			county : {
+				text : county
+			},
+			state : {
+				text : state
+			},
+			country : {
+				text : country
+			},
+			latitude : {
+				text : latitude
+			},
+			longitude : {
+				text : longitude
+			}
+		});
+		seclist.setItems(data);
+
+	};
+	// //placing data in table at app.js
+	// table.setData(data);
+	listview.sections = [seclist];
+};
+//onload function end
+
+//onerror function start
+var apiError = function(e) {
+	Ti.API.debug("Status: " + this.status);
+	Ti.API.debug("Text: " + this.responseText);
+	Ti.API.debug("Error: " + e.error);
+	alert("Please connect to the Internet");
+};
+//onerror function end
+
+//HTTPclient start
+var xhr = Ti.Network.createHTTPClient({
+	onload : apiResponse,
+	onerror : apiError,
+	timeout : 5000
+});
+//HTTPclient end
+
+//Main Code
+xhr.open('GET', url);
+xhr.send();

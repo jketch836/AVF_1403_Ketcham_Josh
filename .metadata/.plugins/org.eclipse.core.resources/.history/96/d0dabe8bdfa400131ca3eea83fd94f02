@@ -1,0 +1,99 @@
+// //require api info
+var geo = require('geo_api');
+
+//create window
+var win = Ti.UI.createWindow({
+	title : 'NY Times Stories',
+	backgroundColor : '#fff'
+});
+
+// //Table Start
+// var table = Titanium.UI.createTableView({
+// font : {
+// fontStyle : 'Helvetica',
+// fontSize : 18
+// }
+// });
+// //Table End
+
+var timesScroll = Ti.UI.createScrollView({
+	layout : 'vertical',
+	height : '100%',
+	width : '100%',
+	top : '5%',
+	showVerticalScrollIndicator : true
+});
+
+timesTemplate = 
+{
+	properties : 
+	{
+		top : '1%',
+		height : '7%'
+	},
+	childTemplates : 
+	[
+		{
+			type : "Ti.UI.Label",
+			bindId : 'name',
+			properties : 
+			{
+				color : "black",
+				font : 
+				{
+					fontSize : 18,
+					fontFamily : "Arial"
+				},
+				left : '7%',
+				top : '1%'
+			}
+		},
+		{
+			type : "Ti.UI.Label",
+			bindId : 'dist',
+			properties : 
+			{
+				color : "black",
+				font : 
+				{
+					fontSize : 12,
+					fontFamily : "Arial"
+				},
+				right : '10%',
+				top : '1%'
+			},
+		}, 
+		{
+			type : "Ti.UI.Label",
+			bindId : 'level',
+			properties : 
+			{
+				color : "grey",
+				font : 
+				{
+					fontSize : 14,
+					fontFamily : "Arial"
+				},
+				right : 10,
+				top : 10
+			}
+		}
+	]
+};
+
+var listview = Ti.UI.createListView({
+	//	search: search,
+	top : 20,
+	// height: '500dp',
+	templates : {
+		'defaultTemplate' : timesTemplate
+	},
+	defaultItemTemplate : 'defaultTemplate'
+});
+
+//Main Code
+timesScroll.add(listview);
+win.add(timesScroll);
+// win.add(table);
+win.open();
+

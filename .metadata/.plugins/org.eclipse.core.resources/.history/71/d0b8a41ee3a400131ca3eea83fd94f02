@@ -1,0 +1,108 @@
+// //require api info
+var geo = require('geo_api');
+
+//create window
+var win = Ti.UI.createWindow({
+	title : 'NY Times Stories',
+	backgroundColor : '#fff'
+});
+
+//Scroll View Start
+var timesScroll = Ti.UI.createScrollView({
+	layout : 'vertical',
+	height : '100%',
+	width : '100%',
+	top : '5%',
+	showVerticalScrollIndicator : true
+});
+//Scroll View End
+
+//listview template start
+timesTemplate = {
+	properties : {
+		top : '1%',
+		height : '7%'
+	},
+	childTemplates : [{
+		type : "Ti.UI.Label",
+		bindId : 'name',
+		properties : {
+			color : "black",
+			font : {
+				fontSize : 16,
+				fontFamily : "Arial"
+			},
+			left : '7%',
+			top : '1%'
+		}
+	}, {
+		type : "Ti.UI.Label",
+		bindId : 'country',
+		properties : {
+			color : "black",
+			font : {
+				fontSize : 12,
+				fontFamily : "Arial"
+			},
+			right : '10%',
+			top : '1%'
+		},
+	}]
+};
+//listview template end
+
+//listview start
+var listview = Ti.UI.createListView({
+	//	search: search,
+	top : 20,
+	// height: '500dp',
+	templates : {
+		'defaultTemplate' : timesTemplate
+	},
+	defaultItemTemplate : 'defaultTemplate'
+});
+//listview end
+
+//evt listener start
+listview.addEventListener('itemclick', function(e) {
+
+	//create window
+	var evtWin = Ti.UI.createWindow({
+		title : 'NY Times Location',
+		backgroundColor : '#fff'
+	});
+
+	//back button
+	var backView = Ti.UI.createView({
+		backgroundColor : "#333",
+		borderRadius: 10,
+		height : 40,
+		width : 80,
+		top : '0dp',
+		left : 0,
+		file : 'app.js'
+	});
+
+	var backLabel = Ti.UI.createLabel({
+		text : "Back",
+		font : {
+			fontSize : 16,
+			fontFamily : "Helvetica",
+			fontWeight : "bold"
+		},
+		color : "#fff",
+		center : 0,
+		file : 'app.js'
+	});
+	backView.add(backLabel);
+
+	//evt Main Code
+	evtWin.open();
+});
+//evt listener end
+
+//Main Code
+timesScroll.add(listview);
+win.add(timesScroll);
+win.open();
+

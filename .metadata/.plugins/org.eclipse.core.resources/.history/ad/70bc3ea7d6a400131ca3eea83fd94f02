@@ -1,0 +1,73 @@
+//requiring app.js
+// var apps = require('app');
+
+//variable 
+var url = 'http://api.nytimes.com/svc/semantic/v2/geocodes/query.json?nearby=37.78583526611328,-122.40641784667969&api-key=ec2c67ba0d91240ac18bbf24043c8cb5:1:68792990';
+
+//onload function start
+var apiResponse = function() {
+	//converting marvel api json data
+	var json = JSON.parse(this.responseText);
+	var coorData = json.results.geocode;
+	var array = [];
+
+	//setting marvel api json data to variables
+	for (var i = 0; i < coorData.length; i++) {
+		name = coorData[i].name;
+		county = coorData[i].admin_name2;
+		state = coorData[i].admin_name1;
+		country = coorData[i].country_code;
+		latitude = coorData[i].latitude;
+		longitude = coorData[i].longitude;
+
+		console.log(name);
+		console.log(county);
+		console.log(state);
+		console.log(country);
+		console.log(latitude);
+		console.log(longitude);
+	
+
+		//creating row for comicTable
+		var rows = Ti.UI.createTableViewRow({
+			height : '7%',
+			title : name,
+			county : county,
+			state : state,
+			country : country,
+			latitude : latitude,
+			longitude : longitude,
+			font : {
+				fontStyle : 'Helvetica',
+				fontSize : 16
+			}
+		});
+		//pushing api data to array and rows
+		array.push(rows);
+
+	};
+	//placing data in comicTable at app.js
+	table.setData(array);
+};
+//onload function end
+
+//onerror function start
+var apiError = function(e) {
+	Ti.API.debug("Status: " + this.status);
+	Ti.API.debug("Text: " + this.responseText);
+	Ti.API.debug("Error: " + e.error);
+	alert("Please connect to the Internet");
+};
+//onerror function end
+
+//HTTPclient start
+var xhr = Ti.Network.createHTTPClient({
+	onload : apiResponse,
+	onerror : apiError,
+	timeout : 5000
+});
+//HTTPclient end
+
+//Main Code
+xhr.open('GET', url);
+xhr.send();

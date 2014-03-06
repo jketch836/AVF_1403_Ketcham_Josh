@@ -1,0 +1,96 @@
+//requiring app.js
+// var apps = require('app');
+
+//variables to access rotten tomattos website api
+
+var marvelURL = 'http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=amkhz6m9hvbqycmrahg2xse3';
+
+//onload function start
+var apiResponse = function() {
+	//converting marvel api json data
+	var json = JSON.parse(this.responseText);
+	var mov = json.movies;
+	var array = [];
+
+	//setting marvel api json data to variables
+	for (var i = 0; i < mov.length; i++) {
+		title = mov[i].title;
+		rating = mov[i].mpaa_rating;
+		min = mov[i].runtime;
+		year = mov[i].year;
+		summary = mov[i].synopsis;
+		critic = mov[i].critics_consensus;
+
+		// console.log(name);
+		// console.log(issue);
+		// console.log(page);
+		// console.log(format);
+
+		// Ti.API.info("title: " + name);
+		// Ti.API.info("issue#: " + issue);
+		// Ti.API.info("description: " + desc);
+		// Ti.API.info("pages#: " + page);
+		// Ti.API.info("format: " + format);
+		// Ti.API.info("thumbnail: " + thumbnail);
+
+		// digging down into jsonData.prices array
+		for (var a = 0; a < jsonData[i].prices.length; a++) {
+			cost = '$' + jsonData[i].prices[a].price;
+
+			// Ti.API.info("price: " + cost);
+			// console.log(cost);
+		};
+		//comic picture start
+		var smallpic = Ti.UI.createImageView({
+			height : '100%',
+			width : '100%',
+			image : thumbnail2,
+			opacity : .1
+		});
+		//comic picture end
+
+		//creating row for comicTable
+		var rows = Ti.UI.createTableViewRow({
+			height : '7%',
+			title : name,
+			issue : issue,
+			desc : desc,
+			page : page,
+			format : format,
+			thumbnail1 : thumbnail1,
+			thumbnail2 : thumbnail2,
+			cost : cost,
+			font : {
+				fontStyle : 'Helvetica',
+				fontSize : 20
+			}
+		});
+		//pushing api data to array and rows
+		array.push(rows);
+
+	};
+	//placing data in comicTable at app.js
+	comicTable.setData(array);
+};
+//onload function end
+
+//onerror function start
+var apiError = function(e) {
+	Ti.API.debug("Status: " + this.status);
+	Ti.API.debug("Text: " + this.responseText);
+	Ti.API.debug("Error: " + e.error);
+	alert("Please connect to the Internet");
+};
+//onerror function end
+
+//HTTPclient start
+var xhr = Ti.Network.createHTTPClient({
+	onload : apiResponse,
+	onerror : apiError,
+	timeout : 5000
+});
+//HTTPclient end
+
+//Main Code
+xhr.open('GET', marvelURL);
+xhr.send();

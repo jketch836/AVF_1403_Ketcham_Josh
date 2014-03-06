@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;movie_api/Resources/marvel_api.js&apos; to &apos;rt_api.js&apos;" description="Rename resource &apos;marvel_api.js&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Resources/marvel_api.js" name="rt_api.js" stamp="1394054781348" updateReferences="true"/>
+</session>
