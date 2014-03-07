@@ -1,3 +1,5 @@
+// var list = require('listview');
+
 //url variable
 var url = 'http://api.nytimes.com/svc/semantic/v2/geocodes/query.json?nearby=37.78583526611328,-122.40641784667969&api-key=ec2c67ba0d91240ac18bbf24043c8cb5:1:68792990';
 
@@ -19,7 +21,7 @@ var apiResponse = function() {
 		country = times[i].geocode.country_name;
 		latitude = times[i].geocode.latitude;
 		longitude = times[i].geocode.longitude;
-		dist = Math.round(times[i].geocode.distance*10)/10;
+		dist = Math.round(times[i].geocode.distance * 10) / 10;
 
 		// console.log(name);
 		// console.log(county);
@@ -27,6 +29,10 @@ var apiResponse = function() {
 		// console.log(country);
 		// console.log(latitude);
 		// console.log(longitude);
+
+		for (var a = 0; a < json.length; a++) {
+			copyright = json[a].copyright;
+		}
 
 		//creating row for times listview
 		var seclist = Ti.UI.createListSection({
@@ -63,10 +69,10 @@ var apiResponse = function() {
 				text : countryAB
 			},
 			latitude : {
-				text : latitude
+				text : 'lat: ' + latitude
 			},
 			longitude : {
-				text : longitude
+				text : 'lng: ' + longitude
 			},
 			dist : {
 				text : dist
@@ -75,7 +81,7 @@ var apiResponse = function() {
 		seclist.setItems(data);
 
 	};
-	listview.sections = [seclist];
+	listview1.sections = [seclist];
 };
 //onload function end
 

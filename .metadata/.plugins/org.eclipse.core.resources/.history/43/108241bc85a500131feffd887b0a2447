@@ -1,0 +1,146 @@
+//require api and crud info
+var geo = require('geo_api');
+
+
+// created tab group
+var theTabs = Ti.UI.createTabGroup();
+
+//create window
+var win = Ti.UI.createWindow({
+	title : 'NY Times',
+	backgroundColor : '#fff'
+});
+
+// created character tab
+var toonTab = Ti.UI.createTab({
+	title : 'NY Times Stories',
+	window : win
+});
+
+//Scroll View Start
+var timesScroll = Ti.UI.createScrollView({
+	layout : 'vertical',
+	height : '100%',
+	width : '100%',
+	top : '0%',
+	showVerticalScrollIndicator : true
+});
+//Scroll View End
+
+//listview template start
+timesTemplate = 
+{
+	properties : 
+	{
+		top : '1%',
+		height : '7%'
+	},
+	childTemplates : 
+	[
+		{
+			type : "Ti.UI.Label",
+			bindId : 'name',
+			properties : 
+			{
+				color : "black",
+				font : 
+				{
+					fontSize : 13,
+					fontFamily : "Arial"
+				},
+				left : '5%',
+				top : '1%'
+			}
+		}, 
+		{
+			type : "Ti.UI.Label",
+			bindId : 'countryAB',
+			properties : 
+			{
+				color : "black",
+				font : 
+				{
+					fontSize : 11,
+					fontFamily : "Arial"
+				},
+				right : '10%',
+				top : '1%'
+			},
+		},
+		{
+			type : "Ti.UI.Label",
+			bindId : 'latitude',
+			properties : 
+			{
+				color : "black",
+				font : 
+				{
+					fontSize : 10,
+					fontFamily : "Arial"
+				},
+				left : '25%',
+				bottom : '1%'
+			}
+		}, 
+		{
+			type : "Ti.UI.Label",
+			bindId : 'longitude',
+			properties : 
+			{
+				color : "black",
+				font : 
+				{
+					fontSize : 10,
+					fontFamily : "Arial"
+				},
+				right : '25%',
+				bottom : '1%'
+			}
+		}
+	]
+};
+//listview template end
+
+//listview start
+var listview = Ti.UI.createListView({
+	//	search: search,
+	top : '0%',
+	// height: '500dp',
+	templates : {
+		'defaultTemplate' : timesTemplate
+	},
+	defaultItemTemplate : 'defaultTemplate'
+});
+//listview end
+
+//listview evt listener start
+listview.addEventListener('itemclick', function() {
+		var deleteDIA = Ti.UI.createAlertDialog({
+			title : 'Save?',
+			buttonNames : ['Save', 'Cancel']
+		});
+		deleteDIA.show();
+
+		deleteDIA.addEventListener('click', function(a) {
+			if (a.index === 0) {
+				box.save(name, st, latitude, longitude, dist);
+			}
+		});
+});
+//listview evt listener end
+
+
+
+// // created favorite tab
+// var favTab = Ti.UI.createTab({
+	// title : 'Favorites',
+	// window : fav
+// });
+
+//Main Code
+timesScroll.add(listview);
+win.add(timesScroll);
+theTabs.addTab(toonTab);
+// theTabs.addTab(favTab);
+theTabs.open();
+

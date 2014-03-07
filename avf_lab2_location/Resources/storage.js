@@ -1,53 +1,74 @@
-var data = Ti.Database.open('location');
+//Creating Database
+var geo = Ti.Database.open('location');
 var wowData = Ti.App.Properties.getString('geoData');
-data.execute('CREATE TABLE IF NOT EXISTS location (id INTEGER PRIMARY KEY, )');
+geo.execute('CREATE TABLE IF NOT EXISTS location (id INTEGER PRIMARY KEY, name TEXT, countryAB TEXT, latitude INTEGER, longitude INTEGER)');
 
+//Inserting data from save func start
 function insertData() {
 	var data = [];
 
-	var rowInfo = data.execute('SELECT * FROM location');
+	var  secInfo = geo.execute('SELECT * FROM location');
 
-	while (rowInfo.isValidRow()) {
-		var name = rowInfo.fieldByName('name');
-
+	while (secInfo.isValidRow()) {
+		var name = secInfo.fieldByName('name');
+		var st = secInfo.fieldByName('st');
+		// var county = rowInfo.fieldByName('county');
+		// var state = rowInfo.fieldByName('state');
+		var countryAB = rowInfo.fieldByName('countryAB');
+		// var country = rowInfo.fieldByName('country');
+		var latitude = secInfo.fieldByName('latitude');
+		var longitude = secInfo.fieldByName('longitude');
+		// var dist = rowInfo.fieldByName('dist');
+		var id = secInfo.fieldByName('id');
+		
 		dataInfo.push({
 			name : name,
 			st : st,
-			county : county,
-			state : state,
+			// county : county,
+			// state : state,
 			countryAB : countryAB,
-			country : country,
+			// country : country,
 			latitude : latitude,
 			longitude : longitude,
-			dist : dist
+			// dist : dist
+			id : id
 		});
 
 		Ti.API.info('=========================');
 
-		rowInfo.next();
+		secInfo.next();
 	};
 	return data;
 };
 var geoData = insertData();
 exports.geoData = geoData;
+//Inserting data from sav func end
 
-// console.log(guildData);
 
-var saveFunc = function() {
+//saving data from app.js start
+var save = function(name, countryAB, latitude, longitude) {
 	input = {};
-	data.execute('INSERT INTO location (name) VALUES (?)', name);
-};
-exports.saveFunc = saveFunc;
-
-var id = a.rowData.id;
-input = {};
-
-data.execute('SELECT * FROM location WHERE ID=?', id);
-
-function delFunc() {
-	var id = a.rowData.id;
-	data.execute('DELETE FROM location WHERE id=?', id);
+	input.name = name;
+	input.countryAB = countryAB;
+	input.latitude = latitude;
+	input.longitude = longitude;
+	geo.execute('INSERT INTO location (name, countryAB, latitude, longitude) VALUES (?, ?, ?, ?)', input.name, input.countryAB, input.latitude, input.longitude);
 	geoData;
+};
+exports.save = save;
+//saving data from app.js end
 
+
+// var id = a.rowData.id;
+// 
+// geo.execute('SELECT * FROM location WHERE ID=?', id);
+// input = {};
+
+
+//delete data start
+function delFunc() {
+	geo.execute('DELETE FROM location WHERE id=?', id); 
+	// seclist.setItems(geoData);
 };
 exports.delFunc = delFunc;
+//delete data end
