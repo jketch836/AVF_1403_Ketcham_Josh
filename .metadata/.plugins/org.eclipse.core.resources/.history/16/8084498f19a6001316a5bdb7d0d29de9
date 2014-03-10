@@ -1,0 +1,50 @@
+//Create Window
+var mainWin = Ti.UI.createWindow({
+	title: "Main Window",
+	backgroundImage: "map.png"
+});
+
+var titleView = Ti.UI.createView({
+	borderRadius : '5%',
+	center : '0%',
+	height : '40%',
+	width : '60%',
+	backgroundColor : '#fff'
+});
+
+var titleLabel = Ti.Ui.createLabel({
+	text : "Movies",
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : 18
+	}
+});
+
+
+titleView.add(titleLabel);
+
+
+//Window Main Code
+mainWin.add(titleView);
+mainWin.open();
+
+
+// // created tab group
+// var theTabs = Ti.UI.createTabGroup();
+// 
+// // created character tab
+// var toonTab = Ti.UI.createTab({
+	// title : 'Map',
+	// window : table.tableWin
+// });
+// 
+// // created favorite tab
+// var favTab = Ti.UI.createTab({
+	// title : 'Favorite Members',
+	// window : memSave.fWin
+// });
+// 
+// //Tabs Main Code
+// theTabs.addTab(toonTab);
+// theTabs.addTab(favTab);
+// theTabs.open();

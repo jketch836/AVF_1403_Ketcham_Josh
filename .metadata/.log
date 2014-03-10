@@ -19905,3 +19905,598 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86 -keyring /Users/jketch/.
 
 !ENTRY org.eclipse.e4.ui.css.core 4 0 2014-03-06 19:03:38.578
 !MESSAGE CSS property 'minimize-visible' has been deprecated: renamed as swt-minimize-visible
+!SESSION 2014-03-07 08:40:18.787 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/jketch/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -keyring /Users/jketch/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-03-07 08:40:44.172
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 2 0 2014-03-07 08:40:51.308
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-07 08:40:51.308
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.run_on_device.android'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-07 08:40:51.309
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.debug_on_device.android'
+!SESSION 2014-03-07 10:01:47.452 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/jketch/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -keyring /Users/jketch/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-03-07 10:01:49.714
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 2 0 2014-03-07 10:01:50.117
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-07 10:01:50.117
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.run_on_device.android'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-07 10:01:50.117
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.debug_on_device.android'
+
+!ENTRY org.eclipse.osgi 2 1 2014-03-07 10:03:13.654
+!MESSAGE NLS missing message: MobileUsageUtil_mobile_event_error in: com.appcelerator.titanium.usage.messages
+
+!ENTRY org.eclipse.ui 4 4 2014-03-07 10:03:44.940
+!MESSAGE Cannot create or restore 'AdvancedVFW' because it already exists.
+
+!ENTRY org.eclipse.ui 4 0 2014-03-07 10:03:44.940
+!MESSAGE Cannot create or restore 'AdvancedVFW' because it already exists.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Cannot create or restore 'AdvancedVFW' because it already exists.
+	at org.eclipse.ltk.internal.core.refactoring.resource.UndoDeleteResourceChange.perform(UndoDeleteResourceChange.java:67)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.internal.core.refactoring.UndoableOperation2ChangeAdapter$1.run(UndoableOperation2ChangeAdapter.java:320)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2327)
+	at org.eclipse.ltk.internal.core.refactoring.UndoableOperation2ChangeAdapter.executeChange(UndoableOperation2ChangeAdapter.java:350)
+	at org.eclipse.ltk.internal.core.refactoring.UndoableOperation2ChangeAdapter.undo(UndoableOperation2ChangeAdapter.java:182)
+	at org.eclipse.core.commands.operations.TriggeredOperations.undo(TriggeredOperations.java:228)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.doUndo(DefaultOperationHistory.java:417)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.undo(DefaultOperationHistory.java:1282)
+	at org.eclipse.ui.operations.UndoActionHandler.runCommand(UndoActionHandler.java:80)
+	at org.eclipse.ui.operations.OperationHistoryActionHandler$1.run(OperationHistoryActionHandler.java:306)
+	at org.eclipse.jface.operation.ModalContext.runInCurrentThread(ModalContext.java:464)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:372)
+	at org.eclipse.jface.dialogs.ProgressMonitorDialog.run(ProgressMonitorDialog.java:507)
+	at org.eclipse.ui.internal.operations.TimeTriggeredProgressMonitorDialog.access$6(TimeTriggeredProgressMonitorDialog.java:1)
+	at org.eclipse.ui.internal.operations.TimeTriggeredProgressMonitorDialog$2.run(TimeTriggeredProgressMonitorDialog.java:203)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.operations.TimeTriggeredProgressMonitorDialog.run(TimeTriggeredProgressMonitorDialog.java:216)
+	at org.eclipse.ui.operations.OperationHistoryActionHandler.run(OperationHistoryActionHandler.java:321)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:499)
+	at org.eclipse.jface.commands.ActionHandler.execute(ActionHandler.java:119)
+	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:90)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:56)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:243)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:224)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:132)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:167)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:499)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:213)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.executeCommand(KeyBindingDispatcher.java:285)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.press(KeyBindingDispatcher.java:504)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.processKeyEvent(KeyBindingDispatcher.java:555)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.filterKeySequenceBindings(KeyBindingDispatcher.java:376)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.access$0(KeyBindingDispatcher.java:322)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher$KeyDownFilter.handleEvent(KeyBindingDispatcher.java:84)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.filterEvent(Display.java:1080)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4165)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1466)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1489)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1474)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1503)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1499)
+	at org.eclipse.swt.widgets.Tree.sendKeyEvent(Tree.java:2575)
+	at org.eclipse.swt.widgets.Control.keyDown(Control.java:2396)
+	at org.eclipse.swt.widgets.Composite.keyDown(Composite.java:607)
+	at org.eclipse.swt.widgets.Tree.keyDown(Tree.java:1971)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5558)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSendSuper(Native Method)
+	at org.eclipse.swt.widgets.Widget.callSuper(Widget.java:221)
+	at org.eclipse.swt.widgets.Widget.windowSendEvent(Widget.java:2104)
+	at org.eclipse.swt.widgets.Shell.windowSendEvent(Shell.java:2318)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5620)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSendSuper(Native Method)
+	at org.eclipse.swt.widgets.Display.applicationSendEvent(Display.java:5057)
+	at org.eclipse.swt.widgets.Display.applicationProc(Display.java:5206)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSend(Native Method)
+	at org.eclipse.swt.internal.cocoa.NSApplication.sendEvent(NSApplication.java:128)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3648)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:138)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:610)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at com.appcelerator.titanium.rcp.IDEApplication.start(IDEApplication.java:125)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+!SUBENTRY 1 org.eclipse.ltk.core.refactoring 4 0 2014-03-07 10:03:44.942
+!MESSAGE Cannot create or restore 'AdvancedVFW' because it already exists.
+
+!ENTRY org.eclipse.equinox.p2.engine 4 4 2014-03-07 11:25:29.597
+!MESSAGE An error occurred while installing the items
+!SUBENTRY 1 org.eclipse.equinox.p2.engine 4 0 2014-03-07 11:25:29.597
+!MESSAGE session context was:(profile=DefaultProfile, phase=org.eclipse.equinox.internal.p2.engine.phases.Install, operand=null --> [R]bbndk.macosx.bbmServerSimulator.10.2.0.1521 1.0.0, action=com.appcelerator.titanium.blackberry.core.touchpoint.actions.BlackBerryNDKInstallAction).
+!SUBENTRY 1 com.appcelerator.titanium.blackberry.core 4 0 2014-03-07 11:25:29.597
+!MESSAGE /Applications/Titanium Studio/SDKs/ide/macosx/x86/eclipse/p2/org.eclipse.equinox.p2.core/cache/.blobstore/69/d06a411d8ca400131ad1b0526b450c2b.tar.gz (No such file or directory)
+!STACK 0
+java.io.FileNotFoundException: /Applications/Titanium Studio/SDKs/ide/macosx/x86/eclipse/p2/org.eclipse.equinox.p2.core/cache/.blobstore/69/d06a411d8ca400131ad1b0526b450c2b.tar.gz (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:120)
+	at org.eclipse.equinox.internal.p2.core.helpers.TarFile.<init>(TarFile.java:38)
+	at org.eclipse.equinox.internal.p2.core.helpers.FileUtils.untarFile(FileUtils.java:23)
+	at org.eclipse.equinox.internal.p2.core.helpers.FileUtils.unzipFile(FileUtils.java:65)
+	at com.appcelerator.titanium.blackberry.core.touchpoint.actions.BlackBerryNDKInstallAction.install(BlackBerryNDKInstallAction.java:141)
+	at com.appcelerator.titanium.blackberry.core.touchpoint.actions.BlackBerryNDKInstallAction.execute(BlackBerryNDKInstallAction.java:45)
+	at org.eclipse.equinox.internal.p2.engine.ParameterizedProvisioningAction.execute(ParameterizedProvisioningAction.java:38)
+	at org.eclipse.equinox.internal.p2.engine.Phase.mainPerform(Phase.java:183)
+	at org.eclipse.equinox.internal.p2.engine.Phase.perform(Phase.java:95)
+	at org.eclipse.equinox.internal.p2.engine.PhaseSet.perform(PhaseSet.java:47)
+	at org.eclipse.equinox.internal.p2.engine.Engine.perform(Engine.java:75)
+	at org.eclipse.equinox.internal.p2.engine.Engine.perform(Engine.java:44)
+	at org.eclipse.equinox.p2.operations.ProvisioningSession.performProvisioningPlan(ProvisioningSession.java:174)
+	at org.eclipse.equinox.p2.operations.ProfileModificationJob.runModal(ProfileModificationJob.java:79)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at com.appcelerator.titanium.blackberry.ui.configuration.BlackBerrySDKConfigurer.installSDK(BlackBerrySDKConfigurer.java:259)
+	at com.appcelerator.titanium.blackberry.ui.configuration.BlackBerrySDKConfigurer.doConfigure(BlackBerrySDKConfigurer.java:175)
+	at com.appcelerator.titanium.ui.mobile.BaseMobilePlatformConfigurer.configure(BaseMobilePlatformConfigurer.java:44)
+	at com.appcelerator.titanium.ui.mobile.PlatformsInstallManager$3.run(PlatformsInstallManager.java:171)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.osgi 2 1 2014-03-07 12:22:56.814
+!MESSAGE NLS unused message: MobileUIPlugin_DefaultProjectTemplate_Description in: com.appcelerator.titanium.ios.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2014-03-07 12:22:56.823
+!MESSAGE NLS unused message: MobileUIPlugin_DefaultProjectTemplate_Name in: com.appcelerator.titanium.ios.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2014-03-07 12:22:56.823
+!MESSAGE NLS unused message: MobileUIPlugin_mobileUIInitializationJobName in: com.appcelerator.titanium.ios.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2014-03-07 12:22:56.824
+!MESSAGE NLS unused message: AdhocHandler_sdk_compatibility_title in: com.appcelerator.titanium.ios.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2014-03-07 12:22:56.824
+!MESSAGE NLS unused message: DistributeWizard_ErrorDialogTitle in: com.appcelerator.titanium.ios.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2014-03-07 12:22:56.824
+!MESSAGE NLS unused message: DistributeWizard_LaunchConfigurationFailed_Error in: com.appcelerator.titanium.ios.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2014-03-07 12:22:56.824
+!MESSAGE NLS unused message: IOSConfigurationMessages_TestOnDevice_Desc in: com.appcelerator.titanium.ios.ui.messages
+
+!ENTRY org.eclipse.osgi 2 1 2014-03-07 12:22:56.825
+!MESSAGE NLS unused message: IOSConfigurationMessages_TestOnDevice_Title in: com.appcelerator.titanium.ios.ui.messages
+!SESSION 2014-03-07 13:20:56.875 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/jketch/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -keyring /Users/jketch/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-03-07 13:20:59.534
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 2 0 2014-03-07 13:20:59.980
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-07 13:20:59.980
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.run_on_device.android'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-07 13:20:59.980
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.debug_on_device.android'
+
+!ENTRY com.aptana.formatter.epl 4 0 2014-03-07 15:57:54.468
+!MESSAGE (Build 3.2.1.201402041146) [ERROR] com.aptana.formatter.epl/debug Error while formatting the code in your editor.
+ Please submit a bug report through Studio's support and include the relevant code which triggered this error.
+ You may also turn on the com.aptana.formatter.epl/debug at the Studio's Troubleshooting preference page to log more details about this error.
+
+!ENTRY com.aptana.formatter.epl 4 0 2014-03-07 15:57:56.644
+!MESSAGE (Build 3.2.1.201402041146) [ERROR] com.aptana.formatter.epl/debug Error while formatting the code in your editor.
+ Please submit a bug report through Studio's support and include the relevant code which triggered this error.
+ You may also turn on the com.aptana.formatter.epl/debug at the Studio's Troubleshooting preference page to log more details about this error.
+
+!ENTRY com.aptana.formatter.epl 4 0 2014-03-07 15:58:01.788
+!MESSAGE (Build 3.2.1.201402041146) [ERROR] com.aptana.formatter.epl/debug Error while formatting the code in your editor.
+ Please submit a bug report through Studio's support and include the relevant code which triggered this error.
+ You may also turn on the com.aptana.formatter.epl/debug at the Studio's Troubleshooting preference page to log more details about this error.
+
+!ENTRY org.eclipse.core.jobs 4 2 2014-03-07 16:46:06.479
+!MESSAGE An internal error occurred during: "Update iOS info".
+!STACK 0
+org.eclipse.swt.SWTException: Device is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4397)
+	at org.eclipse.swt.SWT.error(SWT.java:4312)
+	at org.eclipse.swt.SWT.error(SWT.java:4283)
+	at org.eclipse.swt.widgets.Display.error(Display.java:1076)
+	at org.eclipse.swt.widgets.Display.asyncExec(Display.java:587)
+	at com.appcelerator.titanium.internal.ui.launching.DynamicLaunchShortcutManager.updateShortcuts(DynamicLaunchShortcutManager.java:97)
+	at com.appcelerator.titanium.core.QueueingShortcutUpdater.updateShortcuts(QueueingShortcutUpdater.java:50)
+	at com.appcelerator.titanium.ios.core.IOSSDKLocator.initialize(IOSSDKLocator.java:152)
+	at com.appcelerator.titanium.ios.core.IOSSDKLocator$4.run(IOSSDKLocator.java:255)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!SESSION 2014-03-07 16:49:33.042 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/jketch/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -keyring /Users/jketch/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-03-07 16:49:35.649
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 2 0 2014-03-07 16:49:36.206
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-07 16:49:36.206
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.run_on_device.android'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-07 16:49:36.207
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.debug_on_device.android'
+!SESSION 2014-03-07 16:52:52.101 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/jketch/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -keyring /Users/jketch/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-03-07 16:52:53.747
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 2 0 2014-03-07 16:52:53.834
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-07 16:52:53.834
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.run_on_device.android'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-07 16:52:53.834
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.debug_on_device.android'
+!SESSION 2014-03-08 20:49:57.250 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/jketch/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -keyring /Users/jketch/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-03-08 20:50:23.226
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 2 0 2014-03-08 20:50:29.896
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-08 20:50:29.897
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.run_on_device.android'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-08 20:50:29.897
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.debug_on_device.android'
+!SESSION 2014-03-08 21:19:22.744 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/jketch/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -keyring /Users/jketch/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-03-08 21:19:24.981
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 2 0 2014-03-08 21:19:25.329
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-08 21:19:25.329
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.run_on_device.android'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-08 21:19:25.329
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.debug_on_device.android'
+
+!ENTRY org.eclipse.ui 4 0 2014-03-08 22:22:45.806
+!MESSAGE Unhandled event loop exception
+!STACK 0
+org.eclipse.core.runtime.AssertionFailedException: null argument:
+	at org.eclipse.core.runtime.Assert.isNotNull(Assert.java:85)
+	at org.eclipse.core.runtime.Assert.isNotNull(Assert.java:73)
+	at org.eclipse.jface.viewers.StructuredSelection.<init>(StructuredSelection.java:74)
+	at com.appcelerator.titanium.ios.ui.launching.device.RunOnDeviceLaunchShortcut.createLaunchConfiguration(RunOnDeviceLaunchShortcut.java:36)
+	at com.appcelerator.titanium.ui.launching.AbstractTitaniumLaunchShortcut.findOrCreateLaunchConfiguration(AbstractTitaniumLaunchShortcut.java:164)
+	at com.appcelerator.titanium.ui.launching.AbstractTitaniumLaunchShortcut.launch(AbstractTitaniumLaunchShortcut.java:59)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.launch(LaunchShortcutExtension.java:434)
+	at com.appcelerator.titanium.ui.LaunchAppToolbarContribution$2.widgetSelected(LaunchAppToolbarContribution.java:310)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:248)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4166)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1466)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1489)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1474)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:1279)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4012)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3651)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:138)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:610)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at com.appcelerator.titanium.rcp.IDEApplication.start(IDEApplication.java:125)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+!SESSION 2014-03-09 13:38:55.137 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/jketch/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -keyring /Users/jketch/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-03-09 13:39:03.726
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 2 0 2014-03-09 13:39:06.437
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-09 13:39:06.437
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.run_on_device.android'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-09 13:39:06.438
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.debug_on_device.android'
+
+!ENTRY org.eclipse.e4.ui.css.core 4 0 2014-03-09 18:18:08.678
+!MESSAGE CSS property 'maximize-visible' has been deprecated: renamed as swt-maximize-visible
+
+!ENTRY org.eclipse.e4.ui.css.core 4 0 2014-03-09 18:18:08.790
+!MESSAGE CSS property 'minimize-visible' has been deprecated: renamed as swt-minimize-visible
+!SESSION 2014-03-09 20:22:39.975 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/jketch/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -keyring /Users/jketch/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.ui 2 0 2014-03-09 20:22:42.758
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-09 20:22:42.758
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.run_on_device.android'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-09 20:22:42.759
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.debug_on_device.android'
+
+!ENTRY com.appcelerator.titanium.update.core 4 0 2014-03-09 20:22:49.126
+!MESSAGE (Build 3.2.1.201402041146) [ERROR] com.appcelerator.titanium.update.core/debug/sdk_update Error getting release lists from url 'https://api.appcelerator.net/p/v2/release-list?name=mobilesdk'
+!STACK 0
+java.net.UnknownHostException: api.appcelerator.net
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:223)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:431)
+	at java.net.Socket.connect(Socket.java:527)
+	at com.sun.net.ssl.internal.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:570)
+	at com.sun.net.ssl.internal.ssl.BaseSSLSocketImpl.connect(BaseSSLSocketImpl.java:141)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:163)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:424)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:538)
+	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:276)
+	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:367)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:172)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:923)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:158)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1195)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:234)
+	at com.appcelerator.titanium.update.core.TitaniumSDKUpdater.getReleaseListFromURL(TitaniumSDKUpdater.java:565)
+	at com.appcelerator.titanium.update.core.TitaniumSDKUpdater.getSDKReleases(TitaniumSDKUpdater.java:529)
+	at com.appcelerator.titanium.update.core.TitaniumSDKUpdater.getLatestSDKRelease(TitaniumSDKUpdater.java:615)
+	at com.appcelerator.titanium.update.core.TitaniumSDKUpdater.hasSDKUpdates(TitaniumSDKUpdater.java:270)
+	at com.appcelerator.titanium.update.core.TitaniumSDKUpdater.hasUpdates(TitaniumSDKUpdater.java:233)
+	at com.appcelerator.titanium.update.core.TitaniumSDKUpdater.hasUpdates(TitaniumSDKUpdater.java:214)
+	at com.appcelerator.titanium.update.ui.TitaniumUpdateStartup.earlyStartup(TitaniumUpdateStartup.java:60)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:87)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:66)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$55.run(Workbench.java:2551)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY com.appcelerator.titanium.ui 4 0 2014-03-09 20:22:49.313
+!MESSAGE (Build 3.2.1.201402041146) [ERROR]  studio.appcelerator.com
+!STACK 0
+java.net.UnknownHostException: studio.appcelerator.com
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:223)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:431)
+	at java.net.Socket.connect(Socket.java:527)
+	at java.net.Socket.connect(Socket.java:476)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:163)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:424)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:538)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:214)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:300)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:319)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:987)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:923)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:841)
+	at sun.net.www.protocol.http.HttpURLConnection.getOutputStream(HttpURLConnection.java:1031)
+	at com.appcelerator.titanium.ui.dashboard.DashboardUtil.resolveDashboardUrl(DashboardUtil.java:98)
+	at com.appcelerator.titanium.ui.dashboard.DashboardUtil.getDashboardURL(DashboardUtil.java:65)
+	at com.appcelerator.titanium.ui.dashboard.DashboardUtil.openDashboardWithSuffix(DashboardUtil.java:155)
+	at com.appcelerator.titanium.ui.dashboard.DashboardUtil.openDashboard(DashboardUtil.java:148)
+	at com.appcelerator.titanium.rcp.welcomeScreen.TiDevDashboardStartup$1.runInUIThread(TiDevDashboardStartup.java:70)
+	at org.eclipse.ui.progress.UIJob$1.run(UIJob.java:95)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3976)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3653)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:138)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:610)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at com.appcelerator.titanium.rcp.IDEApplication.start(IDEApplication.java:125)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 2 0 2014-03-09 20:22:50.592
+!MESSAGE Connection to http://download.appcelerator.com/appcelerator/studio/standalone/update/stable/p2.index failed on download.appcelerator.com. Retry attempt 0 started
+!STACK 0
+java.net.UnknownHostException: download.appcelerator.com
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$1.lookupAllHostAddr(InetAddress.java:883)
+	at java.net.InetAddress.getAddressFromNameService(InetAddress.java:1236)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1187)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1117)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1053)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:151)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:125)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:640)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.performConnect(HttpClientRetrieveFileTransfer.java:1074)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientRetrieveFileTransfer.openStreams(HttpClientRetrieveFileTransfer.java:621)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:879)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.AbstractRetrieveFileTransfer.sendRetrieveRequest(AbstractRetrieveFileTransfer.java:570)
+	at org.eclipse.ecf.provider.filetransfer.retrieve.MultiProtocolRetrieveAdapter.sendRetrieveRequest(MultiProtocolRetrieveAdapter.java:106)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.sendRetrieveRequest(FileReader.java:422)
+	at org.eclipse.equinox.internal.p2.transport.ecf.FileReader.readInto(FileReader.java:355)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.download(RepositoryTransport.java:101)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.download(RepositoryTransport.java:156)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadIndexFile(AbstractRepositoryManager.java:735)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:657)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:150)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:128)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:72)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2014-03-09 20:22:50.885
+!MESSAGE Unknown Host: http://download.appcelerator.com/appcelerator/studio/standalone/update/stable/content.xml
+!STACK 0
+java.net.UnknownHostException: download.appcelerator.com
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1191)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1117)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1053)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:278)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:162)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:294)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:640)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:479)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:906)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:805)
+	at org.eclipse.ecf.provider.filetransfer.httpclient4.HttpClientFileSystemBrowser.runRequest(HttpClientFileSystemBrowser.java:263)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.e4.ui.css.core 4 0 2014-03-09 20:28:53.704
+!MESSAGE CSS property 'maximize-visible' has been deprecated: renamed as swt-maximize-visible
+
+!ENTRY org.eclipse.e4.ui.css.core 4 0 2014-03-09 20:28:53.705
+!MESSAGE CSS property 'minimize-visible' has been deprecated: renamed as swt-minimize-visible
+!SESSION 2014-03-09 20:29:17.387 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/jketch/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -keyring /Users/jketch/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-03-09 20:29:18.948
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 2 0 2014-03-09 20:29:19.033
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-09 20:29:19.033
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.run_on_device.android'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-09 20:29:19.033
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.debug_on_device.android'
+
+!ENTRY org.eclipse.e4.ui.css.core 4 0 2014-03-09 20:29:21.286
+!MESSAGE CSS property 'maximize-visible' has been deprecated: renamed as swt-maximize-visible
+
+!ENTRY org.eclipse.e4.ui.css.core 4 0 2014-03-09 20:29:21.288
+!MESSAGE CSS property 'minimize-visible' has been deprecated: renamed as swt-minimize-visible
+!SESSION 2014-03-09 21:22:30.730 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/jketch/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -keyring /Users/jketch/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-03-09 21:22:32.591
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 2 0 2014-03-09 21:22:32.691
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-09 21:22:32.691
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.run_on_device.android'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-09 21:22:32.691
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.debug_on_device.android'
+
+!ENTRY org.eclipse.e4.ui.css.core 4 0 2014-03-09 21:22:35.145
+!MESSAGE CSS property 'maximize-visible' has been deprecated: renamed as swt-maximize-visible
+
+!ENTRY org.eclipse.e4.ui.css.core 4 0 2014-03-09 21:22:35.148
+!MESSAGE CSS property 'minimize-visible' has been deprecated: renamed as swt-minimize-visible
+!SESSION 2014-03-09 22:01:50.307 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86, WS=cocoa, NL=en_US
+Framework arguments:  -keyring /Users/jketch/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86 -keyring /Users/jketch/.eclipse_keyring -consoleLog -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-03-09 22:01:52.071
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 2 0 2014-03-09 22:01:52.159
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-09 22:01:52.159
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.run_on_device.android'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-03-09 22:01:52.159
+!MESSAGE Cannot bind to an undefined command: plug-in='com.appcelerator.titanium.android.ui', id='com.appcelerator.titanium.mobile.command.debug_on_device.android'
+
+!ENTRY org.eclipse.e4.ui.css.core 4 0 2014-03-09 22:01:54.902
+!MESSAGE CSS property 'maximize-visible' has been deprecated: renamed as swt-maximize-visible
+
+!ENTRY org.eclipse.e4.ui.css.core 4 0 2014-03-09 22:01:54.905
+!MESSAGE CSS property 'minimize-visible' has been deprecated: renamed as swt-minimize-visible

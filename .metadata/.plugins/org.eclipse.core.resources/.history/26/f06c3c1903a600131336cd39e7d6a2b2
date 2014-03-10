@@ -1,0 +1,271 @@
+//require api and crud info
+var geo = require('geo_api');
+var box = require('storage');
+
+// created tab group
+var theTabs = Ti.UI.createTabGroup();
+
+//create window1
+var win1 = Ti.UI.createWindow({
+	title : 'NY Times',
+	backgroundColor : '#fff'
+});
+
+// created character tab
+var timesTab = Ti.UI.createTab({
+	title : 'NY Times Stories',
+	window : win1
+});
+
+//Search Bar Start
+var searchbar = Ti.UI.createSearchBar({
+	top : 0,
+	hintText : 'Search',
+	barColor : '#fff'
+});
+//Search Bar End
+
+//Table Start
+var timesTable = Ti.UI.createTableView({
+	search : searchbar,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : 18
+	},
+
+	opacity : .9
+});
+//Table End
+
+//listview evt listener start
+timesTable.addEventListener('click', function(a) {
+
+	//calling vraibles from api start
+
+	var name, st, country, latitude, longitude, county, dist;
+
+	name = a.rowData.name;
+	st = a.rowData.st;
+	latitude = a.rowData.latitude;
+	longitude = a.rowData.longitude;
+	county = a.rowData.county;
+	country = a.rowData.country;
+	dist = a.rowData.dist;
+
+	//calling vraibles from api end
+
+	//Window Start
+	var evtWin = Ti.UI.createWindow({
+		title : name,
+		backgroundColor : '#fff'
+	});
+	//Window End
+
+	//Labels Begin
+	var mapView = Ti.UI.createView({
+		height : '40%',
+		width : '40%',
+		top : '10%',
+		center : '10%',
+		backgroundColor : '#000'
+	});
+
+	var titleView = Ti.UI.createLabel({
+		top : '50%',
+		left : '10%',
+		text : name,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 20,
+			fontWeight : 'bold'
+		}
+	});
+
+	var countyLabel = Ti.UI.createLabel({
+		top : '55%',
+		left : '10%',
+		text : county,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 16
+		}
+	});
+
+	var stLabel = Ti.UI.createLabel({
+		top : '60%',
+		left : '10%',
+		text : st,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 16
+		}
+	});
+
+	var latLabel = Ti.UI.createLabel({
+		top : '65%',
+		left : '10%',
+		text : 'lat: ' + latitude,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 16
+		}
+	});
+
+	var lngLabel = Ti.UI.createLabel({
+		top : '70%',
+		left : '10%',
+		text : 'lng: ' + longitude,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 16
+		}
+	});
+
+	var countryLabel = Ti.UI.createLabel({
+		top : '75%',
+		left : '10%',
+		right : '15%',
+		text : country,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 16
+		}
+	});
+
+	var distLabel = Ti.UI.createLabel({
+		top : '80%',
+		left : '10%',
+		right : '15%',
+		text : 'Dist: ' + dist,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 16
+		}
+	});
+	//Labels End
+	
+	var save = function() {
+		var saveDIA = Ti.UI.createAlertDialog({
+			title : 'Save?',
+			buttonNames : ['Save', 'Cancel']
+		});
+		saveDIA.show();
+
+		saveDIA.addEventListener('click', function(a) {
+			if (a.index === 0) {
+				box.save(name, countryAB, latitude, longitude);
+			}
+		});
+	};
+
+	//EventListener Main Code
+	evtWin.add(mapView, titleView, countyLabel, stLabel, latLabel, lngLabel, countryLabel, distLabel);
+	evtWin.open();
+});
+//listview evt listener end
+
+//create window2
+var win2 = Ti.UI.createWindow({
+	title : 'Favorites',
+	backgroundColor : '#fff'
+});
+
+// created favorite tab
+var favTab = Ti.UI.createTab({
+	title : 'Favorites',
+	window : win2
+});
+
+//Scroll View Start
+var timesScroll2 = Ti.UI.createScrollView({
+	layout : 'vertical',
+	height : '100%',
+	width : '100%',
+	top : '0%',
+	showVerticalScrollIndicator : true
+});
+//Scroll View End
+
+//listview template start
+timesTemplate2 = {
+	properties : {
+		top : '1%',
+		height : '7%'
+	},
+	childTemplates : [{
+		type : "Ti.UI.Label",
+		bindId : 'name',
+		properties : {
+			color : "black",
+			font : {
+				fontSize : 13,
+				fontFamily : "Arial"
+			},
+			left : '5%',
+			top : '1%'
+		}
+	}, {
+		type : "Ti.UI.Label",
+		bindId : 'countryAB',
+		properties : {
+			color : "black",
+			font : {
+				fontSize : 11,
+				fontFamily : "Arial"
+			},
+			right : '10%',
+			top : '1%'
+		},
+	}, {
+		type : "Ti.UI.Label",
+		bindId : 'latitude',
+		properties : {
+			color : "black",
+			font : {
+				fontSize : 10,
+				fontFamily : "Arial"
+			},
+			left : '25%',
+			bottom : '1%'
+		}
+	}, {
+		type : "Ti.UI.Label",
+		bindId : 'longitude',
+		properties : {
+			color : "black",
+			font : {
+				fontSize : 10,
+				fontFamily : "Arial"
+			},
+			right : '25%',
+			bottom : '1%'
+		}
+	}]
+};
+//listview template end
+
+//creating row for favories listview
+var seclist2 = Ti.UI.createListSection({
+});
+
+//listview start
+var listview2 = Ti.UI.createListView({
+	//	search: search,
+	top : '0%',
+	// height: '500dp',
+	templates : {
+		'defaultTemplate' : timesTemplate2
+	},
+	defaultItemTemplate : 'defaultTemplate'
+});
+//listview end
+
+//Main Code
+// seclist2.setItems(box.geoData);
+listview2.sections = [seclist2];
+timesScroll2.add(listview2);
+win2.add(timesScroll2);
+win1.add(timesTable);
+theTabs.addTab(timesTab);
+theTabs.addTab(favTab);
+theTabs.open();

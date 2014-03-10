@@ -1,0 +1,282 @@
+//APP.JS
+//requiring JS files
+var map = require('RemoteData');
+var see = require('search');
+var fav = require('fav');
+
+//Create Window
+var mainWin = Ti.UI.createWindow({
+	title : "Main Window",
+	backgroundImage : "map.png"
+});
+
+//view start
+var titleView = Ti.UI.createView({
+	borderRadius : '5%',
+	center : '0%',
+	height : '40%',
+	width : '60%',
+	backgroundColor : '#fff'
+});
+
+var titleLabel = Ti.UI.createLabel({
+	text : "GEO loc",
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : 36
+	}
+});
+
+var enterBTN = Ti.UI.createButton({
+	title : 'ENTER',
+	bottom : '10%',
+	center : '0%',
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : 24
+	}
+});
+
+enterBTN.addEventListener('click', function() {
+
+	// created tab group
+	var theTabs = Ti.UI.createTabGroup();
+
+	// created character tab
+	var mapTab = Ti.UI.createTab({
+		title : 'Map',
+		window : map.mapWin
+	});
+
+	// created favorite tab
+	var sTab = Ti.UI.createTab({
+		title : 'Form',
+		window : see.sWin
+	});
+
+	// created favorite tab
+	var favTab = Ti.UI.createTab({
+		title : 'Stored',
+		window : fav.favWin
+	});
+	//Tabs Main Code
+	theTabs.addTab(mapTab);
+	theTabs.addTab(sTab);
+	theTabs.addTab(favTab);
+	theTabs.open();
+});
+titleView.add(titleLabel, enterBTN);
+
+//view end
+
+//Window Main Code
+mainWin.add(titleView);
+mainWin.open();
+
+
+
+
+
+//REMOTEDATA.JS
+//requiring JS files
+var search = require('search');
+
+//window start
+var mapWin = Ti.UI.createWindow({
+	title : "Map Window"
+});
+exports.mapWin = mapWin;
+//window end
+
+var holder = Ti.UI.createView({
+	height : '90%',
+	bottom : '0%',
+	width : Ti.Platform.displayCaps.platformWIDTH,
+});
+
+//Start GEOLOC and remotedata pull func
+var runGeo = function() {
+	//Start GEOLOC func
+	Ti.Geolocation.purpose = "Your location is needed to gather lat/long coords.";
+
+	Ti.Geolocation.getCurrentPosition(function(e) {
+		if (Ti.Geolocation.locationServicesEnabled) {
+		} else {
+			alert("Location service is not enabled.");
+		};
+		if (e.error) {
+			alert("Getting your location has returned an error. Trying to connect...");
+		} else {
+			var lat = e.coords.latitude;
+			var lng = e.coords.longitude;
+			var url = "http://api.nytimes.com/svc/semantic/v2/geocodes/query.json?nearby=" + lat + "," + lng + "&api-key=ec2c67ba0d91240ac18bbf24043c8cb5:1:68792990";
+			var coordinateLabel = Ti.UI.createLabel({
+				color : '#fff',
+				text : 'Latitude: ' + lat + ', Longitude: ' + lng,
+				height : Ti.Platform.displayCaps.platformHEIGHT,
+				textAlign : 'center',
+				font : {
+					fontSize : '20dp',
+					fontWeight : 'bold'
+				}
+			});
+		}
+		// End GEOLOC func
+
+		// Start remotedata pull
+		var info = [];
+		var response, name, population, lat, lng, dist, county;
+		var remoteResponse = function() {
+			// Response function code
+			response = JSON.parse(this.responseText);
+			for (var i = 0; i < response.results.length; i++) {
+				name = response.results[i].geocode.name;
+				population = response.results[i].geocode.population;
+				lat = Math.round(response.results[i].geocode.latitude * 1000) / 1000;
+				lng = Math.round(response.results[i].geocode.longitude * 1000) / 1000;
+				dist = Math.round(response.results[i].geocode.distance * 10) / 10;
+				st = response.results[i].geocode.admin_code1;
+				county = response.results[i].geocode.admin_name2;
+				cp = response.copyright;
+
+				// pushing data to rows
+				var rows = Ti.UI.createTableViewRow({
+					height : '6%',
+					id : i + 1,
+					title : name,
+					name : name,
+					st : st,
+					county : county,
+					population : population,
+					lat : lat,
+					lng : lng,
+					distance : dist,
+					cp : cp
+				});
+
+				info.push(rows);
+			};
+			// Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_KILOMETER;
+			// var kilo = Ti.Geolocation.accuracy;
+			var Map = require('ti.map');
+			var mapview = Map.createView({
+				mapType : Map.NORMAL_TYPE,
+				// accuracy : kilo
+			});
+			
+			mapWin.add(mapview);
+			// console.log(info);
+
+			//pushing rows to table
+			search.timesTable.setData(info);
+
+		};
+		
+		//if there is a problem pulling the data
+		var remoteError = function(e) {
+			Ti.API.debug("Status: " + this.status);
+			Ti.API.debug("Text: " + this.responseText);
+			Ti.API.debug("Error: " + e.error);
+			alert("There's a problem pulling remote data");
+		};
+
+		//getting the data
+		var xhr = Ti.Network.createHTTPClient({
+			onload : remoteResponse,
+			onerror : remoteError,
+			timeout : 5000
+		});
+		holder.add(coordinateLabel);
+
+		xhr.open("GET", url);
+		xhr.send();
+	});
+
+};
+// End remote data pull
+// End GEOLOC and remotedata pull func
+
+//Run GEOLOC and remotedata pull func
+runGeo();
+
+//Main Code
+mapWin.add(holder);
+
+
+
+
+//STORAGE.JS
+//Creating Database
+var geo = Ti.Database.open('location');
+var wowData = Ti.App.Properties.getString('geoData');
+geo.execute('CREATE TABLE IF NOT EXISTS location (id INTEGER PRIMARY KEY, name TEXT, countryAB TEXT, latitude INTEGER, longitude INTEGER)');
+
+//Inserting data from save func start
+function insertData() {
+	var data = [];
+
+	var  secInfo = geo.execute('SELECT * FROM location');
+
+	while (secInfo.isValidRow()) {
+		var name = secInfo.fieldByName('name');
+		var st = secInfo.fieldByName('st');
+		// var county = rowInfo.fieldByName('county');
+		// var state = rowInfo.fieldByName('state');
+		var countryAB = rowInfo.fieldByName('countryAB');
+		// var country = rowInfo.fieldByName('country');
+		var latitude = secInfo.fieldByName('latitude');
+		var longitude = secInfo.fieldByName('longitude');
+		// var dist = rowInfo.fieldByName('dist');
+		var id = secInfo.fieldByName('id');
+		
+		dataInfo.push({
+			name : name,
+			st : st,
+			// county : county,
+			// state : state,
+			countryAB : countryAB,
+			// country : country,
+			latitude : latitude,
+			longitude : longitude,
+			// dist : dist
+			id : id
+		});
+
+		Ti.API.info('=========================');
+
+		secInfo.next();
+	};
+	return data;
+};
+var geoData = insertData();
+exports.geoData = geoData;
+//Inserting data from sav func end
+
+
+//saving data from app.js start
+var save = function(name, countryAB, latitude, longitude) {
+	input = {};
+	input.name = name;
+	input.countryAB = countryAB;
+	input.latitude = latitude;
+	input.longitude = longitude;
+	geo.execute('INSERT INTO location (name, countryAB, latitude, longitude) VALUES (?, ?, ?, ?)', input.name, input.countryAB, input.latitude, input.longitude);
+	geoData;
+};
+exports.save = save;
+//saving data from app.js end
+
+
+// var id = a.rowData.id;
+// 
+// geo.execute('SELECT * FROM location WHERE ID=?', id);
+// input = {};
+
+
+//delete data start
+function delFunc() {
+	geo.execute('DELETE FROM location WHERE id=?', id); 
+	// seclist.setItems(geoData);
+};
+exports.delFunc = delFunc;
+//delete data end

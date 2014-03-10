@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;storage.js&apos; to &apos;Resources&apos;" description="Move &apos;storage.js&apos; to &apos;Resources&apos;" destination="Resources" element1="/NYTimesGEO/Resources/storage.js" element2="/NYTimesGEO/Resources/ti.map-stable.zip" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="2" stamp="1394206649746" updateReferences="true"/>
+</session>

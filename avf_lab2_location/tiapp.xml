@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.fullsail.demoApp</id>
-    <name>avf_lab2_location</name>
+    <name>NYTimesGEO</name>
     <version>1.0</version>
-    <publisher>jketch</publisher>
+    <publisher>Hazelwood</publisher>
     <url>http://</url>
     <description>not specified</description>
-    <copyright>2014 by jketch</copyright>
+    <copyright>2014 by Hazelwood</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
-    <guid>acadda03-3614-4b75-a676-4665c34215bb</guid>
+    <guid>f8d84d00-deb1-47d8-9a10-c238a3440a27</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <ios>
         <plist>
@@ -47,7 +47,10 @@
         </splash>
         <theme>default</theme>
     </mobileweb>
-    <modules/>
+    <modules>
+        <module platform="iphone">ti.map</module>
+        <module platform="android">ti.map</module>
+    </modules>
     <deployment-targets>
         <target device="android">true</target>
         <target device="blackberry">false</target>
