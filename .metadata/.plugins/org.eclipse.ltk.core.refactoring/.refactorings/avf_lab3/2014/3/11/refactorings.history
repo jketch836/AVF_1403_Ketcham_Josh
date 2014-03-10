@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;avf_lab3/Resources/search.js&apos; to &apos;photos.js&apos;" description="Rename resource &apos;search.js&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Resources/search.js" name="photos.js" stamp="1394476721179" updateReferences="true"/>
+</session>

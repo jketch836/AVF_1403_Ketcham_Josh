@@ -109,7 +109,8 @@ table.addEventListener("click", function(e) {
 	sel.latitude = e.source.latitude;
 	sel.longitude = e.source.longitude;
 	sel.distance = sec.fieldByName('distance');
-	sel.population = e.source.population;
+	// sel.population = sec.fieldByName('population');
+	var population = e.source.population;
 
 	//Window Start
 	var fWin = Ti.UI.createWindow({
@@ -120,26 +121,26 @@ table.addEventListener("click", function(e) {
 
 	//cancel button start
 	var cancelBTN = Ti.UI.createButton({
-		title : 'Cancel',
+		title : 'CANCEL',
 		top : '5%',
 		left : '5%',
 		font : {
-			fontSize : 22
+			fontSize : 20
 		}
 	});
 	cancelBTN.addEventListener('click', function() {
 		fWin.close();
 	});
 	//cencel button end
+
 	var deleteBTN = Ti.UI.createButton({
 		title : "DELETE",
-		style : Ti.UI.iPhone.SystemButtonStyle.ACTION,
 		right : '5%',
 		top : '5%',
 		font : {
-			fontSize : 22
+			fontSize : 20
 		},
-		color :'#FF0000'
+		color : '#FF0000'
 	});
 
 	deleteBTN.addEventListener("click", function(e) {
@@ -166,6 +167,36 @@ table.addEventListener("click", function(e) {
 
 	});
 
+	//Map views start
+	var Map = require('ti.map');
+
+	var view = Map.createAnnotation({
+		latitude : sel.latitude,
+		longitude : sel.longitude
+	});
+
+	var mapview = Map.createView({
+		mapType : Map.NORMAL_TYPE,
+		annotations : [view],
+		region : {
+			latitude : sel.latitude,
+			longitude : sel.longitude,
+			laditudeDelta : 0.1,
+			longitudeDelta : 0.1
+		},
+		regionFit : true,
+		enableZoomControls : true
+	});
+
+	//this View holds the map
+	var theMapView = Ti.UI.createView({
+		top : '10%',
+		height : '60%',
+		width : '100%'
+	});
+	theMapView.add(mapview);
+	//Map views end
+
 	//Labels Begin
 	var titleView = Ti.UI.createLabel({
 		top : '0%',
@@ -179,7 +210,7 @@ table.addEventListener("click", function(e) {
 	});
 
 	var countyLabel = Ti.UI.createLabel({
-		top : '15%',
+		top : '27%',
 		left : '10%',
 		text : sel.county,
 		font : {
@@ -188,12 +219,13 @@ table.addEventListener("click", function(e) {
 		}
 	});
 
-	Number.prototype.format = function() {
-		return this.toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",");
+	var num = function(population) {
+		// alert(population);
+		return population.toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",");
 	};
 
 	var popLabel = Ti.UI.createLabel({
-		top : '30%',
+		bottom : '27%',
 		left : '12%',
 		right : '15%',
 		font : {
@@ -202,42 +234,21 @@ table.addEventListener("click", function(e) {
 		}
 	});
 
-	switch (sel.population) {
+	switch (population) {
 		case null:
-			popLabel.text = 'Population: Not Avalible';
+			popLabel.text = 'Population: Not Availible';
 			break;
 		default :
-			popLabel.text = 'Population: ' + sel.population.format();
+			popLabel.text = 'Population: ' + num(population);
+			// popLabel.text = 'Population: ' + population;
 			break;
 	}
 
 	var distLabel = Ti.UI.createLabel({
-		top : '40%',
+		bottom : '7%',
 		left : '12%',
 		right : '15%',
 		text : 'Dist: ' + sel.distance + ' Mile(s)',
-		font : {
-			fontStyle : 'Helvetica',
-			fontSize : '25%'
-		}
-	});
-
-	var latLabel = Ti.UI.createLabel({
-		top : '50%',
-		left : '12%',
-		right : '15%',
-		text : 'Latitude: ' + sel.latitude,
-		font : {
-			fontStyle : 'Helvetica',
-			fontSize : '25%'
-		}
-	});
-
-	var lngLabel = Ti.UI.createLabel({
-		top : '60%',
-		left : '12%',
-		right : '15%',
-		text : 'Longitude: ' + sel.longitude,
 		font : {
 			fontStyle : 'Helvetica',
 			fontSize : '25%'
@@ -256,16 +267,16 @@ table.addEventListener("click", function(e) {
 	//Labels End
 
 	var textView = Ti.UI.createView({
-		top : '50%',
-		height : '30%',
+		top : '69.9%',
+		height : '17%',
 		width : '100%',
 		borderRadius : '3%',
 		backgroundColor : '#EBECE4'
 	});
-	textView.add(titleView, countyLabel, popLabel, distLabel, latLabel, lngLabel);
+	textView.add(titleView, countyLabel, popLabel, distLabel);
 
 	//table event listener Main Code
-	fWin.add(cancelBTN, deleteBTN, textView, cpLabel, promptHolder, prompt);
+	fWin.add(cancelBTN, deleteBTN, theMapView, textView, cpLabel, promptHolder, prompt);
 	fWin.open();
 });
 

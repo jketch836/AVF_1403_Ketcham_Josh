@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.appcelerator.titanium.mobile.ui.ios.installer.launchConfigurationType">
+<booleanAttribute key="ATTR_MINIFY" value="true"/>
+<stringAttribute key="ATTR_PROJECT_NAME" value="avf_lab2_location"/>
+<stringAttribute key="ATTR_TITANIUM_DEPLOY_TYPE" value="development"/>
+<stringAttribute key="appid" value="com.fullsail.demoApp"/>
+<stringAttribute key="certificate" value="Jennifer McCarrick (VET4496F2Z)"/>
+<stringAttribute key="debug_config" value="::1394471917889:10.63.12.120"/>
+<stringAttribute key="debug_hosts" value="10.63.12.120"/>
+<stringAttribute key="device_id" value="f3020e2301c263ed57270aefd21a06e29fa20198"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/avf_lab2_location"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.debug.core.capture_output" value="true"/>
+<booleanAttribute key="org.eclipse.debug.ui.ATTR_LAUNCH_IN_BACKGROUND" value="true"/>
+<stringAttribute key="process_factory_id" value="com.appcelerator.titanium.ui.logLevelFilteringProcessFactory"/>
+<stringAttribute key="sdk_version" value="7.0.3"/>
+<stringAttribute key="uuid" value="2B549F4C-09FF-42C6-B0D7-0D6558026493"/>
+</launchConfiguration>

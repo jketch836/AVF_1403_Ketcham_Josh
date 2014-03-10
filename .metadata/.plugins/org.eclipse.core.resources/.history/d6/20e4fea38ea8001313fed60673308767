@@ -1,0 +1,123 @@
+//requiring JS files
+var pics = require('photos');
+
+//window start
+var mapWin = Ti.UI.createWindow({
+	title : "Map Window"
+});
+exports.mapWin = mapWin;
+//window end
+
+var holder = Ti.UI.createView({
+	height : '90%',
+	bottom : '0%',
+	width : Ti.Platform.displayCaps.platformWIDTH,
+});
+
+//Start GEOLOC and remotedata pull func
+var runGeo = function() {
+	//Start GEOLOC func
+	Ti.Geolocation.purpose = "Your location is needed to find places near you.";
+
+	Ti.Geolocation.getCurrentPosition(function(e) {
+		if (Ti.Geolocation.locationServicesEnabled) {
+		} else {
+			alert("Location service is not enabled.");
+		};
+		if (e.error) {
+			alert("Cannot get your location. Trying to connect...");
+		} else {
+			var lat = e.coords.latitude;
+			var lng = e.coords.longitude;
+			var url = "http://api.wikilocation.org/articles?lat=" + lat + "&lng=" + lng + "&limit=15";
+			console.log(url);
+			var coordinateLabel = Ti.UI.createLabel({
+				color : '#fff',
+				text : 'Latitude: ' + lat + ', Longitude: ' + lng,
+				height : Ti.Platform.displayCaps.platformHEIGHT,
+				textAlign : 'center',
+				font : {
+					fontSize : '20dp',
+					fontWeight : 'bold'
+				}
+			});
+		}
+		// End GEOLOC func
+
+		// Start remotedata pull
+		var info = [];
+		var remoteResponse = function() {
+			// Response function code
+			json = JSON.parse(this.responseText);
+			var articlejson = json.articles;
+			for (var i = 0; i < articlejson.length; i++) {
+				title = articlejson[i].title;
+				lat = articlejson[i].lat;
+				lng = articlejson[i].lng;
+				dist = articlejson[i].distance;
+			}
+			data.push({
+				properties : {
+					title : title,
+					lat : lat,
+					lng : lng,
+					dist : dist,
+				},
+				title : {
+					text : title
+				},
+				lat : {
+					text : lat
+				},
+				lng : {
+					text : lng
+				},
+				dist : {
+					text : dist
+				}
+			});
+
+			// Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_KILOMETER;
+			// var kilo = Ti.Geolocation.accuracy;
+			var Map = require('ti.map');
+			var mapview = Map.createView({
+				mapType : Map.NORMAL_TYPE,
+				// accuracy : kilo
+			});
+
+			mapWin.add(mapview);
+
+			//pushing rows to table
+			pics.secList.setItems(info);
+		};
+
+		//if there is a problem pulling the data
+		var remoteError = function(e) {
+			Ti.API.debug("Status: " + this.status);
+			Ti.API.debug("Text: " + this.responseText);
+			Ti.API.debug("Error: " + e.error);
+			alert("There is a problem connecting to the Internet");
+		};
+
+		//getting the data
+		var xhr = Ti.Network.createHTTPClient({
+			onload : remoteResponse,
+			onerror : remoteError,
+			timeout : 5000
+		});
+		holder.add(coordinateLabel);
+
+		xhr.open("GET", url);
+		xhr.send();
+	});
+
+};
+// End remote data pull
+// End GEOLOC and remotedata pull func
+
+//Run GEOLOC and remotedata pull func
+runGeo();
+
+//Main Code
+mapWin.add(holder);
+

@@ -54,11 +54,11 @@ console.log(latitude);
 
 	//save button start
 	var saveBTN = Ti.UI.createButton({
-		title : 'Save',
+		title : 'SAVE',
 		top : '5%',
 		right : '5%',
 		font : {
-			fontSize : 22
+			fontSize : 20
 		}
 	});
 
@@ -72,11 +72,11 @@ console.log(latitude);
 
 	//cancel button start
 	var cancelBTN = Ti.UI.createButton({
-		title : 'Cancel',
+		title : 'CANCEL',
 		top : '5%',
 		left : '5%',
 		font : {
-			fontSize : 22
+			fontSize : 20
 		}
 	});
 	cancelBTN.addEventListener('click', function() {
@@ -95,12 +95,12 @@ console.log(latitude);
 	var mapview = Map.createView({
 		mapType : Map.NORMAL_TYPE,
 		annotations : [view],
-		// region : {
-		// latitude : e.source.latitude,
-		// longitude : e.source.longitude,
-		// latitudeDelta : 0.2,
-		// longitudeDelta : 0.2
-		// },
+		region : {
+		latitude : latitude,
+		longitude : longitude,
+		latitudeDelta : 0.1,
+		longitudeDelta : 0.1
+		},
 		enableZoomControls : true,
 		regionFit : true
 	});
@@ -152,7 +152,7 @@ console.log(latitude);
 
 	switch (pop) {
 		case null:
-			popLabel.text = 'Population: Not Avalible';
+			popLabel.text = 'Population: Not Availible';
 			break;
 		default :
 			popLabel.text = 'Population: ' + pop.format();

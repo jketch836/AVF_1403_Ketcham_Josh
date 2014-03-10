@@ -17,7 +17,7 @@ var holder = Ti.UI.createView({
 //Start GEOLOC and remotedata pull func
 var runGeo = function() {
 	//Start GEOLOC func
-	Ti.Geolocation.purpose = "Your location is needed to gather lat/long coords.";
+	Ti.Geolocation.purpose = "Your location is needed to find places near you.";
 
 	Ti.Geolocation.getCurrentPosition(function(e) {
 		if (Ti.Geolocation.locationServicesEnabled) {
@@ -25,7 +25,7 @@ var runGeo = function() {
 			alert("Location service is not enabled.");
 		};
 		if (e.error) {
-			alert("Getting your location has returned an error. Trying to connect...");
+			alert("Cannot get your location. Trying to connect...");
 		} else {
 			var lat = e.coords.latitude;
 			var lng = e.coords.longitude;
@@ -52,8 +52,8 @@ var runGeo = function() {
 			for (var i = 0; i < response.results.length; i++) {
 				name = response.results[i].geocode.name;
 				population = response.results[i].geocode.population;
-				lat = Math.round(response.results[i].geocode.latitude * 1000) / 1000;
-				lng = Math.round(response.results[i].geocode.longitude * 1000) / 1000;
+				lat = response.results[i].geocode.latitude;
+				lng = response.results[i].geocode.longitude;
 				dist = Math.round(response.results[i].geocode.distance * 10) / 10;
 				st = response.results[i].geocode.admin_code1;
 				county = response.results[i].geocode.admin_name2;
@@ -76,12 +76,13 @@ var runGeo = function() {
 
 				info.push(rows);
 			};
-			// Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_KILOMETER;
-			// var kilo = Ti.Geolocation.accuracy;
+
 			var Map = require('ti.map');
 			var mapview = Map.createView({
 				mapType : Map.NORMAL_TYPE,
-				// accuracy : kilo
+				region : {latitude : lat , longitude : lng,
+						  laditudeDelta : 0.1, longitudeDelta : 0.1},
+				regionFit : true
 			});
 			
 			mapWin.add(mapview);
@@ -97,7 +98,7 @@ var runGeo = function() {
 			Ti.API.debug("Status: " + this.status);
 			Ti.API.debug("Text: " + this.responseText);
 			Ti.API.debug("Error: " + e.error);
-			alert("There's a problem pulling remote data");
+			alert("There is a problem connecting to the Internet");
 		};
 
 		//getting the data
