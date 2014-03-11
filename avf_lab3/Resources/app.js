@@ -1,6 +1,6 @@
 //requiring JS files
 var geo = require('geo_api_data');
-var fav = require('fav');
+var sav = require('sav');
 
 //Create Window
 var mainWin = Ti.UI.createWindow({
@@ -46,14 +46,14 @@ enterBTN.addEventListener('click', function() {
 	});
 
 	// created favorite tab
-	var favTab = Ti.UI.createTab({
+	var savTab = Ti.UI.createTab({
 		title : 'Stored',
-		window : fav.favWin
+		window : sav.favWin
 	});
 	
 	//Tabs Main Code
 	theTabs.addTab(mTab);
-	theTabs.addTab(favTab);
+	theTabs.addTab(savTab);
 	theTabs.open();
 });
 titleView.add(titleLabel, enterBTN);

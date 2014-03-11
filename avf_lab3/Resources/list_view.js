@@ -68,7 +68,7 @@ geoListTemplate = {
 			right : '10%',
 			top : '20%'
 		}
-	},{
+	}, {
 		type : "Ti.UI.Label",
 		bindId : 'population',
 		properties : {
@@ -95,5 +95,5 @@ var infoListView = Ti.UI.createListView({
 //Main Code
 infoListView.sections = [secList];
 characterScroll.add(infoListView);
-mapWin.add(characterScroll);
-mapWin.open();
+pWin.add(characterScroll);
+pWin.open(); 
