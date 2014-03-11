@@ -1,6 +1,5 @@
 //requiring JS files
-var map = require('RemoteData');
-var pics = require('photos');
+var geo = require('geo_api_data');
 var fav = require('fav');
 
 //Create Window
@@ -18,7 +17,7 @@ var titleView = Ti.UI.createView({
 });
 
 var titleLabel = Ti.UI.createLabel({
-	text : "Picture Power",
+	text : "NYTIMES GEO",
 	font : {
 		fontStyle : 'Helvetica',
 		fontSize : 36
@@ -43,7 +42,7 @@ enterBTN.addEventListener('click', function() {
 	// created favorite tab
 	var mTab = Ti.UI.createTab({
 		title : 'Pictures',
-		window : map.mapWin
+		window : geo.mapWin
 	});
 
 	// created favorite tab
