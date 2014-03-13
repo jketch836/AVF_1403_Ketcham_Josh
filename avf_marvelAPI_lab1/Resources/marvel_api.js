@@ -9,6 +9,7 @@ var hash = Ti.Utils.md5HexDigest(ts + privateKEY + publicKEY);
 var marvelURL = 'http://gateway.marvel.com/v1/public/comics?ts=' + ts + '&apikey=' + publicKEY + '&hash=' + hash;
 // var marvelURL = 'http://gateway.marvel.com/v1/public/comics?ts=2&apikey=b2565e819b4efac81bd9df1e0486d050&hash=08deafbaf58bb34a798973523f032104';'
 
+console.log(marvelURL);
 //onload function start
 var apiResponse = function() {
 	//converting marvel api json data
@@ -24,7 +25,7 @@ var apiResponse = function() {
 		page = jsonData[i].pageCount;
 		format = jsonData[i].format;
 		thumbnail1 = jsonData[i].thumbnail.path + '/portrait_xlarge.jpg';
-		thumbnail2 = jsonData[i].thumbnail.path + '/portrait_small.jpg';
+		thumbnail2 = jsonData[i].thumbnail.path + '/standard_large.jpg';
 
 		// console.log(name);
 		// console.log(issue);
@@ -36,7 +37,7 @@ var apiResponse = function() {
 		// Ti.API.info("description: " + desc);
 		// Ti.API.info("pages#: " + page);
 		// Ti.API.info("format: " + format);
-		// Ti.API.info("thumbnail: " + thumbnail);
+		Ti.API.info("thumbnail2: " + thumbnail2);
 
 		// digging down into jsonData.prices array
 		for (var a = 0; a < jsonData[i].prices.length; a++) {
@@ -45,29 +46,22 @@ var apiResponse = function() {
 			// Ti.API.info("price: " + cost);
 			// console.log(cost);
 		};
-		//comic picture start
-		var smallpic = Ti.UI.createImageView({
-			height : '100%',
-			width : '100%',
-			image : thumbnail2,
-			opacity : .1
-		});
-		//comic picture end
 
 		//creating row for comicTable
 		var rows = Ti.UI.createTableViewRow({
-			height : '7%',
+			height : '10%',
+			thumbnail2 : thumbnail2,			
+			leftImage : thumbnail1,
 			title : name,
 			issue : issue,
 			desc : desc,
 			page : page,
 			format : format,
 			thumbnail1 : thumbnail1,
-			thumbnail2 : thumbnail2,
 			cost : cost,
 			font : {
 				fontStyle : 'Helvetica',
-				fontSize : 20
+				fontSize : 24
 			}
 		});
 		//pushing api data to array and rows

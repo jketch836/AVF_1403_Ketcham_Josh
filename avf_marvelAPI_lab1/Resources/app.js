@@ -8,15 +8,15 @@ var win = Ti.UI.createWindow({
 });
 //Window End
 
-//Window Start
-var navWin = Ti.UI.iOS.createNavigationWindow({
-	window : win
-});
-//Window End
+// //Window Start
+// var navWin = Ti.UI.iOS.createNavigationWindow({
+// window : win
+// });
+// //Window End
 
 //marvel logo picture start
 var logo = Ti.UI.createImageView({
-	top : '43dp',
+	top : '6%',
 	height : '100%',
 	width : '100%',
 	image : 'marvel-logo-wallpaper.jpg'
@@ -33,6 +33,7 @@ var searchbar = Ti.UI.createSearchBar({
 
 //Table Start
 var comicTable = Titanium.UI.createTableView({
+	top : '2%',
 	search : searchbar,
 	font : {
 		fontStyle : 'Helvetica',
@@ -56,14 +57,64 @@ comicTable.addEventListener('click', function(a) {
 	thumbnail1 = a.rowData.thumbnail1;
 
 	//calling vraibles from api end
-	
+
 	//Window Start
 	var evtWin = Ti.UI.createWindow({
 		title : name,
-		backgroundColor : '#fff',
-		nav : navWin
+		// nav : navWin,
+		backgroundColor : '#fff'
 	});
 	//Window End
+
+	//view start
+	var theview = Ti.UI.createView({
+		top : '2%',
+		height : '5%',
+		width : '100%',
+		backgroundColor : '#333'
+	});
+
+	var titleBar = Ti.UI.createLabel({
+		center : '0%',
+		text : name,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 28,
+			fontWeight : 'bold'
+		},
+		color : '#fff'
+	});
+
+	var arrow = Ti.UI.createImageView({
+		left : '0%',
+		height : '50%',
+		width : '25%',
+		image : 'forward_arrow.png'
+	});
+
+	var backview = Ti.UI.createView({
+		left : '0%',
+		height : '100%',
+		width : '15%',
+		backgroundColor : '#fff'
+	});
+
+	var backBTN = Ti.UI.createLabel({
+		right : '10%',
+		text : 'Back',
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 28,
+			fontWeight : 'bold'
+		}
+	});
+	backview.add(arrow, backBTN);
+	theview.add(backview, titleBar);
+
+	theview.addEventListener('click', function() {
+		evtWin.close();
+	});
+	//view end
 
 	//comic picture start
 	var evtLogo = Ti.UI.createImageView({
@@ -76,8 +127,8 @@ comicTable.addEventListener('click', function(a) {
 
 	//Labels Begin
 	var thumbView = Ti.UI.createImageView({
-		height : '20%',
-		width : '20%',
+		height : '30%',
+		width : '30%',
 		top : '10%',
 		left : '10%',
 		image : thumbnail1
@@ -85,7 +136,7 @@ comicTable.addEventListener('click', function(a) {
 
 	var titleView = Ti.UI.createLabel({
 		top : '10%',
-		left : '33%',
+		left : '43%',
 		text : name,
 		font : {
 			fontStyle : 'Helvetica',
@@ -96,7 +147,7 @@ comicTable.addEventListener('click', function(a) {
 
 	var issueView = Ti.UI.createLabel({
 		top : '16%',
-		left : '33%',
+		left : '43%',
 		text : 'ISSUE #: ' + issue,
 		font : {
 			fontStyle : 'Helvetica',
@@ -106,7 +157,7 @@ comicTable.addEventListener('click', function(a) {
 
 	var isbnView = Ti.UI.createLabel({
 		top : '22%',
-		left : '33%',
+		left : '43%',
 		text : page + ' pages',
 		font : {
 			fontStyle : 'Helvetica',
@@ -116,7 +167,7 @@ comicTable.addEventListener('click', function(a) {
 
 	var priceView = Ti.UI.createLabel({
 		top : '27%',
-		left : '33%',
+		left : '43%',
 		text : cost,
 		font : {
 			fontStyle : 'Helvetica',
@@ -125,7 +176,7 @@ comicTable.addEventListener('click', function(a) {
 	});
 
 	var descView = Ti.UI.createLabel({
-		top : '33%',
+		top : '43%',
 		left : '10%',
 		right : '15%',
 		text : 'DESCRIPTION:',
@@ -136,7 +187,7 @@ comicTable.addEventListener('click', function(a) {
 	});
 
 	var descInfoView = Ti.UI.createLabel({
-		top : '36%',
+		top : '47%',
 		left : '10%',
 		right : '15%',
 		text : desc,
@@ -148,15 +199,15 @@ comicTable.addEventListener('click', function(a) {
 	//Labels End
 
 	//EventListener Main Code
-	evtWin.add(priceView);
-	evtWin.add(evtLogo, thumbView, titleView, issueView, descView, descInfoView, isbnView);
-	// evtWin.open();
-	navWin.openWindow(evtWin, {
-		animate : true
-	});
+	// evtWin.add();
+	evtWin.add(evtLogo, theview, thumbView, titleView, issueView, priceView, descView, descInfoView, isbnView);
+	evtWin.open();
+	// navWin.openWindow(evtWin, {
+	// animate : true
+	// });
 });
 
 //Main Code
 win.add(logo, comicTable);
-// win.open();
-navWin.open();
+win.open();
+// navWin.open();
