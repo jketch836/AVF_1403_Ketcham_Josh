@@ -7,405 +7,239 @@ exports.favWin = favWin;
 //Window End
 
 var dataB = Ti.Database.open('GeoDB');
-dataB.execute('CREATE TABLE IF NOT EXISTS location(id INTEGER PRIMARY KEY, name TEXT, st TEXT, population TEXT, lat INTEGER, lng INTEGER, dist TEXT, county TEXT, us TEXT, cp TEXT)');
+dataB.execute('CREATE TABLE IF NOT EXISTS geoloc (id INTEGER PRIMARY KEY, name TEXT, pop TEXT, longitude INTEGER, latitude INTEGER, dist TEXT, st TEXT, county TEXT, us TEXT, cp TEXT)');
 
 var rowInfo = function() {
 	var data = [];
-	var test = dataB.execute("SELECT * FROM location");
+	var geo = dataB.execute("SELECT * FROM geoloc");
 
-	while (test.isValidRow()) {
-		var name = test.fieldByName('name');
-		var population = test.fieldByName('population');
-		var lat = test.fieldByName('lat');
-		var lng = test.fieldByName('lng');
-		var dist = test.fieldByName('dist');
-		var st = test.fieldByName('st');
-		var county = test.fieldByName('county');
-		var us = test.fieldByName('us');
-		var cp = test.fieldByName('cp');
-		var id = test.fieldByName('id');
+	while (geo.isValidRow()) {
+		var name = geo.fieldByName('name');
+		var pop = geo.fieldByName('pop');
+		var lat = geo.fieldByName('latitude');
+		var lng = geo.fieldByName('longitude');
+		var dist = geo.fieldByName('dist');
+		var st = geo.fieldByName('st');
+		var county = geo.fieldByName('county');
+		var us = geo.fieldByName('us');
+		var cp = geo.fieldByName('cp');
+		var id = geo.fieldByName('id');
 
 		data.push({
-			properties : {
-				name : name,
-				population : population,
-				lat : lat,
-				lng : lng,
-				dist : dist,
-				st : st,
-				county : county,
-				us : us,
-				cp : cp
-			},
-			name : {
-				text : name + ', ' + st
-			},
-			population : {
-				text : population
-			},
-			lat : {
-				text : lat
-			},
-			lng : {
-				text : lng
-			},
-			dist : {
-				text : dist
-			},
-			st : {
-				text : st
-			},
-			county : {
-				text : county
-			},
-			us : {
-				text : us
-			}
+			title : name,
+			pop : pop,
+			lat : lat,
+			lng : lng,
+			dist : dist,
+			st : st,
+			county : county,
+			us : us,
+			cp : cp,
+			id : id
 		});
-		test.next();
+		geo.next();
 	};
 	return data;
 };
 
-////////////////////////////////////// Prompt START //////////////////////////////////////
-var promptHolder = Ti.UI.createView({
-	width : Ti.UI.FILL,
-	height : Ti.UI.FILL,
-	backgroundColor : "black",
-	opacity : 0.8
+//Search Bar Start
+var searchbar = Ti.UI.createSearchBar({
+	top : 0,
+	hintText : 'Search',
+	barColor : '#fff'
 });
-var prompt = Ti.UI.createView({
-	backgroundColor : "#FFF",
-	width : '40%',
-	height : '20%',
-	borderRadius : '15%'
-});
+//Search Bar End
 
-//Delete button
-var button1 = Ti.UI.createButton({
-	title : "Delete",
-	left : '10%',
-	bottom : '5%',
+//Table Start
+var savTable = Ti.UI.createTableView({
+	search : searchbar,
 	font : {
-		fontSize : 22
+		fontStyle : 'Helvetica',
+		fontSize : 18
 	}
 });
+//Table End
 
-//Cancel (closes the prompt)
-var button3 = Ti.UI.createButton({
-	title : "Cancel",
-	right : '10%',
-	bottom : '5%',
-	font : {
-		fontSize : 22
-	}
+savTable.addEventListener("scrollend", function() {
+	savTable.setData(rowInfo());
+	alert("Your Favorite Places have been updated");
 });
-var label = Ti.UI.createLabel({
-	text : "Are you sure you want to delete this item?",
-	font : {
-		fontSize : 26
-	},
-	textAlign : 'center',
-	top : '7%',
-	right : '3%',
-	left : '3%'
+//timesTable evt listener start
+savTable.addEventListener('click', function(e) {
+
+	var id = e.source.id;
+	var sec = dataB.execute("SELECT * FROM geoloc");
+	var sel = {};
+	sel.name = sec.fieldByName('name');
+	sel.st = sec.fieldByName('st');
+	sel.county = sec.fieldByName('county');
+	sel.lat = e.source.lat;
+	sel.lng = e.source.lng;
+	sel.dist = sec.fieldByName('dist');
+	sel.us = sec.fieldByName('us');
+	sel.cp = sec.fieldByName('cp');
+	var pop = e.source.pop;
+
+	var sWin = Ti.UI.createWindow();
+
+	///////////// views START /////////////
+	var viewbng = Ti.UI.createView({
+		width : Ti.UI.FILL,
+		height : Ti.UI.FILL,
+		backgroundColor : "black",
+		opacity : 0.9
+	});
+	var views = Ti.UI.createView({
+		backgroundColor : "#fff",
+		width : '85%',
+		height : '70%',
+		borderRadius : '15%'
+	});
+	///////////// views END /////////////
+	//delete button start
+	var deleteBTN = Ti.UI.createButton({
+		title : "DELETE",
+		top : '10%',
+		right : '10%',
+		font : {
+			fontSize : 20
+		},
+		color : "#FF0000"
+	});
+
+	deleteBTN.addEventListener('click', function() {
+		dataB.execute("DELETE FROM geoloc WHERE id=?", id);
+		savTable.setData(rowInfo());
+		views.visible = false;
+		viewbng.visible = false;
+		sWin.close();
+	});
+
+	//delete button end
+
+	//cancel button start
+	var cancelBTN = Ti.UI.createButton({
+		title : 'CANCEL',
+		top : '10%',
+		left : '10%',
+		font : {
+			fontSize : 20
+		}
+	});
+	cancelBTN.addEventListener('click', function() {
+		views.visible = false;
+		viewbng.visible = false;
+		sWin.close();
+	});
+	//cancel button end
+
+	//Map views start
+	var Map = require('ti.map');
+
+	var view = Map.createAnnotation({
+		latitude : sel.lat,
+		longitude : sel.lng
+	});
+
+	var mapview = Map.createView({
+		mapType : Map.NORMAL_TYPE,
+		annotations : [view],
+		region : {
+			latitude : sel.lat,
+			longitude : sel.lng,
+			latitudeDelta : 0.1,
+			longitudeDelta : 0.1
+		},
+		enableZoomControls : true,
+		regionFit : true,
+		width : '100%'
+	});
+	//Map views end
+
+	//Labels Begin
+	var titleView = Ti.UI.createLabel({
+		top : '0%',
+		left : '3%',
+		text : sel.name + ', ' + sel.st,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : '40%',
+			fontWeight : 'bold'
+		},
+		color : '#fff'
+	});
+
+	var countyLabel = Ti.UI.createLabel({
+		top : '23%',
+		left : '3%',
+		text : sel.county,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : '30%'
+		},
+		color : '#fff'
+	});
+
+	var popLabel = Ti.UI.createLabel({
+		top : '45%',
+		left : '7%',
+		text : pop,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : '25%'
+		},
+		color : '#fff'
+	});
+
+	var distLabel = Ti.UI.createLabel({
+		top : '60%',
+		left : '7%',
+		text : 'Dist: ' + sel.dist + ' Mile(s)',
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : '25%'
+		},
+		color : '#fff'
+	});
+
+	var usLabel = Ti.UI.createLabel({
+		top : '0%',
+		right : '3%',
+		text : sel.us,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : '35%'
+		},
+		color : '#fff'
+	});
+
+	var cpLabel = Ti.UI.createLabel({
+		bottom : '0%',
+		center : '0%',
+		text : sel.cp,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : '15%'
+		},
+		color : '#fff'
+	});
+	//Labels End
+
+	var textView = Ti.UI.createView({
+		top : '69.9%',
+		height : Ti.UI.FILL,
+		width : '100%',
+		borderRadius : '5%',
+		backgroundColor : '#000'
+	});
+	textView.add(titleView, countyLabel, popLabel, distLabel, usLabel, cpLabel);
+
+	//EventListener Main Code
+	views.add(mapview, textView);
+	viewbng.add(views, cancelBTN, deleteBTN);
+	sWin.add(viewbng);
+	sWin.open();
 });
 
-prompt.add(button1, button3, label);
-prompt.visible = false;
-promptHolder.visible = false;
-////////////////////////////////////// Prompt END //////////////////////////////////////
-
-//the Scroll View for listview
-var characterScroll = Ti.UI.createScrollView({
-	layout : 'vertical',
-	height : '100%',
-	width : '100%',
-	showVerticalScrollIndicator : true
-});
-
-//ListView Template Start
-geoListTemplate = {
-	properties : {
-		top : '20%',
-		height : '75dp'
-	},
-	childTemplates : [{
-		type : "Ti.UI.View",
-		bindId : 'theMapView',
-		properties : {
-			width : '20%',
-			height : '20%',
-			left : '5%',
-			top : '0%'
-		}
-	}, {
-		type : "Ti.UI.Label",
-		bindId : 'name',
-		properties : {
-			color : "black",
-			font : {
-				fontSize : '18%',
-				fontFamily : "Arial",
-				fontWeight : "bold"
-			},
-			left : '15%',
-			top : '20%'
-		}
-	}, {
-		type : "Ti.UI.Label",
-		bindId : 'county',
-		properties : {
-			color : "black",
-			font : {
-				fontSize : '16%',
-				fontFamily : "Arial"
-			},
-			left : '15%',
-			top : '60%'
-		}
-	}, {
-		type : "Ti.UI.Label",
-		bindId : 'us',
-		properties : {
-			color : "black",
-			font : {
-				fontSize : '16%',
-				fontFamily : "Arial"
-			},
-			right : '10%',
-			top : '20%'
-		}
-	}, {
-		type : "Ti.UI.Label",
-		bindId : 'population',
-		properties : {
-			color : "black",
-			font : {
-				fontSize : '16%',
-				fontFamily : "Arial"
-			},
-			right : '10%',
-			top : '60%'
-		}
-	}, {
-		type : "Ti.UI.Label",
-		bindId : 'cp',
-		properties : {
-			color : "black",
-			font : {
-				fontSize : '10%',
-				fontFamily : "Arial"
-			},
-			center : '0%',
-			bottom : '0%'
-		}
-	}]
-};
-//ListView Template End
-
-//ListSection Start
-var secList = Ti.UI.createListSection({
-});
-//ListSection End
-//ListView Start
-var infoListView = Ti.UI.createListView({
-	templates : {
-		'defaultTemplate' : geoListTemplate
-	},
-	defaultItemTemplate : 'defaultTemplate'
-});
-//ListView End
-
-// infoListView.addEventListener("scrollend", function() {
-	// secList.setItems(buildRow());
-	// alert("Your favorites have been updated");
-// });
-// 
-// table.addEventListener("click", function(e) {
-	// var id = e.source.id;
-	// var sec = dataB.execute("SELECT * FROM location");
-	// var sel = {};
-	// sel.name = sec.fieldByName('name');
-	// sel.state = sec.fieldByName('state');
-	// sel.county = sec.fieldByName('county');
-	// sel.latitude = e.source.latitude;
-	// sel.longitude = e.source.longitude;
-	// sel.distance = sec.fieldByName('distance');
-	// // sel.population = sec.fieldByName('population');
-	// var population = e.source.population;
-// 
-	// //Window Start
-	// var fWin = Ti.UI.createWindow({
-		// title : 'FORM',
-		// backgroundColor : '#fff'
-	// });
-	// //Window End
-// 
-	// //cancel button start
-	// var cancelBTN = Ti.UI.createButton({
-		// title : 'CANCEL',
-		// top : '5%',
-		// left : '5%',
-		// font : {
-			// fontSize : 20
-		// }
-	// });
-	// cancelBTN.addEventListener('click', function() {
-		// fWin.close();
-	// });
-	// //cencel button end
-// 
-	// var deleteBTN = Ti.UI.createButton({
-		// title : "DELETE",
-		// right : '5%',
-		// top : '5%',
-		// font : {
-			// fontSize : 20
-		// },
-		// color : '#FF0000'
-	// });
-// 
-	// deleteBTN.addEventListener("click", function(e) {
-// 
-		// //console.log(e.source.id);
-		// //console.log(e.rowData.id);
-		// //Displays the prompt
-		// prompt.visible = true;
-		// promptHolder.visible = true;
-// 
-		// //SQL Delete
-		// button1.addEventListener("click", function(e) {
-			// dataB.execute("DELETE FROM location WHERE id=?", id);
-			// prompt.visible = false;
-			// promptHolder.visible = false;
-			// table.setData(buildRow());
-			// fWin.close();
-		// });
-// 
-		// button3.addEventListener("click", function() {
-			// prompt.visible = false;
-			// promptHolder.visible = false;
-		// });
-// 
-	// });
-// 
-	// //Map views start
-	// var Map = require('ti.map');
-// 
-	// var view = Map.createAnnotation({
-		// latitude : sel.latitude,
-		// longitude : sel.longitude
-	// });
-// 
-	// var mapview = Map.createView({
-		// mapType : Map.NORMAL_TYPE,
-		// annotations : [view],
-		// // region : {
-		// // latitude : e.source.latitude,
-		// // longitude : e.source.longitude,
-		// // latitudeDelta : 0.2,
-		// // longitudeDelta : 0.2
-		// // },
-		// enableZoomControls : true,
-		// regionFit : true
-	// });
-// 
-	// //this View holds the map
-	// var theMapView = Ti.UI.createView({
-		// top : '10%',
-		// height : '60%',
-		// width : '100%'
-	// });
-	// theMapView.add(mapview);
-	// //Map views end
-// 
-	// //Labels Begin
-	// var titleView = Ti.UI.createLabel({
-		// top : '0%',
-		// left : '8%',
-		// text : sel.name + ', ' + sel.state,
-		// font : {
-			// fontStyle : 'Helvetica',
-			// fontSize : '40%',
-			// fontWeight : 'bold'
-		// }
-	// });
-// 
-	// var countyLabel = Ti.UI.createLabel({
-		// top : '27%',
-		// left : '10%',
-		// text : sel.county,
-		// font : {
-			// fontStyle : 'Helvetica',
-			// fontSize : '30%'
-		// }
-	// });
-// 
-	// var num = function(population) {
-		// // alert(population);
-		// return population.toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",");
-	// };
-// 
-	// var popLabel = Ti.UI.createLabel({
-		// bottom : '27%',
-		// left : '12%',
-		// right : '15%',
-		// font : {
-			// fontStyle : 'Helvetica',
-			// fontSize : '25%'
-		// }
-	// });
-// 
-	// switch (population) {
-		// case null:
-			// popLabel.text = 'Population: Not Availible';
-			// break;
-		// default :
-			// popLabel.text = 'Population: ' + num(population);
-			// // popLabel.text = 'Population: ' + population;
-			// break;
-	// }
-// 
-	// var distLabel = Ti.UI.createLabel({
-		// bottom : '7%',
-		// left : '12%',
-		// right : '15%',
-		// text : 'Dist: ' + sel.distance + ' Mile(s)',
-		// font : {
-			// fontStyle : 'Helvetica',
-			// fontSize : '25%'
-		// }
-	// });
-// 
-	// var cpLabel = Ti.UI.createLabel({
-		// bottom : '0%',
-		// center : '12%',
-		// text : cp,
-		// font : {
-			// fontStyle : 'Helvetica',
-			// fontSize : '20%'
-		// }
-	// });
-	// //Labels End
-// 
-	// var textView = Ti.UI.createView({
-		// top : '69.9%',
-		// height : '17%',
-		// width : '100%',
-		// borderRadius : '3%',
-		// backgroundColor : '#EBECE4'
-	// });
-	// textView.add(titleView, countyLabel, popLabel, distLabel);
-// 
-	// //table event listener Main Code
-	// fWin.add(cancelBTN, deleteBTN, theMapView, textView, cpLabel, promptHolder, prompt);
-	// fWin.open();
-// });
-
-//Main Code
-secList.setItems(rowInfo());
-infoListView.sections = [secList];
-characterScroll.add(infoListView);
-favWin.add(characterScroll);
-favWin.open();
+savTable.setData(rowInfo());
+favWin.add(savTable);

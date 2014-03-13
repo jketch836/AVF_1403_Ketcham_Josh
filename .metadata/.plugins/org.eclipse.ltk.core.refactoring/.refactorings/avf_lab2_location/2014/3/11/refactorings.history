@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 1 resources to &apos;Resources&apos;" description="Move 1 resources to &apos;Resources&apos;" destination="Resources" element1="/avf_lab3/search.js" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1394643385134" updateReferences="true"/>
+</session>

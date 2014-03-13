@@ -1,6 +1,30 @@
 //requiring JS files
-var geo = require('geo_api_data');
+var geo = require('geo_api_table');
 var sav = require('sav');
+
+(function() {
+	// load the Cloud Module
+	var Cloud = require('ti.cloud');
+	// set .debug property to 'true' as we are in Development mode
+	Cloud.debug = true;
+	var loginUser = function() {
+		Cloud.Users.login({
+			login : 'com.fullsail.demoApp',
+			password : '12345'
+		}, function(e) {
+			// use .info method to view login info in the Console, if successful
+			if (e.success) {
+				var user = e.users[0];
+				Ti.API.info('Success!\n' + 'ACS User ID: ' + user.id + '\n' + 'ACS App sessionId: ' + Cloud.sessionId + '\n' + 'ACS App Username: ' + user.username);
+			} else {
+				alert((e.error && e.message) || JSON.stringify(e));
+			}
+		});
+	};
+	// loginUser ends
+	loginUser();
+	// now your app is ready to access ACS network and data services
+})();
 
 //Create Window
 var mainWin = Ti.UI.createWindow({
@@ -38,10 +62,10 @@ enterBTN.addEventListener('click', function() {
 
 	// created tab group
 	var theTabs = Ti.UI.createTabGroup();
-	
+
 	// created favorite tab
 	var mTab = Ti.UI.createTab({
-		title : 'Pictures',
+		title : 'location',
 		window : geo.mapWin
 	});
 
@@ -50,7 +74,7 @@ enterBTN.addEventListener('click', function() {
 		title : 'Stored',
 		window : sav.favWin
 	});
-	
+
 	//Tabs Main Code
 	theTabs.addTab(mTab);
 	theTabs.addTab(savTab);

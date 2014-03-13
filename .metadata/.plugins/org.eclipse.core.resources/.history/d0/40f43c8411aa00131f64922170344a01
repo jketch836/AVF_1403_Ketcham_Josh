@@ -1,0 +1,115 @@
+//Window Start
+var favWin = Ti.UI.createWindow({
+	title : 'Stored',
+	backgroundColor : 'red'
+});
+exports.favWin = favWin;
+//Window End
+
+var dataB = Ti.Database.open('GeoDB');
+dataB.execute('CREATE TABLE IF NOT EXISTS location(id INTEGER PRIMARY KEY, name TEXT, st TEXT, population TEXT, lat INTEGER, lng INTEGER, dist TEXT, county TEXT, us TEXT, cp TEXT)');
+
+var rowInfo = function() {
+	var data = [];
+	var geo = dataB.execute("SELECT * FROM location");
+
+	while (geo.isValidRow()) {
+		var name = geo.fieldByName('name');
+		var population = geo.fieldByName('population');
+		var lat = geo.fieldByName('latitude');
+		var lng = geo.fieldByName('longitude');
+		var dist = geo.fieldByName('dist');
+		var st = geo.fieldByName('st');
+		var county = geo.fieldByName('county');
+		var us = geo.fieldByName('us');
+		var cp = geo.fieldByName('cp');
+		var id = geo.fieldByName('id');
+
+		data.push({
+			name : name,
+			population : population,
+			lat : lat,
+			lng : lng,
+			dist : dist,
+			st : st,
+			county : county,
+			us : us,
+			cp : cp,
+			id : id
+		});
+		geo.next();
+	};
+	return data;
+};
+
+////////////////////////////////////// Prompt START //////////////////////////////////////
+var promptHolder = Ti.UI.createView({
+	width : Ti.UI.FILL,
+	height : Ti.UI.FILL,
+	backgroundColor : "black",
+	opacity : 0.8
+});
+var prompt = Ti.UI.createView({
+	backgroundColor : "#FFF",
+	width : '40%',
+	height : '20%',
+	borderRadius : '15%'
+});
+
+//Delete button
+var button1 = Ti.UI.createButton({
+	title : "Delete",
+	left : '10%',
+	bottom : '5%',
+	font : {
+		fontSize : 22
+	}
+});
+
+//Cancel (closes the prompt)
+var button3 = Ti.UI.createButton({
+	title : "Cancel",
+	right : '10%',
+	bottom : '5%',
+	font : {
+		fontSize : 22
+	}
+});
+var label = Ti.UI.createLabel({
+	text : "Are you sure you want to delete this item?",
+	font : {
+		fontSize : 26
+	},
+	textAlign : 'center',
+	top : '7%',
+	right : '3%',
+	left : '3%'
+});
+
+prompt.add(button1, button3, label);
+prompt.visible = false;
+promptHolder.visible = false;
+////////////////////////////////////// Prompt END //////////////////////////////////////
+
+
+//Search Bar Start
+var searchbar = Ti.UI.createSearchBar({
+	top : 0,
+	hintText : 'Search',
+	barColor : '#fff'
+});
+//Search Bar End
+
+//Table Start
+var cloudTable = Ti.UI.createTableView({
+	top : '50%',
+	search : searchbar,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : 18
+	}
+});
+//Table End
+
+favWin.add(cloudTable);
+favWin.open();
