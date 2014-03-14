@@ -1,6 +1,7 @@
 //requiring JS files
 var geo = require('geo_api_table');
 var sav = require('sav');
+var puff = require('cloud');
 
 (function() {
 	// load the Cloud Module
@@ -28,12 +29,13 @@ var sav = require('sav');
 
 //Create Window
 var mainWin = Ti.UI.createWindow({
-	title : "Main Window"
+	title : "Main Window",
+	backgroundColor : '#7D9EC0'
 });
 
 //view start
 var titleView = Ti.UI.createView({
-	borderRadius : '5%',
+	borderRadius : '10%',
 	center : '0%',
 	height : '40%',
 	width : '60%',
@@ -75,9 +77,16 @@ enterBTN.addEventListener('click', function() {
 		window : sav.favWin
 	});
 
+	// created favorite tab
+	var cTab = Ti.UI.createTab({
+		title : 'Cloud',
+		window : puff.cloudWin
+	});
+
 	//Tabs Main Code
 	theTabs.addTab(mTab);
 	theTabs.addTab(savTab);
+	theTabs.addTab(cTab);
 	theTabs.open();
 });
 titleView.add(titleLabel, enterBTN);
@@ -85,4 +94,4 @@ titleView.add(titleLabel, enterBTN);
 
 //Window Main Code
 mainWin.add(titleView);
-mainWin.open();
+mainWin.open(); 

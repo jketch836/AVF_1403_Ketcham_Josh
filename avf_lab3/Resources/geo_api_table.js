@@ -14,7 +14,7 @@ var holder = Ti.UI.createView({
 //Start GEOLOC and remotedata pull func
 var runGeo = function() {
 	//Start GEOLOC func
-	Ti.Geolocation.purpose = "NYTIMES GEO would like to access your location.";
+	Ti.Geolocation.purpose = "NYTIMES GEO would like to acces your current location.";
 
 	Ti.Geolocation.getCurrentPosition(function(e) {
 		if (Ti.Geolocation.locationServicesEnabled) {
@@ -96,8 +96,8 @@ var runGeo = function() {
 				region : {
 					latitude : lat,
 					longitude : lng,
-					laditudeDelta : 0.1,
-					longitudeDelta : 0.1
+					laditudeDelta : 0.2,
+					longitudeDelta : 0.2
 				},
 				regionFit : true
 			});
@@ -136,7 +136,7 @@ var runGeo = function() {
 //Run GEOLOC and remotedata pull func
 runGeo();
 
-var dataB = Ti.Database.open('GeoDB');
+var dataB = Ti.Database.open('geoDATABASE');
 dataB.execute('CREATE TABLE IF NOT EXISTS geoloc (id INTEGER PRIMARY KEY, name TEXT, pop TEXT, longitude INTEGER, latitude INTEGER, dist TEXT, st TEXT, county TEXT, us TEXT, cp TEXT)');
 
 //Search Bar Start
@@ -162,8 +162,9 @@ var cloudTable = Ti.UI.createTableView({
 cloudTable.addEventListener('click', function(e) {
 
 	//calling vraibles from api start
-	var name, pop, dist, longitude, latitude, county, st, cp;
+	var title, name, pop, dist, longitude, latitude, county, st, us, cp;
 
+	title = e.rowData.title;
 	name = e.rowData.name;
 	pop = e.rowData.population;
 	longitude = e.rowData.lng;
@@ -175,19 +176,21 @@ cloudTable.addEventListener('click', function(e) {
 	cp = e.rowData.cp;
 	//calling vraibles from api end
 
-	var tWin = Ti.UI.createWindow();
+	var tWin = Ti.UI.createWindow({
+		height : '70%',
+		width : '90%'
+	});
 
 	///////////// views START /////////////
 	var viewbng = Ti.UI.createView({
 		width : Ti.UI.FILL,
 		height : Ti.UI.FILL,
-		backgroundColor : "black",
-		opacity : 0.9
+		backgroundColor : "black"
 	});
 	var views = Ti.UI.createView({
 		backgroundColor : "#fff",
 		width : '85%',
-		height : '70%',
+		height : '85%',
 		borderRadius : '15%'
 	});
 	///////////// views END /////////////
@@ -195,11 +198,12 @@ cloudTable.addEventListener('click', function(e) {
 	//save button start
 	var saveBTN = Ti.UI.createButton({
 		title : 'SAVE',
-		top : '10%',
+		top : '2%',
 		right : '10%',
 		font : {
 			fontSize : 20
-		}
+		},
+		color : '#00FFFF'
 	});
 
 	saveBTN.addEventListener('click', function() {
@@ -217,6 +221,7 @@ cloudTable.addEventListener('click', function(e) {
 				longitude : cstore.fieldByName('longitude')
 			}, function(a) {
 				if (a.success) {
+					// var place = a.places[0];
 					alert(name + " has been added to Favorite Places and the Cloud");
 				} else if (a.error) {
 					alert('error');
@@ -233,11 +238,13 @@ cloudTable.addEventListener('click', function(e) {
 	//cancel button start
 	var cancelBTN = Ti.UI.createButton({
 		title : 'CANCEL',
-		top : '10%',
+		top : '2%',
 		left : '10%',
 		font : {
-			fontSize : 20
-		}
+			fontSize : 20,
+			fontWeight : 'bold'
+		},
+		color : '#00CED1'
 	});
 	cancelBTN.addEventListener('click', function() {
 		tWin.close();
@@ -270,8 +277,8 @@ cloudTable.addEventListener('click', function(e) {
 	//Labels Begin
 	var titleView = Ti.UI.createLabel({
 		top : '0%',
-		left : '3%',
-		text : name + ', ' + st,
+		left : '0%',
+		text : title,
 		font : {
 			fontStyle : 'Helvetica',
 			fontSize : '40%',
@@ -340,7 +347,6 @@ cloudTable.addEventListener('click', function(e) {
 		top : '69.9%',
 		height : Ti.UI.FILL,
 		width : '100%',
-		borderRadius : '5%',
 		backgroundColor : '#000'
 	});
 	textView.add(titleView, countyLabel, popLabel, distLabel, usLabel, cpLabel);

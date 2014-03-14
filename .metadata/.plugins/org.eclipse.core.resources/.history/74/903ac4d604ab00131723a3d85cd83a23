@@ -1,0 +1,165 @@
+//requiring app.js
+var api = require('rt_api');
+
+//Window Start
+var win = Ti.UI.createWindow({
+	title : 'Current Movies',
+	backgroundColor : '#fff'
+});
+//Window End
+
+//Window Start
+var navWin = Ti.UI.iOS.createNavigationWindow({
+	window : win
+});
+//Window End
+
+//Search Bar Start
+var searchbar = Ti.UI.createSearchBar({
+	top : 0,
+	hintText : 'Search',
+	barColor : '#fff'
+});
+//Search Bar End
+
+//Table Start
+var movieTable = Titanium.UI.createTableView({
+	search : searchbar,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : 18
+	},
+
+	opacity : .9
+});
+//Table End
+
+movieTable.addEventListener('click', function(a) {
+	//calling vraibles from api start
+
+	var title, rating, min, year, plot, critic, cast, character, pic1, pic2;
+
+	title = a.rowData.title;
+	name = a.rowData.name;
+	rating = a.rowData.rating;
+	min = a.rowData.min;
+	year = a.rowData.year;
+	plot = a.rowData.plot;
+	critic = a.rowData.critic;
+	cast = a.rowData.cast;
+	character = a.rowData.character;
+	pic1 = a.rowData.picDET;
+	pic2 = a.rowData.picORG;
+
+	//calling vraibles from api end
+
+	//Window Start
+	var evtWin = Ti.UI.createWindow({
+		title : name,
+		backgroundColor : '#fff',
+		nav : navWin
+	});
+	//Window End
+
+	//comic picture start
+	var evtpic = Ti.UI.createImageView({
+		height : '100%',
+		width : '100%',
+		image : pic2,
+		opacity : .2
+	});
+	//comic picture end
+
+	//Labels Begin
+	var thumbView = Ti.UI.createImageView({
+		height : '30%',
+		width : '30%',
+		top : '10%',
+		left : '10%',
+		image : pic1
+	});
+
+	var titleView = Ti.UI.createLabel({
+		top : '10%',
+		left : '43%',
+		text : name,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 28,
+			fontWeight : 'bold'
+		}
+	});
+
+	var ratingView = Ti.UI.createLabel({
+		top : '16%',
+		left : '43%',
+		text : rating,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 22
+		}
+	});
+
+	var minView = Ti.UI.createLabel({
+		top : '22%',
+		left : '43%',
+		text : min,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 22
+		}
+	});
+
+	var yearView = Ti.UI.createLabel({
+		top : '27%',
+		left : '43%',
+		text : year,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 22
+		}
+	});
+
+	// var criticView = Ti.UI.createLabel({
+		// top : '38%',
+		// left : '10%',
+		// text : critic,
+		// font : {
+			// fontStyle : 'Helvetica',
+			// fontSize : 22
+		// }
+	// });
+
+	var plotLabel = Ti.UI.createLabel({
+		top : '41%',
+		left : '10%',
+		text : 'PLOT: ',
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 22
+		}
+	});
+
+	var plotView = Ti.UI.createLabel({
+		top : '44%',
+		left : '10%',
+		right : '10%',
+		text : plot,
+		font : {
+			fontStyle : 'Helvetica',
+			fontSize : 22
+		}
+	});
+	//Labels End
+
+	//EventListener Main Codes
+	// criticView,
+	evtWin.add(evtpic, thumbView, titleView, ratingView, minView, yearView, plotLabel, plotView);
+	navWin.openWindow(evtWin, {
+		animate : true
+	});
+});
+
+//Main Code
+win.add(movieTable);
+navWin.open(); 

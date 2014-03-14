@@ -6,8 +6,8 @@ var favWin = Ti.UI.createWindow({
 exports.favWin = favWin;
 //Window End
 
-var dataB = Ti.Database.open('GeoDB');
-dataB.execute('CREATE TABLE IF NOT EXISTS geoloc (id INTEGER PRIMARY KEY, name TEXT, pop TEXT, longitude INTEGER, latitude INTEGER, dist TEXT, st TEXT, county TEXT, us TEXT, cp TEXT)');
+var dataB = Ti.Database.open('geoDATABASE');
+dataB.execute('CREATE TABLE IF NOT EXISTS geoloc (id INTEGER PRIMARY KEY, name TEXT, pop TEXT, latitude INTEGER, longitude INTEGER, dist TEXT, st TEXT, county TEXT, us TEXT, cp TEXT)');
 
 var rowInfo = function() {
 	var data = [];
@@ -27,6 +27,7 @@ var rowInfo = function() {
 
 		data.push({
 			title : name,
+			name : name,
 			pop : pop,
 			lat : lat,
 			lng : lng,
@@ -62,44 +63,49 @@ var savTable = Ti.UI.createTableView({
 
 savTable.addEventListener("scrollend", function() {
 	savTable.setData(rowInfo());
-	alert("Your Favorite Places have been updated");
+	alert("Local Storage has been Updated");
 });
+
 //timesTable evt listener start
 savTable.addEventListener('click', function(e) {
+	var sWin = Ti.UI.createWindow({
+		height : '70%',
+		width : '90%'
+	});
 
 	var id = e.source.id;
 	var sec = dataB.execute("SELECT * FROM geoloc");
 	var sel = {};
 	sel.name = sec.fieldByName('name');
-	sel.st = sec.fieldByName('st');
-	sel.county = sec.fieldByName('county');
+	sel.pop = e.source.pop;
 	sel.lat = e.source.lat;
 	sel.lng = e.source.lng;
-	sel.dist = sec.fieldByName('dist');
-	sel.us = sec.fieldByName('us');
-	sel.cp = sec.fieldByName('cp');
-	var pop = e.source.pop;
+	sel.dist = e.source.dist;
+	sel.st = e.source.st;
+	sel.county = e.source.county;
+	sel.us = e.source.us;
+	sel.cp = e.source.cp;
 
-	var sWin = Ti.UI.createWindow();
+	console.log(sel.name);
 
 	///////////// views START /////////////
 	var viewbng = Ti.UI.createView({
 		width : Ti.UI.FILL,
 		height : Ti.UI.FILL,
-		backgroundColor : "black",
-		opacity : 0.9
+		backgroundColor : "black"
 	});
 	var views = Ti.UI.createView({
 		backgroundColor : "#fff",
 		width : '85%',
-		height : '70%',
+		height : '85%',
 		borderRadius : '15%'
 	});
 	///////////// views END /////////////
+
 	//delete button start
 	var deleteBTN = Ti.UI.createButton({
 		title : "DELETE",
-		top : '10%',
+		top : '2%',
 		right : '10%',
 		font : {
 			fontSize : 20
@@ -108,11 +114,23 @@ savTable.addEventListener('click', function(e) {
 	});
 
 	deleteBTN.addEventListener('click', function() {
-		dataB.execute("DELETE FROM geoloc WHERE id=?", id);
-		savTable.setData(rowInfo());
-		views.visible = false;
-		viewbng.visible = false;
-		sWin.close();
+		var deleteDIA = Ti.UI.createAlertDialog({
+			title : 'Delete Location?',
+			buttonNames : ['Delete', 'Cancel']
+		});
+		deleteDIA.show();
+		deleteDIA.addEventListener('click', function(a) {
+			if (a.index === 0) {
+				dataB.execute("DELETE FROM geoloc WHERE id=?", id);
+				savTable.setData(rowInfo());
+				views.visible = false;
+				viewbng.visible = false;
+				sWin.close();
+			} else {null;
+			}
+
+		});
+
 	});
 
 	//delete button end
@@ -120,11 +138,13 @@ savTable.addEventListener('click', function(e) {
 	//cancel button start
 	var cancelBTN = Ti.UI.createButton({
 		title : 'CANCEL',
-		top : '10%',
+		top : '2%',
 		left : '10%',
 		font : {
-			fontSize : 20
-		}
+			fontSize : 20,
+			fontWeight : 'bold'
+		},
+		color : '#00CED1'
 	});
 	cancelBTN.addEventListener('click', function() {
 		views.visible = false;
@@ -159,7 +179,7 @@ savTable.addEventListener('click', function(e) {
 	//Labels Begin
 	var titleView = Ti.UI.createLabel({
 		top : '0%',
-		left : '3%',
+		left : '0%',
 		text : sel.name + ', ' + sel.st,
 		font : {
 			fontStyle : 'Helvetica',
@@ -183,7 +203,7 @@ savTable.addEventListener('click', function(e) {
 	var popLabel = Ti.UI.createLabel({
 		top : '45%',
 		left : '7%',
-		text : pop,
+		text : sel.pop,
 		font : {
 			fontStyle : 'Helvetica',
 			fontSize : '25%'
@@ -229,7 +249,6 @@ savTable.addEventListener('click', function(e) {
 		top : '69.9%',
 		height : Ti.UI.FILL,
 		width : '100%',
-		borderRadius : '5%',
 		backgroundColor : '#000'
 	});
 	textView.add(titleView, countyLabel, popLabel, distLabel, usLabel, cpLabel);
