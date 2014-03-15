@@ -14,7 +14,7 @@ var holder = Ti.UI.createView({
 //Start GEOLOC and remotedata pull func
 var runGeo = function() {
 	//Start GEOLOC func
-	Ti.Geolocation.purpose = "NYTIMES GEO would like to acces your current location.";
+	Ti.Geolocation.purpose = "NYTIMES GEO would like to access your current location.";
 
 	Ti.Geolocation.getCurrentPosition(function(e) {
 		if (Ti.Geolocation.locationServicesEnabled) {
