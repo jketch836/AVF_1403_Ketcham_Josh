@@ -84,7 +84,8 @@ var runGeo = function() {
 					st : st,
 					county : county,
 					us : us,
-					cp : cp
+					cp : cp,
+					id : i + 1
 				});
 
 				info.push(rows);
@@ -96,8 +97,8 @@ var runGeo = function() {
 				region : {
 					latitude : lat,
 					longitude : lng,
-					laditudeDelta : 0.2,
-					longitudeDelta : 0.2
+					laditudeDelta : 0.1,
+					longitudeDelta : 0.1
 				},
 				regionFit : true
 			});
@@ -162,7 +163,7 @@ var cloudTable = Ti.UI.createTableView({
 cloudTable.addEventListener('click', function(e) {
 
 	//calling vraibles from api start
-	var title, name, pop, dist, longitude, latitude, county, st, us, cp;
+	var title, name, pop, dist, longitude, latitude, county, st, us, cp, id;
 
 	title = e.rowData.title;
 	name = e.rowData.name;
@@ -174,6 +175,7 @@ cloudTable.addEventListener('click', function(e) {
 	county = e.rowData.county;
 	us = e.rowData.us;
 	cp = e.rowData.cp;
+	id = e.rowData.id;
 	//calling vraibles from api end
 
 	var tWin = Ti.UI.createWindow({
@@ -185,7 +187,8 @@ cloudTable.addEventListener('click', function(e) {
 	var viewbng = Ti.UI.createView({
 		width : Ti.UI.FILL,
 		height : Ti.UI.FILL,
-		backgroundColor : "black"
+		backgroundColor : "black",
+		borderRadius : '15%'
 	});
 	var views = Ti.UI.createView({
 		backgroundColor : "#fff",
@@ -199,7 +202,7 @@ cloudTable.addEventListener('click', function(e) {
 	var saveBTN = Ti.UI.createButton({
 		title : 'SAVE',
 		top : '2%',
-		right : '10%',
+		right : '7.5%',
 		font : {
 			fontSize : 20
 		},
@@ -208,29 +211,23 @@ cloudTable.addEventListener('click', function(e) {
 
 	saveBTN.addEventListener('click', function() {
 		dataB.execute("INSERT INTO geoloc (name, pop, latitude, longitude, dist, st, county, us, cp) VALUES (?,?,?,?,?,?,?,?,?)", name, pop, latitude, longitude, dist, st, county, us, cp);
-
+		tWin.close();
 		//require ti.Cloud
 		var Cloud = require('ti.cloud');
-		var cstore = dataB.execute("SELECT * FROM geoloc");
-		// var cstore = dataB.execute("SELECT * FROM geoloc WHERE id=?", id);
+		// alert(name);
+		Cloud.Places.create({
+			name : name,
+			latitude : latitude,
+			longitude : longitude
+		}, function(a) {
+			if (a.success) {
+				alert(name + " has been added to Favorite Places and the Cloud");
+			} else if (a.error) {
+				alert('error');
+			}
+		});
 
-		if (cstore.isValidRow()) {
-			Cloud.Places.create({
-				name : cstore.fieldByName('name'),
-				latitude : cstore.fieldByName('latitude'),
-				longitude : cstore.fieldByName('longitude')
-			}, function(a) {
-				if (a.success) {
-					// var place = a.places[0];
-					alert(name + " has been added to Favorite Places and the Cloud");
-				} else if (a.error) {
-					alert('error');
-				}
-			});
-
-		};
-
-		tWin.close();
+		// var nm = cstore.fieldByName('name');
 	});
 
 	//save button end
@@ -239,7 +236,7 @@ cloudTable.addEventListener('click', function(e) {
 	var cancelBTN = Ti.UI.createButton({
 		title : 'CANCEL',
 		top : '2%',
-		left : '10%',
+		left : '7.5%',
 		font : {
 			fontSize : 20,
 			fontWeight : 'bold'
@@ -265,12 +262,11 @@ cloudTable.addEventListener('click', function(e) {
 		region : {
 			latitude : latitude,
 			longitude : longitude,
-			latitudeDelta : 0.2,
-			longitudeDelta : 0.2
+			latitudeDelta : 0.1,
+			longitudeDelta : 0.1
 		},
 		enableZoomControls : true,
-		regionFit : true,
-		// width : '100%'
+		regionFit : true
 	});
 	//Map views end
 
@@ -281,52 +277,52 @@ cloudTable.addEventListener('click', function(e) {
 		text : title,
 		font : {
 			fontStyle : 'Helvetica',
-			fontSize : '40%',
+			fontSize : '32%',
 			fontWeight : 'bold'
 		},
 		color : '#fff'
 	});
 
 	var countyLabel = Ti.UI.createLabel({
-		top : '23%',
-		left : '3%',
+		top : '17%',
+		left : '0%',
 		text : county,
 		font : {
 			fontStyle : 'Helvetica',
-			fontSize : '30%'
+			fontSize : '28%'
 		},
 		color : '#fff'
 	});
 
 	var popLabel = Ti.UI.createLabel({
-		top : '45%',
-		left : '7%',
+		top : '37%',
+		left : '0%',
 		text : pop,
 		font : {
 			fontStyle : 'Helvetica',
-			fontSize : '25%'
+			fontSize : '22%'
 		},
 		color : '#fff'
 	});
 
 	var distLabel = Ti.UI.createLabel({
-		top : '60%',
-		left : '7%',
+		top : '52%',
+		left : '0%',
 		text : 'Dist: ' + dist + ' Mile(s)',
 		font : {
 			fontStyle : 'Helvetica',
-			fontSize : '25%'
+			fontSize : '22%'
 		},
 		color : '#fff'
 	});
 
 	var usLabel = Ti.UI.createLabel({
 		top : '0%',
-		right : '3%',
+		right : '0%',
 		text : us,
 		font : {
 			fontStyle : 'Helvetica',
-			fontSize : '35%'
+			fontSize : '34%'
 		},
 		color : '#fff'
 	});
@@ -343,6 +339,7 @@ cloudTable.addEventListener('click', function(e) {
 	});
 	//Labels End
 
+	//View to hold all the labels
 	var textView = Ti.UI.createView({
 		top : '69.9%',
 		height : Ti.UI.FILL,

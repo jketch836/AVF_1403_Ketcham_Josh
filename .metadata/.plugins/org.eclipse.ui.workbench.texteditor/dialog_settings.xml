@@ -2,17 +2,19 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="wholeword"/>
-		<item value="prompt" key="selection"/>
+		<item value="Request" key="selection"/>
 		<list key="findhistory">
+			<item value="Request"/>
+			<item value="data"/>
+			<item value="console.log"/>
+			<item value="info"/>
+			<item value="var sav = require(&apos;sav&apos;);"/>
 			<item value="prompt"/>
 			<item value="promptHolder"/>
 			<item value="format"/>
-			<item value="mapWin"/>
-			<item value="currentWin"/>
-			<item value="mainWin"/>
 		</list>
 	</section>
 </section>

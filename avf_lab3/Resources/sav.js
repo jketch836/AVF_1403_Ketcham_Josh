@@ -1,6 +1,6 @@
 //Window Start
 var favWin = Ti.UI.createWindow({
-	title : 'Stored',
+	title : 'Local Store',
 	backgroundColor : 'red'
 });
 exports.favWin = favWin;
@@ -26,7 +26,7 @@ var rowInfo = function() {
 		var id = geo.fieldByName('id');
 
 		data.push({
-			title : name,
+			title : name + ', ' + st,
 			name : name,
 			pop : pop,
 			lat : lat,
@@ -74,7 +74,7 @@ savTable.addEventListener('click', function(e) {
 	});
 
 	var id = e.source.id;
-	var sec = dataB.execute("SELECT * FROM geoloc");
+	var sec = dataB.execute("SELECT * FROM geoloc WHERE id=?", id);
 	var sel = {};
 	sel.name = sec.fieldByName('name');
 	sel.pop = e.source.pop;
@@ -92,7 +92,8 @@ savTable.addEventListener('click', function(e) {
 	var viewbng = Ti.UI.createView({
 		width : Ti.UI.FILL,
 		height : Ti.UI.FILL,
-		backgroundColor : "black"
+		backgroundColor : "black",
+		borderRadius : '15%'
 	});
 	var views = Ti.UI.createView({
 		backgroundColor : "#fff",
@@ -106,7 +107,7 @@ savTable.addEventListener('click', function(e) {
 	var deleteBTN = Ti.UI.createButton({
 		title : "DELETE",
 		top : '2%',
-		right : '10%',
+		right : '7.5%',
 		font : {
 			fontSize : 20
 		},
@@ -121,7 +122,7 @@ savTable.addEventListener('click', function(e) {
 		deleteDIA.show();
 		deleteDIA.addEventListener('click', function(a) {
 			if (a.index === 0) {
-				dataB.execute("DELETE FROM geoloc WHERE id=?", id);
+				dataB.execute("DELETE FROM geoloc WHERE id=?", id);		
 				savTable.setData(rowInfo());
 				views.visible = false;
 				viewbng.visible = false;
@@ -139,7 +140,7 @@ savTable.addEventListener('click', function(e) {
 	var cancelBTN = Ti.UI.createButton({
 		title : 'CANCEL',
 		top : '2%',
-		left : '10%',
+		left : '7.5%',
 		font : {
 			fontSize : 20,
 			fontWeight : 'bold'
@@ -183,7 +184,7 @@ savTable.addEventListener('click', function(e) {
 		text : sel.name + ', ' + sel.st,
 		font : {
 			fontStyle : 'Helvetica',
-			fontSize : '40%',
+			fontSize : '32%',
 			fontWeight : 'bold'
 		},
 		color : '#fff'
@@ -191,44 +192,44 @@ savTable.addEventListener('click', function(e) {
 
 	var countyLabel = Ti.UI.createLabel({
 		top : '23%',
-		left : '3%',
+		left : '0%',
 		text : sel.county,
 		font : {
 			fontStyle : 'Helvetica',
-			fontSize : '30%'
+			fontSize : '28%'
 		},
 		color : '#fff'
 	});
 
 	var popLabel = Ti.UI.createLabel({
 		top : '45%',
-		left : '7%',
+		left : '0%',
 		text : sel.pop,
 		font : {
 			fontStyle : 'Helvetica',
-			fontSize : '25%'
+			fontSize : '24%'
 		},
 		color : '#fff'
 	});
 
 	var distLabel = Ti.UI.createLabel({
 		top : '60%',
-		left : '7%',
+		left : '0%',
 		text : 'Dist: ' + sel.dist + ' Mile(s)',
 		font : {
 			fontStyle : 'Helvetica',
-			fontSize : '25%'
+			fontSize : '24%'
 		},
 		color : '#fff'
 	});
 
 	var usLabel = Ti.UI.createLabel({
 		top : '0%',
-		right : '3%',
+		right : '0%',
 		text : sel.us,
 		font : {
 			fontStyle : 'Helvetica',
-			fontSize : '35%'
+			fontSize : '34%'
 		},
 		color : '#fff'
 	});
@@ -245,6 +246,7 @@ savTable.addEventListener('click', function(e) {
 	});
 	//Labels End
 
+	//View to hold all the labels
 	var textView = Ti.UI.createView({
 		top : '69.9%',
 		height : Ti.UI.FILL,
