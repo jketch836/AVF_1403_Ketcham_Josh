@@ -1,0 +1,37 @@
+var db = Ti.Database.open('weatherDB');
+db.execute('CREATE TABLE IF NOT EXISTS weather (id INTEGER PRIMARY KEY, state TEXT, city TEXT, url TEXT, sunrise TEXT, sunset TEXT, mainNight TEXT, mainNightIcon TEXT, today TEXT, todayIcon TEXT, todayTemp TEXT, todayhumid TEXT, todaySky TEXT, tmrw TEXT, tmrwIcon TEXT, tmrwTemp TEXT, day3 TEXT, day3Icon TEXT, day3Temp TEXT, day4 TEXT, day4Icon TEXT, day4Temp TEXT, day5 TEXT, day5Icon TEXT, day5Temp TEXT, day6 TEXT, day6Icon TEXT, day6Temp TEXT, day7 TEXT, day7Icon TEXT, day7Temp TEXT, feels TEXT)');
+
+
+var rowInfo = function() {
+	var data = [];
+	var geo = dataB.execute("SELECT * FROM geoloc");
+
+	while (geo.isValidRow()) {
+		var name = geo.fieldByName('name');
+		var pop = geo.fieldByName('pop');
+		var lat = geo.fieldByName('latitude');
+		var lng = geo.fieldByName('longitude');
+		var dist = geo.fieldByName('dist');
+		var st = geo.fieldByName('st');
+		var county = geo.fieldByName('county');
+		var us = geo.fieldByName('us');
+		var cp = geo.fieldByName('cp');
+		var id = geo.fieldByName('id');
+
+		data.push({
+			title : name + ', ' + st,
+			name : name,
+			pop : pop,
+			lat : lat,
+			lng : lng,
+			dist : dist,
+			st : st,
+			county : county,
+			us : us,
+			cp : cp,
+			id : id
+		});
+		geo.next();
+	};
+	return data;
+};

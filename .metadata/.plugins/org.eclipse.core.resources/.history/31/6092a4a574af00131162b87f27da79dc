@@ -1,9 +1,0 @@
-Ti.UI.orientation = Ti.UI.LANDSCAPE_RIGHT;
-
-var wWin = Ti.UI.createWindow({
-	title : "Main Window",
-	backgroundColor : '#7D9EC0'
-});
-// wWin.orientationModes = [Ti.UI.LANDSCAPE_RIGHT];
-
-wWin.open();

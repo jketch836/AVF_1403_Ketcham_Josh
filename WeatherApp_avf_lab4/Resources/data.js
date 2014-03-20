@@ -1,3 +1,6 @@
+var db = Ti.Database.open('weatherDB');
+db.execute('CREATE TABLE IF NOT EXISTS weather (id INTEGER PRIMARY KEY, state TEXT, city TEXT, url TEXT, sunrise TEXT, sunset TEXT, mainNight TEXT, mainNightIcon TEXT, today TEXT, todayIcon TEXT, todayTemp TEXT, todayhumid INTEGER, todaySky TEXT, tmrw TEXT, tmrwIcon TEXT, tmrwTemp TEXT, day3 TEXT, day3Icon TEXT, day3Temp TEXT, day4 TEXT, day4Icon TEXT, day4Temp TEXT, day5 TEXT, day5Icon TEXT, day5Temp TEXT, day6 TEXT, day6Icon TEXT, day6Temp TEXT, day7 TEXT, day7Icon TEXT, day7Temp TEXT, feels TEXT)');
+
 //Start GEOLOC and remotedata pull func
 var apiGEO = function() {
 	//Start GEOLOC func
@@ -13,8 +16,9 @@ var apiGEO = function() {
 		} else {
 			var lat = e.coords.latitude;
 			var lng = e.coords.longitude;
-			var url = 'http://api.wunderground.com/api/4e7dc583deb76743/forecast7day/astronomy/geolookup/q/' + lat + ',' + lng + '.json';
-			// console.log(url);
+			var key = '4e7dc583deb76743';
+			var url = 'http://api.wunderground.com/api/' + key + '/forecast7day/astronomy/hourly/geolookup/q/' + lat + ',' + lng + '.json';
+			console.log(url);
 		}
 		// End GEOLOC func
 
@@ -25,7 +29,7 @@ var apiGEO = function() {
 		var feels, sunrise, sunset;
 
 		var mainNight, mainNightIcon, today, todayIcon, todayTemp, humid, todaySky, tmrw, tmrwIcon, day3, day3Icon;
-		var day4, day4Icon, day5, day5Icon, day6, day6Icon, day7, day7Icon;
+		var day4, day4Icon, day5, day5Icon, day6, day6Icon, day7, day7Icon, feels;
 		var remoteResponse = function() {
 			// Response function code
 			json = JSON.parse(this.responseText);
@@ -36,9 +40,9 @@ var apiGEO = function() {
 			sunrise = json.sun_phase.sunrise;
 			sunset = json.sun_phase.sunset;
 
-			forecast = json.forecast.forecastday;
+			forecast = json.forecast.txt_forecast.forecastday;
 			simfore = json.forecast.simpleforecast.forecastday;
-			forecasthr = json.hourly_forecast;
+			hrs = json.hourly_forecast;
 
 			for (var a = 0; a < forecast.length; a++) {
 				mainNight = forecast[1].title;
@@ -75,42 +79,15 @@ var apiGEO = function() {
 					day7Icon = simfore[6].date.icon_url;
 					day7Temp = simfore[6].high.fahrenheit + ' / ' + simfore[6].low.fahrenheit;
 
-					for (var c = 0; c < hourly_forecast.length; c++) {
-						feels = forecasthr[0].feelslike.english;
-					}
+					for (var c = 0; c < hrs.length; c++) {
+						feels = hrs[0].feelslike.english;
+					};
 
-					//Labels Begin
-					
-						mainNight : mainNight,
-						mainNightIcon : mainNightIcon,
-						today : today,
-						todayIcon : todayIcon,
-						todayTemp : todayTemp,
-						todayhumid : todayhumid,
-						todaySky : todaySky,
-						tmrw : tmrw,
-						tmrwIcon : tmrwIcon,
-						tmrwTemp : tmrwTemp,
-						day3 : day3,
-						day3Icon : day3Icon,
-						day3Temp : day3Temp,
-						day4 : day4,
-						day4Icon : day4Icon,
-						day4Temp : day4Temp,
-						day5 : day5,
-						day5Icon : day5Icon,
-						day5Temp : day5Temp,
-						day6 : day6,
-						day6Icon : day6Icon,
-						day6Temp : day6Temp,
-						day7 : day7,
-						day7Icon : day7Icon,
-						day7Temp : day7Temp,
-						feels : feels
-				
-				}
-		
+				};
+
 			};
+			
+			db.execute("INSERT INTO weather (state, city, url, sunrise, sunset, mainNight, mainNightIcon, today, todayIcon, todayTemp, todayhumid, todaySky, tmrw, tmrwIcon, tmrwTemp, day3, day3Icon, day3Temp, day4, day4Icon, day4Temp, day5, day5Icon, day5Temp, day6, day6Icon, day6Temp, day7, day7Icon, day7Temp, feels) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", state, city, url, sunrise, sunset, mainNight, mainNightIcon, today, todayIcon, todayTemp, todayhumid, todaySky, tmrw, tmrwIcon, tmrwTemp, day3, day3Icon, day3Temp, day4, day4Icon, day4Temp, day5, day5Icon, day5Temp, day6, day6Icon, day6Temp, day7, day7Icon, day7Temp, feels);
 
 		};
 
