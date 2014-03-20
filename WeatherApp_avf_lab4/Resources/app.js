@@ -1,14 +1,17 @@
 // require JS files
 var data = require('data');
 
-var db = Ti.Database.open('weatherDB');
-db.execute('CREATE TABLE IF NOT EXISTS weather (id INTEGER PRIMARY KEY, state TEXT, city TEXT, url TEXT, sunrise TEXT, sunset TEXT, mainNight TEXT, mainNightIcon TEXT, today TEXT, todayIcon TEXT, todayTemp TEXT, todayhumid INTEGER, todaySky TEXT, tmrw TEXT, tmrwIcon TEXT, tmrwTemp TEXT, day3 TEXT, day3Icon TEXT, day3Temp TEXT, day4 TEXT, day4Icon TEXT, day4Temp TEXT, day5 TEXT, day5Icon TEXT, day5Temp TEXT, day6 TEXT, day6Icon TEXT, day6Temp TEXT, day7 TEXT, day7Icon TEXT, day7Temp TEXT, feels TEXT)');
+// var db = Ti.Database.open('weatherDB');
+// db.execute('CREATE TABLE IF NOT EXISTS weather (id INTEGER PRIMARY KEY, state TEXT, city TEXT, url TEXT, sunrise TEXT, sunset TEXT, mainNight TEXT, mainNightIcon TEXT, today TEXT, todayIcon TEXT, todayTemp TEXT, todayhumid INTEGER, todaySky TEXT, tmrw TEXT, tmrwIcon TEXT, tmrwTemp TEXT, day3 TEXT, day3Icon TEXT, day3Temp TEXT, day4 TEXT, day4Icon TEXT, day4Temp TEXT, day5 TEXT, day5Icon TEXT, day5Temp TEXT, day6 TEXT, day6Icon TEXT, day6Temp TEXT, day7 TEXT, day7Icon TEXT, day7Temp TEXT, feels TEXT)');
 
-var info = db.execute("SELECT * FROM weather");
+
+var info = data.db.execute("SELECT * FROM weather");
 var box = {};
 box.state = info.fieldByName('state');
 box.city = info.fieldByName('city');
 box.url = info.fieldByName('url');
+box.sunrise = info.fieldByName('sunrise');
+box.sunset = info.fieldByName('sunset');
 box.mainNight = info.fieldByName('mainNight');
 box.mainNightIcon = info.fieldByName('mainNightIcon');
 box.today = info.fieldByName('today');
@@ -36,12 +39,19 @@ box.day7Icon = info.fieldByName('day7Icon');
 box.day7Temp = info.fieldByName('day7Temp');
 box.feels = info.fieldByName('feels');
 
+
+data.apiGEO;
+
 Ti.UI.setBackgroundColor('white');
 
 var wWin = Ti.UI.createWindow({
 	title : "WeatherWindow",
-	orientationModes : [Ti.UI.LANDSCAPE_RIGHT]
+	orientationModes : [Ti.UI.LANDSCAPE_LEFT]
 });
+
+// wWin.addEventListener("scrollend", function() {
+// 
+// });
 
 var BNG = Ti.UI.createView({
 	top : '3%',
@@ -56,29 +66,40 @@ var cityTemp = Ti.UI.createView({
 	top : '10%',
 	center : '0%',
 	width : '70%',
-	height : '20%',
+	height : '17%',
 	backgroundColor : "black",
 	borderRadius : '15%'
 });
+
+
+//main Weather icon
+var icon = Ti.UI.createImageView({
+	height : '100%',
+	width : '23%',
+	center : '0%',
+	image : box.todayIcon
+	// image : 'cloudy.png'
+});
+
 //main Weather Labels start
 var city = Ti.UI.createLabel({
 	top : '25%',
-	right : '75%',
-	text : box.state,
+	right : '65%',
+	text : box.city,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : 36
+		fontSize : '28dp'
 	},
 	color : '#fff'
 });
 
 var st = Ti.UI.createLabel({
 	top : '45%',
-	right : '75%',
-	text : 'ST',
+	right : '65%',
+	text : box.state,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : 36
+		fontSize : '28dp'
 	},
 	color : '#fff'
 });
@@ -86,10 +107,10 @@ var st = Ti.UI.createLabel({
 var weaterCondition = Ti.UI.createLabel({
 	top : '25%',
 	left : '65%',
-	text : 'WeatherLBL',
+	text : box.todaySky,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : 36
+		fontSize : '28dp'
 	},
 	color : '#fff'
 });
@@ -97,25 +118,35 @@ var weaterCondition = Ti.UI.createLabel({
 var temp = Ti.UI.createLabel({
 	top : '46%',
 	left : '65%',
-	text : '7_',
+	text : box.todayTemp,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : 36
+		fontSize : '28dp'
 	},
 	color : '#fff'
 });
 
-var degree = Ti.UI.createLabel({
-	top : '45%',
-	left : '71%',
-	text : 'o',
-	font : {
-		fontStyle : 'Helvetica',
-		fontSize : 18
-	},
-	color : '#fff'
-});
-
+// var degree1 = Ti.UI.createLabel({
+	// top : '45%',
+	// left : '71%',
+	// text : 'o',
+	// font : {
+		// fontStyle : 'Helvetica',
+		// fontSize : '18dp'
+	// },
+	// color : '#fff'
+// });
+// 
+// var degree2 = Ti.UI.createLabel({
+	// top : '45%',
+	// left : '80.5%',
+	// text : 'o',
+	// font : {
+		// fontStyle : 'Helvetica',
+		// fontSize : '18dp'
+	// },
+	// color : '#fff'
+// });
 //main Weather Labels end
 //Main Weather INFO End
 
@@ -133,22 +164,22 @@ var FHSS = Ti.UI.createView({
 //feels like LBL
 var feelsLBL = Ti.UI.createLabel({
 	top : '25%',
-	left : '5%',
+	left : '7%',
 	text : 'Feels Like:',
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : 24
+		fontSize : '24dp'
 	},
 	color : '#fff'
 });
 
 var feelstemp = Ti.UI.createLabel({
 	top : '50%',
-	left : '8%',
+	left : '12%',
 	text : box.feels,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : 24
+		fontSize : '24dp'
 	},
 	color : '#fff'
 });
@@ -160,7 +191,7 @@ var humidityLBL = Ti.UI.createLabel({
 	text : 'Humidity:',
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : 24
+		fontSize : '24dp'
 	},
 	color : '#fff'
 });
@@ -168,10 +199,10 @@ var humidityLBL = Ti.UI.createLabel({
 var humidityPERCENT = Ti.UI.createLabel({
 	top : '50%',
 	left : '33.5%',
-	text : '1_' + '%',
+	text : box.todayhumid,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : 24
+		fontSize : '24dp'
 	},
 	color : '#fff'
 });
@@ -183,7 +214,7 @@ var sunriseLBL = Ti.UI.createLabel({
 	text : 'Sunrise:',
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : 24
+		fontSize : '24dp'
 	},
 	color : '#fff'
 });
@@ -191,10 +222,10 @@ var sunriseLBL = Ti.UI.createLabel({
 var sunriseTIME = Ti.UI.createLabel({
 	top : '50%',
 	right : '32%',
-	text : '00:00',
+	text : box.sunrise,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : 24
+		fontSize : '24dp'
 	},
 	color : '#fff'
 });
@@ -202,28 +233,30 @@ var sunriseTIME = Ti.UI.createLabel({
 //sunset LBL
 var sunsetLBL = Ti.UI.createLabel({
 	top : '25%',
-	right : '5%',
+	right : '7%',
 	text : 'Sunset:',
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : 24
+		fontSize : '24dp'
 	},
 	color : '#fff'
 });
 
 var sunsetLBLtime = Ti.UI.createLabel({
 	top : '50%',
-	right : '7%',
-	text : '00:00',
+	right : '8%',
+	text : box.sunset,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : 24
+		fontSize : '24dp'
 	},
 	color : '#fff'
 });
 //main Weather Labels end
 //Main Weather INFO End
 
+//7day Forecast Start
+//7day View holder
 var forcast7 = Ti.UI.createView({
 	bottom : '0%',
 	center : '0%',
@@ -232,7 +265,8 @@ var forcast7 = Ti.UI.createView({
 	backgroundColor : "#fff"
 });
 
-var tmrw = Ti.UI.createView({
+//Tomorrow info start
+var tmrwV = Ti.UI.createView({
 	bottom : '0%',
 	left : '0%',
 	width : '20%',
@@ -243,7 +277,40 @@ var tmrw = Ti.UI.createView({
 	borderRadius : '3%'
 });
 
-var day3 = Ti.UI.createView({
+var tmrwLBL = Ti.UI.createLabel({
+	top : '10%',
+	center : '0%',
+	text : box.tmrw,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '24dp'
+	},
+	color : '#000'
+});
+
+var tmrwICON = Ti.UI.createImageView({
+	height : '45%',
+	width : '45%',
+	center : '0%',
+	image : box.tmrwIcon
+	// image : 'partly_cloudy.png'
+});
+
+var tmrwTEMP = Ti.UI.createLabel({
+	bottom : '10%',
+	center : '0%',
+	text : box.tmrwTemp,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '24dp'
+	},
+	color : '#000'
+});
+tmrwV.add(tmrwLBL, tmrwICON, tmrwTEMP);
+//Tomorrow info end
+
+//day3 info start
+var day3V = Ti.UI.createView({
 	bottom : '0%',
 	left : '20%',
 	width : '20%',
@@ -254,7 +321,39 @@ var day3 = Ti.UI.createView({
 	borderRadius : '3%'
 });
 
-var day4 = Ti.UI.createView({
+var day3LBL = Ti.UI.createLabel({
+	top : '10%',
+	center : '0%',
+	text : box.day3,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '24dp'
+	},
+	color : '#000'
+});
+
+var day3ICON = Ti.UI.createImageView({
+	height : '45%',
+	width : '45%',
+	center : '0%',
+	image : box.day3Icon
+});
+
+var day3TEMP = Ti.UI.createLabel({
+	bottom : '10%',
+	center : '0%',
+	text : box.day3Temp,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '24dp'
+	},
+	color : '#000'
+});
+day3V.add(day3LBL, day3ICON, day3TEMP);
+//day3 info end
+
+//day4 info start
+var day4V = Ti.UI.createView({
 	bottom : '0%',
 	left : '40%',
 	width : '20%',
@@ -265,7 +364,39 @@ var day4 = Ti.UI.createView({
 	borderRadius : '3%'
 });
 
-var day5 = Ti.UI.createView({
+var day4LBL = Ti.UI.createLabel({
+	top : '10%',
+	center : '0%',
+	text : box.day4,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '24dp'
+	},
+	color : '#000'
+});
+
+var day4ICON = Ti.UI.createImageView({
+	height : '45%',
+	width : '45%',
+	center : '0%',
+	image : box.day4Icon
+});
+
+var day4TEMP = Ti.UI.createLabel({
+	bottom : '10%',
+	center : '0%',
+	text : box.day4Temp,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '24dp'
+	},
+	color : '#000'
+});
+day4V.add(day4LBL, day4ICON, day4TEMP);
+//day4 info end
+
+//day5 info start
+var day5V = Ti.UI.createView({
 	bottom : '0%',
 	right : '20%',
 	width : '20%',
@@ -276,7 +407,39 @@ var day5 = Ti.UI.createView({
 	borderRadius : '3%'
 });
 
-var day6 = Ti.UI.createView({
+var day5LBL = Ti.UI.createLabel({
+	top : '10%',
+	center : '0%',
+	text : box.day5,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '24dp'
+	},
+	color : '#000'
+});
+
+var day5ICON = Ti.UI.createImageView({
+	height : '45%',
+	width : '45%',
+	center : '0%',
+	image : box.day5Icon
+});
+
+var day5TEMP = Ti.UI.createLabel({
+	bottom : '10%',
+	center : '0%',
+	text : box.day5Temp,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '24dp'
+	},
+	color : '#000'
+});
+day5V.add(day5LBL, day5ICON, day5TEMP);
+//day5 info end
+
+//day6 info start
+var day6V = Ti.UI.createView({
 	bottom : '0%',
 	right : '0%',
 	width : '20%',
@@ -287,10 +450,43 @@ var day6 = Ti.UI.createView({
 	borderRadius : '3%'
 });
 
+var day6LBL = Ti.UI.createLabel({
+	top : '10%',
+	center : '0%',
+	text : box.day6,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '24dp'
+	},
+	color : '#000'
+});
+
+var day6ICON = Ti.UI.createImageView({
+	height : '45%',
+	width : '45%',
+	center : '0%',
+	image : box.day6Icon
+});
+
+var day6TEMP = Ti.UI.createLabel({
+	bottom : '10%',
+	center : '0%',
+	text : box.day6Temp,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '24dp'
+	},
+	color : '#000'
+});
+day6V.add(day6LBL, day6ICON, day6TEMP);
+//day6 info end
+//7day view end
+
+
 //Main Code
-forcast7.add(tmrw, day3, day4, day5, day6);
+forcast7.add(tmrwV, day3V, day4V, day5V, day6V);
 FHSS.add(feelsLBL, feelstemp, humidityLBL, humidityPERCENT, sunriseLBL, sunriseTIME, sunsetLBL, sunsetLBLtime);
-cityTemp.add(city, st, weaterCondition, temp, degree);
+cityTemp.add(city, st, icon, weaterCondition, temp/*,degree1, degree2*/);
 BNG.add(cityTemp, FHSS, forcast7);
 wWin.add(BNG);
 wWin.open();
