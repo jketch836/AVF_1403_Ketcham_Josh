@@ -1,0 +1,98 @@
+//Start GEOLOC and remotedata pull func
+var runGeo = function() {
+	//Start GEOLOC func
+	Ti.Geolocation.purpose = "WeatherAPP would like to access your current location.";
+
+	Ti.Geolocation.getCurrentPosition(function(e) {
+		if (Ti.Geolocation.locationServicesEnabled) {
+		} else {
+			alert("Location service is not enabled.");
+		};
+		if (e.error) {
+			alert("There is an error. Cannot connect...");
+		} else {
+			var lat = e.coords.latitude;
+			var lng = e.coords.longitude;
+			var url = 'http://api.wunderground.com/api/4e7dc583deb76743/forecast10day/astronomy/geolookup/q/' + lat + ',' + lng + '.json';
+			// console.log(url);
+		}
+		// End GEOLOC func
+
+		// Start remotedata pull
+		var info = [];
+		var json, results;
+		var state, city, dist, url, mainNight, mainNightIcon, today, todayIcon, tmrw, tmrwIcon, day3, day3Icon, day4, day4Icon; 
+		var day5, day5Icon, day6, day6Icon, day7, day7Icon;
+		var remoteResponse = function() {
+			// Response function code
+			json = JSON.parse(this.responseText);
+			state = json.location.state;
+			city = json.location.city;
+			url = json.location.wuiurl;
+			
+			forecast = json.forecast.forecastday;
+			simfore = json.simpleforecast.forecastday.date;
+			
+			for (var i = 0; i < forecast.length; i++) {
+				mainNight = forecast[1].title;
+				mainNightIcon = forecast[1].icon_url;
+
+			for (var i = 0; i < simfore.length; i++) {
+				today = simfore[0].weekday_short;
+				todayIcon = simfore[0].icon_url;
+				todayTemp = simfore[0].
+	
+				tmrw = simfore[1].weekday_short;
+				tmrwIcon = simfore[1].icon_url;
+				
+				day3 = simfore[2].weekday_short;
+				day3Icon = simfore[3].icon_url;
+				
+				day4 = simfore[4].weekday_short;
+				day4Icon = simfore[4].icon_url;
+				
+				day5 = simfore[5].weekday_short;
+				day5Icon = simfore[5].icon_url;
+				
+				day6 = simfore[6].weekday_short;
+				day6Icon = simfore[6].icon_url;
+				
+				day7 = simfore[7].weekday_short;
+				day7Icon = simfore[7].icon_url;
+				
+
+				// var rows = Ti.UI.createTableViewRow({
+					// height : '10%',
+// 
+				// });
+
+				info.push(rows);
+			};
+
+			//pushing rows to table
+			cloudTable.setData(info);
+
+		};
+
+		//if there is a problem pulling the data
+		var remoteError = function(e) {
+			Ti.API.debug("Status: " + this.status);
+			Ti.API.debug("Text: " + this.responseText);
+			Ti.API.debug("Error: " + e.error);
+			alert("There is a problem connecting to the Internet");
+		};
+
+		//getting the data
+		var xhr = Ti.Network.createHTTPClient({
+			onload : remoteResponse,
+			onerror : remoteError,
+			timeout : 5000
+		});
+		holder.add(coordinateLabel);
+
+		xhr.open("GET", url);
+		xhr.send();
+	});
+	// End remote data pull
+};
+// End GEOLOC and remotedata pull func

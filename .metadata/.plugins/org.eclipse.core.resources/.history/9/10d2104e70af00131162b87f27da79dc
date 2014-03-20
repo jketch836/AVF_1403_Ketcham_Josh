@@ -1,0 +1,9 @@
+Ti.UI.orientationModes.LANDSCAPE;
+
+var wWin = Ti.UI.createWindow({
+	title : "Main Window",
+	backgroundColor : '#7D9EC0'
+});
+
+
+wWin.open();

@@ -1,0 +1,9 @@
+Ti.Gesture.orientation = Ti.UI.LANDSCAPE;
+
+var wWin = Ti.UI.createWindow({
+	title : "Main Window",
+	// orientationModes : [Ti.UI.LANDSCAPE_RIGHT],
+	backgroundColor : '#7D9EC0'
+});
+
+wWin.open();

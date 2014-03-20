@@ -14,7 +14,7 @@ var win = Ti.UI.createWindow({
 // });
 // //Window End
 
-//marvel logo picture start
+// marvel logo picture start
 var logo = Ti.UI.createImageView({
 	top : '6%',
 	height : '100%',
@@ -208,6 +208,6 @@ comicTable.addEventListener('click', function(a) {
 });
 
 //Main Code
-win.add(logo, comicTable);
+win.add(comicTable, logo);
 win.open();
 // navWin.open();
