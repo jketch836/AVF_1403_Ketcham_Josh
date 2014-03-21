@@ -1,6 +1,5 @@
 // require JS files
 var data = require('data');
-var Cloud = require('ti.cloud');
 
 Ti.UI.setBackgroundColor('white');
 
@@ -63,7 +62,7 @@ box.id2 = info.fieldByName('id2');
 box.id3 = info.fieldByName('id3');
 box.id4 = info.fieldByName('id4');
 
-data.apiGEO;
+data.apiGEO
 // console.log(box.sunrise);
 
 var wWin = Ti.UI.createWindow({
@@ -571,6 +570,7 @@ var save = Ti.UI.createLabel({
 });
 //save eventlistener
 save.addEventListener('click', function() {
+	var Cloud = require('ti.cloud');
 	//push to cloud
 	Cloud.Places.create({
 		name : '32Bit Weather',
@@ -627,7 +627,7 @@ refresh.addEventListener('click', function(e) {
 	var id3 = e.source.id3;
 	var id4 = e.source.id4;
 	data.db.execute("DELETE FROM weather");
-	data.apiGEO;
+	data.apiGEO
 	alert('Weather has Updated');
 
 });

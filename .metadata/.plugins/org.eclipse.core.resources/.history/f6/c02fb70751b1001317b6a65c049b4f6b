@@ -3,10 +3,7 @@ var data = require('data');
 
 Ti.UI.setBackgroundColor('white');
 
-
 (function() {
-	// load the Cloud Module
-	var Cloud = require('ti.cloud');
 	// set .debug property to 'true' as we are in Development mode
 	Cloud.debug = true;
 	var loginUser = function() {
@@ -26,8 +23,7 @@ Ti.UI.setBackgroundColor('white');
 	// loginUser ends
 	loginUser();
 	// now your app is ready to access ACS network and data services
-})(); 
-
+})();
 
 var info = data.db.execute("SELECT * FROM weather");
 var box = {};
@@ -307,8 +303,6 @@ var sunsetLBLtime = Ti.UI.createLabel({
 //main Weather Labels end
 //Main Weather INFO End
 
-
-
 //7day Forecast Start
 var forcestV = Ti.UI.createView({
 	bottom : '20.5%',
@@ -316,7 +310,6 @@ var forcestV = Ti.UI.createView({
 	width : Ti.UI.FILL,
 	backgroundColor : '#000'
 });
-
 
 var forcestLBL = Ti.UI.createLabel({
 	left : '3%',
@@ -563,7 +556,41 @@ day6V.add(day6LBL, day6ICON, day6TEMP);
 //day6 info end
 //7day view end
 
+//Save to cloud start
+//save label
+var save = Ti.UI.createLabel({
+	bottom : '23%',
+	right : '3%',
+	text : 'Save',
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '22dp'
+	},
+	color : '#000'
+});
+//save eventlistener
+save.addEventListener('click', function() {
+	//push to cloud
+	Cloud.Places.create({
+		name : '32Bit Weather',
+		city : box.city,
+		state : box.state,
+		custom_fields : {
+			"Day" : box.today,
+			"Updated Time" : box.time
+		}
+	}, function(a) {
+		if (a.success) {
+			alert(box.city + " has been added to the Cloud");
+		} else if (a.error) {
+			alert('Could not save to the Cloud');
+		}
+	});
+});
+//Save to cloud end
 
+//Last Updated start
+//Last Updated view
 var lastupdatedV = Ti.UI.createView({
 	height : '3%',
 	width : Ti.UI.FILL,
@@ -573,7 +600,7 @@ var lastupdatedV = Ti.UI.createView({
 
 // Last Updated Label
 var lastupdatedLBL = Ti.UI.createLabel({
-	right : '3%', 
+	right : '3%',
 	text : 'Last Updated: ' + box.time,
 	font : {
 		fontStyle : 'Helvetica',
@@ -582,8 +609,9 @@ var lastupdatedLBL = Ti.UI.createLabel({
 	color : '#fff'
 });
 lastupdatedV.add(lastupdatedLBL);
+//Last Updated end
 
-
+//refresh start
 var refresh = Ti.UI.createImageView({
 	height : '2%',
 	width : '2%',
@@ -592,19 +620,22 @@ var refresh = Ti.UI.createImageView({
 	image : 'refresh.png'
 });
 
-refresh.addEventListener('click', function(){
-	// console.log(e.source.id);
-	data.db.execute("DELETE FROM weather WHERE id=?", id1, id2, id3, id4);
+refresh.addEventListener('click', function(e) {
+	var id1 = e.source.id1;
+	var id2 = e.source.id2;
+	var id3 = e.source.id3;
+	var id4 = e.source.id4;
+	data.db.execute("DELETE FROM weather");
 	data.apiGEO;
-	alert('I am working');
-	
+	alert('Weather has Updated');
 
 });
+// refresh end
 
 //Main Code
 forcast5.add(tmrwV, day3V, day4V, day5V, day6V);
 FHSS.add(feelsLBL, feelstemp, humidityLBL, humidityPERCENT, sunriseLBL, sunriseTIME, sunsetLBL, sunsetLBLtime);
 cityTemp.add(city, st, icon, weaterCondition, temp, degree1, degreeType);
 BNG.add(cityTemp, FHSS, forcast5);
-wWin.add(BNG, cityBIT, secBIT, day7BIT, forcestV, lastupdatedV, refresh);
-wWin.open(); 
+wWin.add(BNG, save, cityBIT, secBIT, day7BIT, forcestV, lastupdatedV, refresh);
+wWin.open();
