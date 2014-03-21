@@ -1,8 +1,8 @@
-#appname: WeatherApp_avf_lab4
-#publisher: jketch
-#url: http://
-#image: appicon.png
-#appid: com.fullsail.demoApp
-#desc: undefined
-#type: ipad
-#guid: 2ad5484c-5fb7-485c-95e1-17a312584df1
+#appname:WeatherApp_avf_lab4
+#publisher:jketch
+#url:http://
+#image:appicon.png
+#appid:com.fullsail.demoApp
+#desc:not specified
+#type:ipad
+#guid:2ad5484c-5fb7-485c-95e1-17a312584df1

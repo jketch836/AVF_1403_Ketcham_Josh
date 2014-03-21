@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;WeatherApp_avf_lab4/Resources/store.js&apos; to &apos;stored.js&apos;" description="Rename resource &apos;store.js&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Resources/store.js" name="stored.js" stamp="1395441121570" updateReferences="true"/>
+</session>

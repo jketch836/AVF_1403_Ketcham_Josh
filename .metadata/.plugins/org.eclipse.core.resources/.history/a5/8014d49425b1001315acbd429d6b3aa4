@@ -1,0 +1,292 @@
+// require JS files
+var data = require('data');
+
+var info = data.db.execute("SELECT * FROM weather");
+var box = {};
+
+box.tmrw = info.fieldByName('tmrw');
+
+console.log(box.tmrw);
+
+box.tmrwIcon = info.fieldByName('tmrwIcon');
+box.tmrwTemp = info.fieldByName('tmrwTemp');
+box.day3 = info.fieldByName('day3');
+box.day3Icon = info.fieldByName('day3Icon');
+box.day3Temp = info.fieldByName('day3Temp');
+box.day4 = info.fieldByName('day4');
+box.day4Icon = info.fieldByName('day4Icon');
+box.day4Temp = info.fieldByName('day4Temp');
+box.day5 = info.fieldByName('day5');
+box.day5Icon = info.fieldByName('day5Icon');
+box.day5Temp = info.fieldByName('day5Temp');
+box.day6 = info.fieldByName('day6');
+box.day6Icon = info.fieldByName('day6Icon');
+box.day6Temp = info.fieldByName('day6Temp');
+box.day7 = info.fieldByName('day7');
+box.day7Icon = info.fieldByName('day7Icon');
+box.day7Temp = info.fieldByName('day7Temp');
+box.feels = info.fieldByName('feels');
+
+
+var futuredays = Ti.UI.createWindow({
+	bottom : '0%',
+	center : '0%',
+	width : Ti.UI.FILL,
+	height : '27%',
+	backgroundColor : "#000"
+});
+exports.futuredays = futuredays;
+
+var close = Ti.UI.createLabel({
+	top : '0%',
+	left : '0%',
+	text : 'Close',
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '16dp'
+	},
+	color : '#fff',
+
+});
+
+close.addEventListener('click', function() {
+	futuredays.close();
+});
+
+//7day Forecast Start
+//7day View holder
+var forcast7 = Ti.UI.createView({
+	center : '0%',
+	width : Ti.UI.FILL,
+	height : '85%',
+	backgroundColor : "#fff"
+});
+
+//8bit 7days
+var day7BIT = Ti.UI.createImageView({
+	top : '0%',
+	width : '100%',
+	height : '100%',
+	image : '7dayBIT.png'
+});
+
+//Tomorrow info start
+var tmrwV = Ti.UI.createView({
+	bottom : '0%',
+	left : '0%',
+	width : '20%',
+	height : Ti.UI.FILL,
+	backgroundColor : "#fff",
+	borderColor : '#333',
+	borderWidth : '3%',
+	borderRadius : '3%'
+});
+
+var tmrwLBL = Ti.UI.createLabel({
+	top : '10%',
+	center : '0%',
+	text : box.tmrw,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '22dp'
+	},
+	color : '#000'
+});
+
+var tmrwICON = Ti.UI.createImageView({
+	height : '45%',
+	width : '45%',
+	center : '0%',
+	image : box.tmrwIcon
+	// image : 'partly_cloudy.png'
+});
+
+var tmrwTEMP = Ti.UI.createLabel({
+	bottom : '10%',
+	center : '0%',
+	text : box.tmrwTemp,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '22dp'
+	},
+	color : '#000'
+});
+tmrwV.add(tmrwLBL, tmrwICON, tmrwTEMP);
+//Tomorrow info end
+
+//day3 info start
+var day3V = Ti.UI.createView({
+	bottom : '0%',
+	left : '20%',
+	width : '20%',
+	height : Ti.UI.FILL,
+	backgroundColor : "#fff",
+	borderColor : '#333',
+	borderWidth : '3%',
+	borderRadius : '3%'
+});
+
+var day3LBL = Ti.UI.createLabel({
+	top : '10%',
+	center : '0%',
+	text : box.day3,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '22dp'
+	},
+	color : '#000'
+});
+
+var day3ICON = Ti.UI.createImageView({
+	height : '45%',
+	width : '45%',
+	center : '0%',
+	image : box.day3Icon
+});
+
+var day3TEMP = Ti.UI.createLabel({
+	bottom : '10%',
+	center : '0%',
+	text : box.day3Temp,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '22dp'
+	},
+	color : '#000'
+});
+day3V.add(day3LBL, day3ICON, day3TEMP);
+//day3 info end
+
+//day4 info start
+var day4V = Ti.UI.createView({
+	bottom : '0%',
+	left : '40%',
+	width : '20%',
+	height : Ti.UI.FILL,
+	backgroundColor : "#fff",
+	borderColor : '#333',
+	borderWidth : '3%',
+	borderRadius : '3%'
+});
+
+var day4LBL = Ti.UI.createLabel({
+	top : '10%',
+	center : '0%',
+	text : box.day4,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '22dp'
+	},
+	color : '#000'
+});
+
+var day4ICON = Ti.UI.createImageView({
+	height : '45%',
+	width : '45%',
+	center : '0%',
+	image : box.day4Icon
+});
+
+var day4TEMP = Ti.UI.createLabel({
+	bottom : '10%',
+	center : '0%',
+	text : box.day4Temp,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '22dp'
+	},
+	color : '#000'
+});
+day4V.add(day4LBL, day4ICON, day4TEMP);
+//day4 info end
+
+//day5 info start
+var day5V = Ti.UI.createView({
+	bottom : '0%',
+	right : '20%',
+	width : '20%',
+	height : Ti.UI.FILL,
+	backgroundColor : "#fff",
+	borderColor : '#333',
+	borderWidth : '3%',
+	borderRadius : '3%'
+});
+
+var day5LBL = Ti.UI.createLabel({
+	top : '10%',
+	center : '0%',
+	text : box.day5,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '22dp'
+	},
+	color : '#000'
+});
+
+var day5ICON = Ti.UI.createImageView({
+	height : '45%',
+	width : '45%',
+	center : '0%',
+	image : box.day5Icon
+});
+
+var day5TEMP = Ti.UI.createLabel({
+	bottom : '10%',
+	center : '0%',
+	text : box.day5Temp,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '22dp'
+	},
+	color : '#000'
+});
+day5V.add(day5LBL, day5ICON, day5TEMP);
+//day5 info end
+
+//day6 info start
+var day6V = Ti.UI.createView({
+	bottom : '0%',
+	right : '0%',
+	width : '20%',
+	height : Ti.UI.FILL,
+	backgroundColor : "#fff",
+	borderColor : '#333',
+	borderWidth : '3%',
+	borderRadius : '3%'
+});
+
+var day6LBL = Ti.UI.createLabel({
+	top : '10%',
+	center : '0%',
+	text : box.day6,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '22dp'
+	},
+	color : '#000'
+});
+
+var day6ICON = Ti.UI.createImageView({
+	height : '45%',
+	width : '45%',
+	center : '0%',
+	image : box.day6Icon
+});
+
+var day6TEMP = Ti.UI.createLabel({
+	bottom : '10%',
+	center : '0%',
+	text : box.day6Temp,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '22dp'
+	},
+	color : '#000'
+});
+day6V.add(day6LBL, day6ICON, day6TEMP);
+//day6 info end
+//7day view end
+
+//Main Code
+forcast7.add(day7BIT, tmrwV, day3V, day4V, day5V, day6V);
+futuredays.add(forcast7, close);

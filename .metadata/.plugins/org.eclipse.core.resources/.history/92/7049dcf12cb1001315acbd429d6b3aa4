@@ -1,0 +1,27 @@
+// require JS files
+var data = require('data');
+
+var info = data.db.execute("SELECT * FROM weather");
+var box = {};
+
+
+box.tmrwIcon = info.fieldByName('tmrwIcon');
+box.tmrwTemp = info.fieldByName('tmrwTemp');
+box.day3 = info.fieldByName('day3');
+box.day3Icon = info.fieldByName('day3Icon');
+box.day3Temp = info.fieldByName('day3Temp');
+box.day4 = info.fieldByName('day4');
+box.day4Icon = info.fieldByName('day4Icon');
+box.day4Temp = info.fieldByName('day4Temp');
+box.day5 = info.fieldByName('day5');
+box.day5Icon = info.fieldByName('day5Icon');
+box.day5Temp = info.fieldByName('day5Temp');
+box.day6 = info.fieldByName('day6');
+box.day6Icon = info.fieldByName('day6Icon');
+box.day6Temp = info.fieldByName('day6Temp');
+box.day7 = info.fieldByName('day7');
+box.day7Icon = info.fieldByName('day7Icon');
+box.day7Temp = info.fieldByName('day7Temp');
+box.feels = info.fieldByName('feels');
+
+

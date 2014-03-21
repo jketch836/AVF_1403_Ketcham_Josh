@@ -1,16 +1,35 @@
-//APP.JS
 // require JS files
 var data = require('data');
+var Cloud = require('ti.cloud');
 
-// var db = Ti.Database.open('weatherDB');
-// db.execute('CREATE TABLE IF NOT EXISTS weather (id INTEGER PRIMARY KEY, state TEXT, city TEXT, url TEXT, sunrise TEXT, sunset TEXT, mainNight TEXT, mainNightIcon TEXT, today TEXT, todayIcon TEXT, todayTemp TEXT, todayhumid INTEGER, todaySky TEXT, tmrw TEXT, tmrwIcon TEXT, tmrwTemp TEXT, day3 TEXT, day3Icon TEXT, day3Temp TEXT, day4 TEXT, day4Icon TEXT, day4Temp TEXT, day5 TEXT, day5Icon TEXT, day5Temp TEXT, day6 TEXT, day6Icon TEXT, day6Temp TEXT, day7 TEXT, day7Icon TEXT, day7Temp TEXT, feels TEXT)');
+Ti.UI.setBackgroundColor('white');
 
+(function() {
+	// set .debug property to 'true' as we are in Development mode
+	Cloud.debug = true;
+	var loginUser = function() {
+		Cloud.Users.login({
+			login : 'com.fullsail.demoApp',
+			password : '12345'
+		}, function(e) {
+			// use .info method to view login info in the Console, if successful
+			if (e.success) {
+				var user = e.users[0];
+				Ti.API.info('Success!\n' + 'ACS User ID: ' + user.id + '\n' + 'ACS App sessionId: ' + Cloud.sessionId + '\n' + 'ACS App Username: ' + user.username);
+			} else {
+				alert((e.error && e.message) || JSON.stringify(e));
+			}
+		});
+	};
+	// loginUser ends
+	loginUser();
+	// now your app is ready to access ACS network and data services
+})();
 
 var info = data.db.execute("SELECT * FROM weather");
 var box = {};
 box.state = info.fieldByName('state');
 box.city = info.fieldByName('city');
-box.url = info.fieldByName('url');
 box.sunrise = info.fieldByName('sunrise');
 box.sunset = info.fieldByName('sunset');
 box.mainNight = info.fieldByName('mainNight');
@@ -20,7 +39,6 @@ box.todayIcon = info.fieldByName('todayIcon');
 box.todayTemp = info.fieldByName('todayTemp');
 box.todayhumid = info.fieldByName('todayhumid');
 box.todaySky = info.fieldByName('todaySky');
-box.tmrw = info.fieldByName('tmrw');
 box.tmrwIcon = info.fieldByName('tmrwIcon');
 box.tmrwTemp = info.fieldByName('tmrwTemp');
 box.day3 = info.fieldByName('day3');
@@ -39,26 +57,30 @@ box.day7 = info.fieldByName('day7');
 box.day7Icon = info.fieldByName('day7Icon');
 box.day7Temp = info.fieldByName('day7Temp');
 box.feels = info.fieldByName('feels');
-
+box.time = info.fieldByName('time');
+box.id1 = info.fieldByName('id1');
+box.id2 = info.fieldByName('id2');
+box.id3 = info.fieldByName('id3');
+box.id4 = info.fieldByName('id4');
 
 data.apiGEO;
-
-Ti.UI.setBackgroundColor('white');
+// console.log(box.sunrise);
 
 var wWin = Ti.UI.createWindow({
-	title : "WeatherWindow",
-	orientationModes : [Ti.UI.LANDSCAPE_LEFT]
+	orientationModes : [Ti.UI.LANDSCAPE_LEFT],
+	backgroundColor : '#fff'
 });
 
 // wWin.addEventListener("scrollend", function() {
-// 
+//
 // });
 
 var BNG = Ti.UI.createView({
 	top : '3%',
 	width : Ti.UI.FILL,
 	height : Ti.UI.FILL,
-	backgroundColor : '#7D9EC0'
+	// backgroundColor : '#7D9EC0'
+	backgroundImage : '8bitwallpaper.png'
 });
 
 //Main Weather INFO Start
@@ -72,14 +94,20 @@ var cityTemp = Ti.UI.createView({
 	borderRadius : '15%'
 });
 
-
 //main Weather icon
 var icon = Ti.UI.createImageView({
 	height : '100%',
 	width : '23%',
 	center : '0%',
 	image : box.todayIcon
-	// image : 'cloudy.png'
+});
+
+var cityBIT = Ti.UI.createImageView({
+	top : '12%',
+	center : '0%',
+	width : '71.5%',
+	height : '18%',
+	image : 'citybit.png'
 });
 
 //main Weather Labels start
@@ -89,18 +117,20 @@ var city = Ti.UI.createLabel({
 	text : box.city,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '28dp'
+		fontSize : '28dp',
+		fontWeight : 'bold'
 	},
 	color : '#fff'
 });
 
 var st = Ti.UI.createLabel({
-	top : '45%',
+	top : '47%',
 	right : '65%',
 	text : box.state,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '28dp'
+		fontSize : '28dp',
+		fontWeight : 'bold'
 	},
 	color : '#fff'
 });
@@ -111,72 +141,87 @@ var weaterCondition = Ti.UI.createLabel({
 	text : box.todaySky,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '28dp'
+		fontSize : '28dp',
+		fontWeight : 'bold'
 	},
 	color : '#fff'
 });
 
 var temp = Ti.UI.createLabel({
-	top : '46%',
+	top : '47%',
 	left : '65%',
 	text : box.todayTemp,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '28dp'
+		fontSize : '28dp',
+		fontWeight : 'bold'
 	},
 	color : '#fff'
 });
 
-// var degree1 = Ti.UI.createLabel({
-	// top : '45%',
-	// left : '71%',
-	// text : 'o',
-	// font : {
-		// fontStyle : 'Helvetica',
-		// fontSize : '18dp'
-	// },
-	// color : '#fff'
-// });
-// 
-// var degree2 = Ti.UI.createLabel({
-	// top : '45%',
-	// left : '80.5%',
-	// text : 'o',
-	// font : {
-		// fontStyle : 'Helvetica',
-		// fontSize : '18dp'
-	// },
-	// color : '#fff'
-// });
+var degree1 = Ti.UI.createLabel({
+	top : '46%',
+	left : '69.5%',
+	text : 'o',
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '18dp',
+		fontWeight : 'bold'
+	},
+	color : '#fff'
+});
+
+var degreeType = Ti.UI.createLabel({
+	top : '47%',
+	left : '71.5%',
+	text : 'F',
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '26dp',
+		fontWeight : 'bold'
+	},
+	color : '#fff'
+});
 //main Weather Labels end
 //Main Weather INFO End
 
 //Secondary Weather INFO Start
 //view to hold sec weather info
 var FHSS = Ti.UI.createView({
-	bottom : '30%',
+	bottom : '45%',
 	center : '0%',
 	width : '80%',
 	height : '15%',
 	backgroundColor : "black",
 	borderRadius : '15%'
 });
+
+//8bit image
+var secBIT = Ti.UI.createImageView({
+	bottom : '42.5%',
+	center : '0%',
+	width : '81.5%',
+	height : '16.5%',
+	image : 'secBIT.png'
+});
+
 //main Weather Labels start
 //feels like LBL
 var feelsLBL = Ti.UI.createLabel({
 	top : '25%',
-	left : '7%',
+	left : '5%',
 	text : 'Feels Like:',
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '24dp'
+		fontSize : '24dp',
+		fontWeight : 'bold'
 	},
 	color : '#fff'
 });
 
 var feelstemp = Ti.UI.createLabel({
 	top : '50%',
-	left : '12%',
+	left : '10%',
 	text : box.feels,
 	font : {
 		fontStyle : 'Helvetica',
@@ -192,14 +237,15 @@ var humidityLBL = Ti.UI.createLabel({
 	text : 'Humidity:',
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '24dp'
+		fontSize : '24dp',
+		fontWeight : 'bold'
 	},
 	color : '#fff'
 });
 
 var humidityPERCENT = Ti.UI.createLabel({
 	top : '50%',
-	left : '33.5%',
+	left : '34%',
 	text : box.todayhumid,
 	font : {
 		fontStyle : 'Helvetica',
@@ -215,7 +261,8 @@ var sunriseLBL = Ti.UI.createLabel({
 	text : 'Sunrise:',
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '24dp'
+		fontSize : '24dp',
+		fontWeight : 'bold'
 	},
 	color : '#fff'
 });
@@ -234,18 +281,19 @@ var sunriseTIME = Ti.UI.createLabel({
 //sunset LBL
 var sunsetLBL = Ti.UI.createLabel({
 	top : '25%',
-	right : '7%',
+	right : '10%',
 	text : 'Sunset:',
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '24dp'
+		fontSize : '24dp',
+		fontWeight : 'bold'
 	},
 	color : '#fff'
 });
 
 var sunsetLBLtime = Ti.UI.createLabel({
 	top : '50%',
-	right : '8%',
+	right : '11%',
 	text : box.sunset,
 	font : {
 		fontStyle : 'Helvetica',
@@ -257,13 +305,39 @@ var sunsetLBLtime = Ti.UI.createLabel({
 //Main Weather INFO End
 
 //7day Forecast Start
+var forcestV = Ti.UI.createView({
+	bottom : '20.5%',
+	height : '3%',
+	width : Ti.UI.FILL,
+	backgroundColor : '#000'
+});
+
+var forcestLBL = Ti.UI.createLabel({
+	left : '3%',
+	text : '5 Day Forcast',
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '20dp'
+	},
+	color : '#fff',
+
+});
+forcestV.add(forcestLBL);
+
 //7day View holder
-var forcast7 = Ti.UI.createView({
-	bottom : '0%',
-	center : '0%',
+var forcast5 = Ti.UI.createView({
+	bottom : '3%',
 	width : Ti.UI.FILL,
 	height : '18.5%',
 	backgroundColor : "#fff"
+});
+
+//8bit 7days
+var day7BIT = Ti.UI.createImageView({
+	bottom : '3%',
+	width : Ti.UI.FILL,
+	height : '19%',
+	image : '7dayBIT.png'
 });
 
 //Tomorrow info start
@@ -281,10 +355,10 @@ var tmrwV = Ti.UI.createView({
 var tmrwLBL = Ti.UI.createLabel({
 	top : '10%',
 	center : '0%',
-	text : box.tmrw,
+	text : 'Tomorrow',
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '24dp'
+		fontSize : '22dp'
 	},
 	color : '#000'
 });
@@ -303,7 +377,7 @@ var tmrwTEMP = Ti.UI.createLabel({
 	text : box.tmrwTemp,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '24dp'
+		fontSize : '22dp'
 	},
 	color : '#000'
 });
@@ -317,9 +391,9 @@ var day3V = Ti.UI.createView({
 	width : '20%',
 	height : Ti.UI.FILL,
 	backgroundColor : "#fff",
-	borderColor : '#333',
-	borderWidth : '3%',
-	borderRadius : '3%'
+	// borderColor : '#333',
+	// borderWidth : '3%',
+	// borderRadius : '3%'
 });
 
 var day3LBL = Ti.UI.createLabel({
@@ -328,7 +402,7 @@ var day3LBL = Ti.UI.createLabel({
 	text : box.day3,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '24dp'
+		fontSize : '22dp'
 	},
 	color : '#000'
 });
@@ -346,7 +420,7 @@ var day3TEMP = Ti.UI.createLabel({
 	text : box.day3Temp,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '24dp'
+		fontSize : '22dp'
 	},
 	color : '#000'
 });
@@ -360,9 +434,9 @@ var day4V = Ti.UI.createView({
 	width : '20%',
 	height : Ti.UI.FILL,
 	backgroundColor : "#fff",
-	borderColor : '#333',
-	borderWidth : '3%',
-	borderRadius : '3%'
+	// borderColor : '#333',
+	// borderWidth : '3%',
+	// borderRadius : '3%'
 });
 
 var day4LBL = Ti.UI.createLabel({
@@ -371,7 +445,7 @@ var day4LBL = Ti.UI.createLabel({
 	text : box.day4,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '24dp'
+		fontSize : '22dp'
 	},
 	color : '#000'
 });
@@ -389,7 +463,7 @@ var day4TEMP = Ti.UI.createLabel({
 	text : box.day4Temp,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '24dp'
+		fontSize : '22dp'
 	},
 	color : '#000'
 });
@@ -403,9 +477,9 @@ var day5V = Ti.UI.createView({
 	width : '20%',
 	height : Ti.UI.FILL,
 	backgroundColor : "#fff",
-	borderColor : '#333',
-	borderWidth : '3%',
-	borderRadius : '3%'
+	// borderColor : '#333',
+	// borderWidth : '3%',
+	// borderRadius : '3%'
 });
 
 var day5LBL = Ti.UI.createLabel({
@@ -414,7 +488,7 @@ var day5LBL = Ti.UI.createLabel({
 	text : box.day5,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '24dp'
+		fontSize : '22dp'
 	},
 	color : '#000'
 });
@@ -432,7 +506,7 @@ var day5TEMP = Ti.UI.createLabel({
 	text : box.day5Temp,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '24dp'
+		fontSize : '22dp'
 	},
 	color : '#000'
 });
@@ -446,9 +520,9 @@ var day6V = Ti.UI.createView({
 	width : '20%',
 	height : Ti.UI.FILL,
 	backgroundColor : "#fff",
-	borderColor : '#333',
-	borderWidth : '3%',
-	borderRadius : '3%'
+	// borderColor : '#333',
+	// borderWidth : '3%',
+	// borderRadius : '3%'
 });
 
 var day6LBL = Ti.UI.createLabel({
@@ -457,7 +531,7 @@ var day6LBL = Ti.UI.createLabel({
 	text : box.day6,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '24dp'
+		fontSize : '22dp'
 	},
 	color : '#000'
 });
@@ -475,7 +549,7 @@ var day6TEMP = Ti.UI.createLabel({
 	text : box.day6Temp,
 	font : {
 		fontStyle : 'Helvetica',
-		fontSize : '24dp'
+		fontSize : '22dp'
 	},
 	color : '#000'
 });
@@ -483,36 +557,113 @@ day6V.add(day6LBL, day6ICON, day6TEMP);
 //day6 info end
 //7day view end
 
+//Save to cloud start
+//save label
+var save = Ti.UI.createLabel({
+	bottom : '23%',
+	right : '3%',
+	text : 'Save',
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '22dp'
+	},
+	color : '#000'
+});
+//save eventlistener
+save.addEventListener('click', function() {
+	//push to cloud
+	Cloud.Places.create({
+		name : '32Bit Weather',
+		city : box.city,
+		state : box.state,
+		custom_fields : {
+			"Day" : box.today,
+			"Updated Time" : box.time
+		}
+	}, function(a) {
+		if (a.success) {
+			alert(box.city + " has been added to the Cloud");
+		} else if (a.error) {
+			alert('Could not save to the Cloud');
+		}
+	});
+});
+//Save to cloud end
+
+//Last Updated start
+//Last Updated view
+var lastupdatedV = Ti.UI.createView({
+	height : '3%',
+	width : Ti.UI.FILL,
+	bottom : '0%',
+	backgroundColor : '#000'
+});
+
+// Last Updated Label
+var lastupdatedLBL = Ti.UI.createLabel({
+	right : '3%',
+	text : 'Last Updated: ' + box.time,
+	font : {
+		fontStyle : 'Helvetica',
+		fontSize : '18dp'
+	},
+	color : '#fff'
+});
+lastupdatedV.add(lastupdatedLBL);
+//Last Updated end
+
+//refresh start
+var refresh = Ti.UI.createImageView({
+	height : '2%',
+	width : '2%',
+	right : '42%',
+	bottom : '0.5%',
+	image : 'refresh.png'
+});
+
+refresh.addEventListener('click', function(e) {
+	var id1 = e.source.id1;
+	var id2 = e.source.id2;
+	var id3 = e.source.id3;
+	var id4 = e.source.id4;
+	data.db.execute("DELETE FROM weather");
+	data.apiGEO;
+	alert('Weather has Updated');
+
+});
+// refresh end
 
 //Main Code
-forcast7.add(tmrwV, day3V, day4V, day5V, day6V);
+forcast5.add(tmrwV, day3V, day4V, day5V, day6V);
 FHSS.add(feelsLBL, feelstemp, humidityLBL, humidityPERCENT, sunriseLBL, sunriseTIME, sunsetLBL, sunsetLBLtime);
-cityTemp.add(city, st, icon, weaterCondition, temp/*,degree1, degree2*/);
-BNG.add(cityTemp, FHSS, forcast7);
-wWin.add(BNG);
+cityTemp.add(city, st, icon, weaterCondition, temp, degree1, degreeType);
+BNG.add(cityTemp, FHSS, forcast5);
+wWin.add(BNG, save, cityBIT, secBIT, day7BIT, forcestV, lastupdatedV, refresh);
 wWin.open();
 
+
+\
 
 
 
 
 //DATA.JS
 var db = Ti.Database.open('weatherDB');
-db.execute('CREATE TABLE IF NOT EXISTS weather (id INTEGER PRIMARY KEY, state TEXT, city TEXT, url TEXT, sunrise TEXT, sunset TEXT, mainNight TEXT, mainNightIcon TEXT, today TEXT, todayIcon TEXT, todayTemp TEXT, todayhumid INTEGER, todaySky TEXT, tmrw TEXT, tmrwIcon TEXT, tmrwTemp TEXT, day3 TEXT, day3Icon TEXT, day3Temp TEXT, day4 TEXT, day4Icon TEXT, day4Temp TEXT, day5 TEXT, day5Icon TEXT, day5Temp TEXT, day6 TEXT, day6Icon TEXT, day6Temp TEXT, day7 TEXT, day7Icon TEXT, day7Temp TEXT, feels TEXT)');
+db.execute('CREATE TABLE IF NOT EXISTS weather (id INTEGER PRIMARY KEY, state TEXT, city TEXT, sunrise TEXT, sunset TEXT, mainNight TEXT, mainNightIcon TEXT, today TEXT, todayIcon TEXT, todayTemp TEXT, todayhumid INTEGER, todaySky TEXT, tmrwIcon TEXT, tmrwTemp TEXT, day3 TEXT, day3Icon TEXT, day3Temp TEXT, day4 TEXT, day4Icon TEXT, day4Temp TEXT, day5 TEXT, day5Icon TEXT, day5Temp TEXT, day6 TEXT, day6Icon TEXT, day6Temp TEXT, day7 TEXT, day7Icon TEXT, day7Temp TEXT, feels TEXT, time TEXT, id1 TEXT, id2 TEXT, id3 TEXT, id4 TEXT)');
 exports.db = db;
 
 //Start GEOLOC and remotedata pull func
 var apiGEO = function() {
 	//Start GEOLOC func
-	Ti.Geolocation.purpose = "WeatherAPP would like to access your current location.";
+	Ti.Geolocation.purpose = "8Bit Weather would like to use your current location.";
 
 	Ti.Geolocation.getCurrentPosition(function(e) {
 		if (Ti.Geolocation.locationServicesEnabled) {
 		} else {
-			alert("Location service is not enabled.");
+			alert("Location is not availble. Please go to Settings to change this.");
 		};
 		if (e.error) {
-			alert("There is an error. Cannot connect...");
+			alert("Cannot Connect to the Internet");
 		} else {
 			var lat = e.coords.latitude;
 			var lng = e.coords.longitude;
@@ -523,43 +674,43 @@ var apiGEO = function() {
 		// End GEOLOC func
 
 		// Start remotedata pull
-
 		var remoteResponse = function() {
 			var json, state, city, url, forecast, simfore, forecasthr;
 			var feels, sunrise, sunset;
 
 			var mainNight, mainNightIcon, today, todayIcon, todayTemp, todayhumid, todaySky, tmrw, tmrwIcon, tmrwTemp, day3, day3Icon, day3Temp;
 			var day4, day4Icon, day4Temp, day5, day5Icon, day5Temp, day6, day6Icon, day6Temp, day7, day7Icon, day7Temp, feels;
+			var id1, id2, id3, id4;
 
 			// Response function code
 			json = JSON.parse(this.responseText);
 			forecast = json.forecast.txt_forecast.forecastday;
 			simfore = json.forecast.simpleforecast.forecastday;
 			hrs = json.hourly_forecast;
-			// db.execute('CREATE TABLE IF NOT EXISTS weather (id INTEGER PRIMARY KEY, state TEXT, city TEXT, url TEXT, sunrise TEXT, sunset TEXT, mainNight TEXT, mainNightIcon TEXT, today TEXT, todayIcon TEXT, todayTemp TEXT, todayhumid INTEGER, todaySky TEXT, tmrw TEXT, tmrwIcon TEXT, tmrwTemp TEXT, day3 TEXT, day3Icon TEXT, day3Temp TEXT, day4 TEXT, day4Icon TEXT, day4Temp TEXT, day5 TEXT, day5Icon TEXT, day5Temp TEXT, day6 TEXT, day6Icon TEXT, day6Temp TEXT, day7 TEXT, day7Icon TEXT, day7Temp TEXT, feels TEXT)');
-
+			
 			state = json.location.state;
 			city = json.location.city;
-			url = json.location.wuiurl;
 
 			sunrise = json.sun_phase.sunrise.hour + ':' + json.sun_phase.sunrise.minute;
 			sunset = json.sun_phase.sunset.hour + ':' + json.sun_phase.sunset.minute;
+			
+			//rich edit: added this line
+			id1 = json.location.type;
+			id2 = forecast.period;
+			id3 = simfore[0].date.epoch;
+			id4 = hrs.uvi;
 
-			// for (var a = 0; a < forecast.length; a++) {
 			mainNight = forecast[1].title;
 			mainNightIcon = forecast[1].icon_url;
 
-			// for (var b = 0; b < simfore.length; b++) {
 			today = simfore[0].date.weekday_short;
 			todayIcon = simfore[0].icon_url;
-			todayTemp = simfore[0].high.fahrenheit + ' / ' + simfore[0].low.fahrenheit;
-			todayhumid = simfore[0].avehumidity + '%';
+			todayTemp = hrs[0].temp.english;
+			todayhumid = hrs[0].humidity + '%';
 			todaySky = simfore[0].conditions;
-
+			// console.log(todayIcon);
 			// console.log(todaySky);
-			console.log(todayIcon);
 
-			tmrw = simfore[1].date.weekday_short;
 			tmrwIcon = simfore[1].icon_url;
 			tmrwTemp = simfore[1].high.fahrenheit + ' / ' + simfore[1].low.fahrenheit;
 
@@ -570,7 +721,6 @@ var apiGEO = function() {
 			day4 = simfore[3].date.weekday_short;
 			day4Icon = simfore[3].icon_url;
 			day4Temp = simfore[3].high.fahrenheit + ' / ' + simfore[3].low.fahrenheit;
-
 			// console.log(day4);
 
 			day5 = simfore[4].date.weekday_short;
@@ -585,14 +735,12 @@ var apiGEO = function() {
 			day7Icon = simfore[6].icon_url;
 			day7Temp = simfore[6].high.fahrenheit + ' / ' + simfore[6].low.fahrenheit;
 
-			// for (var c = 0; c < hrs.length; c++) {
 			feels = hrs[0].feelslike.english;
-			// };
-
-			// };
-
-			// };
-			db.execute("INSERT INTO weather (state, city, url, sunrise, sunset, mainNight, mainNightIcon, today, todayIcon, todayTemp, todayhumid, todaySky, tmrw, tmrwIcon, tmrwTemp, day3, day3Icon, day3Temp, day4, day4Icon, day4Temp, day5, day5Icon, day5Temp, day6, day6Icon, day6Temp, day7, day7Icon, day7Temp, feels) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", state, city, url, sunrise, sunset, mainNight, mainNightIcon, today, todayIcon, todayTemp, todayhumid, todaySky, tmrw, tmrwIcon, tmrwTemp, day3, day3Icon, day3Temp, day4, day4Icon, day4Temp, day5, day5Icon, day5Temp, day6, day6Icon, day6Temp, day7, day7Icon, day7Temp, feels);
+			time = hrs[0].FCTTIME.pretty;
+			
+			// console.log(id1 + "..........");
+		
+			db.execute("INSERT INTO weather (state, city, sunrise, sunset, mainNight, mainNightIcon, today, todayIcon, todayTemp, todayhumid, todaySky, tmrwIcon, tmrwTemp, day3, day3Icon, day3Temp, day4, day4Icon, day4Temp, day5, day5Icon, day5Temp, day6, day6Icon, day6Temp, day7, day7Icon, day7Temp, feels, time, id1, id2, id3, id4) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", state, city, sunrise, sunset, mainNight, mainNightIcon, today, todayIcon, todayTemp, todayhumid, todaySky, tmrwIcon, tmrwTemp, day3, day3Icon, day3Temp, day4, day4Icon, day4Temp, day5, day5Icon, day5Temp, day6, day6Icon, day6Temp, day7, day7Icon, day7Temp, feels, time, id1, id2, id3, id4);
 
 		};
 
@@ -620,80 +768,3 @@ var apiGEO = function() {
 
 //Export GEOLOC and remotedata pull func
 exports.apiGEO = apiGEO();
-
-
-var rowInfo = function() {
-	var array = [];
-	var wea = db.execute("SELECT * FROM weather");
-
-	while (wea.isValidRow()) {
-		var state = wea.fieldByName('state');
-		var city = wea.fieldByName('city');
-		var url = wea.fieldByName('url');
-		var sunrise = wea.fieldByName('sunrise');
-		var sunset = wea.fieldByName('sunset');
-		var mainNight = wea.fieldByName('mainNight');
-		var mainNightIcon = wea.fieldByName('mainNightIcon');
-		var todayIcon = wea.fieldByName('todayIcon');
-		var todayTemp = wea.fieldByName('todayTemp');
-		var todayhumid = wea.fieldByName('todayhumid');
-		var todaySky = wea.fieldByName('todaySky');
-		var county = wea.fieldByName('county');
-		var tmrw = wea.fieldByName('tmrw');
-		var tmrwIcon = wea.fieldByName('tmrwIcon');
-		var tmrwTemp = wea.fieldByName('tmrwTemp');
-		var day3 = wea.fieldByName('day3');
-		var day3Icon = wea.fieldByName('day3Icon');
-		var day3Temp = wea.fieldByName('day3Temp');
-		var day4 = wea.fieldByName('day4');
-		var day4Icon = wea.fieldByName('day4Icon');
-		var day4Temp = wea.fieldByName('day4Temp');
-		var day5 = wea.fieldByName('day5');
-		var day5Icon = wea.fieldByName('day5Icon');
-		var day5Temp = wea.fieldByName('day5Temp');
-		var day6 = wea.fieldByName('day6');
-		var day6Icon = wea.fieldByName('day6Icon');
-		var day6Temp = wea.fieldByName('day6Temp');
-		var day7 = wea.fieldByName('day7');
-		var day7Icon = wea.fieldByName('day7Icon');
-		var day7Temp = wea.fieldByName('day&Temp');
-		var feels = wea.fieldByName('feels');
-		var id = wea.fieldByName('id');
-
-		// array.push({
-			// state : state,
-			// city : city,
-			// url : url,
-			// sunrise : sunrise,
-			// sunset : sunset,
-			// mainNight : mainNight,
-			// mainNightIcon : mainNightIcon,
-			// today : today,
-			// todayIcon : todayIcon,
-			// todayTemp : todayTemp,
-			// todayhumid : todayhumid,
-			// todaySky : todaySky,
-			// tmrw : tmrw,
-			// tmrwIcon : tmrwIcon,
-			// tmrwTemp : tmrwTemp,
-			// day3 : day3,
-			// day3Icon : day3Icon,
-			// day3Temp : day3Temp,
-			// day4 : day4,
-			// day4Icon : day4Icon,
-			// day4Temp : day4Temp,
-			// day5 : day5,
-			// day5Icon : day5Icon,
-			// day5Temp : day5Temp,
-			// day6 : day6,
-			// day6Icon : day6Icon,
-			// day6Temp : day6Temp,
-			// day7 : day7,
-			// day7Icon : day7Icon,
-			// day7Temp : day7Temp,
-			// feels : feels
-		// });
-		wea.next();
-	};
-	// return array;
-};
