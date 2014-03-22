@@ -26,14 +26,14 @@ Ti.UI.setBackgroundColor('white');
 	// now your app is ready to access ACS network and data services
 })();
 
+data.apiGEO();
+
 var info = data.db.execute("SELECT * FROM weather");
 var box = {};
 box.state = info.fieldByName('state');
 box.city = info.fieldByName('city');
 box.sunrise = info.fieldByName('sunrise');
 box.sunset = info.fieldByName('sunset');
-box.mainNight = info.fieldByName('mainNight');
-box.mainNightIcon = info.fieldByName('mainNightIcon');
 box.today = info.fieldByName('today');
 box.todayIcon = info.fieldByName('todayIcon');
 box.todayTemp = info.fieldByName('todayTemp');
@@ -58,22 +58,17 @@ box.day7Icon = info.fieldByName('day7Icon');
 box.day7Temp = info.fieldByName('day7Temp');
 box.feels = info.fieldByName('feels');
 box.time = info.fieldByName('time');
-box.id1 = info.fieldByName('id1');
-box.id2 = info.fieldByName('id2');
-box.id3 = info.fieldByName('id3');
-box.id4 = info.fieldByName('id4');
+// box.id1 = info.fieldByName('id1');
+// box.id2 = info.fieldByName('id2');
+// box.id3 = info.fieldByName('id3');
+// box.id4 = info.fieldByName('id4');
 
-data.apiGEO;
 // console.log(box.sunrise);
 
 var wWin = Ti.UI.createWindow({
 	orientationModes : [Ti.UI.LANDSCAPE_LEFT],
 	backgroundColor : '#fff'
 });
-
-// wWin.addEventListener("scrollend", function() {
-//
-// });
 
 var BNG = Ti.UI.createView({
 	top : '3%',
@@ -582,9 +577,9 @@ save.addEventListener('click', function() {
 		}
 	}, function(a) {
 		if (a.success) {
-			alert(box.city + " has been added to the Cloud");
+			alert(box.city + " has been saved to the Cloud");
 		} else if (a.error) {
-			alert('Could not save to the Cloud');
+			alert(box.city + 'has failed to save in the cloud');
 		}
 	});
 });
@@ -622,14 +617,9 @@ var refresh = Ti.UI.createImageView({
 });
 
 refresh.addEventListener('click', function(e) {
-	var id1 = e.source.id1;
-	var id2 = e.source.id2;
-	var id3 = e.source.id3;
-	var id4 = e.source.id4;
 	data.db.execute("DELETE FROM weather");
-	data.apiGEO;
+	data.apiGEO();
 	alert('Weather has Updated');
-
 });
 // refresh end
 
@@ -639,4 +629,4 @@ FHSS.add(feelsLBL, feelstemp, humidityLBL, humidityPERCENT, sunriseLBL, sunriseT
 cityTemp.add(city, st, icon, weaterCondition, temp, degree1, degreeType);
 BNG.add(cityTemp, FHSS, forcast5);
 wWin.add(BNG, save, cityBIT, secBIT, day7BIT, forcestV, lastupdatedV, refresh);
-wWin.open();
+wWin.open(); 
