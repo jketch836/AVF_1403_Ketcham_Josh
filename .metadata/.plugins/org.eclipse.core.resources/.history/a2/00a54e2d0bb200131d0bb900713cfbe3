@@ -1,0 +1,8 @@
+var aWin = Ti.UI.createWindow({
+	orientationModes : [Ti.UI.LANDSCAPE_LEFT],
+	backgroundColor : '#fff'
+});
+
+var infoLBL = Ti.UI.createLabel({
+	
+});

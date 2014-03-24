@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;WeatherApp_avf_lab4/Resources/store.js&apos; to &apos;stored.js&apos;" description="Rename resource &apos;store.js&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Resources/store.js" name="stored.js" stamp="1395441121570" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;8Bit Weather_avf_lab4/Resources/stored.js&apos; to &apos;about.js&apos;" description="Rename resource &apos;stored.js&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Resources/stored.js" name="about.js" stamp="1395524177919" updateReferences="true"/>
+</session>

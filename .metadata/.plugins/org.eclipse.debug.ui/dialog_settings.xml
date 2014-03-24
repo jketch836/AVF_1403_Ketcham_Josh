@@ -7,7 +7,7 @@
 	</section>
 	<section name="org.eclipse.debug.ui.LAUNCH_CONFIGURATIONS_DIALOG_SECTION">
 		<item value="1080" key="DIALOG_WIDTH"/>
-		<item value=", com.appcelerator.titanium.mobile.ui.android.installer.launchConfigurationType, com.appcelerator.titanium.mobile.ui.android.simulator.launchConfigurationType, com.aptana.js.debug.core.webbrowserLaunchConfigurationType, " key="org.eclipse.debug.ui.EXPANDED_NODES"/>
+		<item value=", com.appcelerator.titanium.mobile.ui.android.installer.launchConfigurationType, com.aptana.js.debug.core.webbrowserLaunchConfigurationType, com.appcelerator.titanium.mobile.ui.ios.simulator.launchConfigurationType, " key="org.eclipse.debug.ui.EXPANDED_NODES"/>
 		<item value="640" key="DIALOG_HEIGHT"/>
 		<item value="384" key="org.eclipse.debug.ui.DIALOG_SASH_WEIGHTS_1"/>
 		<item value="615" key="org.eclipse.debug.ui.DIALOG_SASH_WEIGHTS_2"/>

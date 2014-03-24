@@ -1,3 +1,3 @@
-FIND_BAR_DECORATOR_FIND_ENTRIES=\#\n\#Fri Mar 21 13\:20\:42 EDT 2014\n6\=promptHolder\n5\=prompt\n4\=var sav \\\= require('sav');\n3\=console.log\n2\=data\n1\=Request\n0\=info\n7\=format\n
-FIND_BAR_DECORATOR_REPLACE_ENTRIES=\#\n\#Wed Mar 12 13\:45\:17 EDT 2014\n4\=mainWin\n3\=mapWin\n2\=cWin\n1\=viewbng\n0\=views\n
+FIND_BAR_DECORATOR_FIND_ENTRIES=\#\n\#Mon Mar 24 11\:19\:14 EDT 2014\n9\=format\n8\=promptHolder\n7\=prompt\n6\=var sav \\\= require('sav');\n5\=console.log\n4\=data\n3\=Request\n2\=info\n1\=box\n0\=box.\n
+FIND_BAR_DECORATOR_REPLACE_ENTRIES=\#\n\#Mon Mar 24 11\:19\:14 EDT 2014\n5\=mainWin\n4\=mapWin\n3\=cWin\n2\=viewbng\n1\=views\n0\=the\n
 eclipse.preferences.version=1
