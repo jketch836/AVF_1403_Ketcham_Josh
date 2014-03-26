@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;8Bit Weather_avf_lab4&apos; to &apos;32-Bit Weather_avf_lab4&apos;" description="Rename resource &apos;8Bit Weather_avf_lab4&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/8Bit Weather_avf_lab4" name="32-Bit Weather_avf_lab4" stamp="1395685068652" updateReferences="true"/>
+</session>
